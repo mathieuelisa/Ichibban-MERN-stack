@@ -1,9 +1,15 @@
 import "./App.scss";
+// Components
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="test">Ichibban</h1>
+    <div className="test">
+      <Header />
+      <HomePage />
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,61 @@
-.test {
-  color: blue;
+@font-face {
+  font-family: "Walkway";
+  src: url("./Assets/Fonts/Walkway.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Walkway";
+  color: rgb(25, 25, 25);
+}
+
+// HEADER
+.header__wrapper {
+  height: 10vh;
+  background-color: #f0ede2;
+  display: flex;
+  justify-content: center;
+
+  &-links {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    font-family: "Walkway";
+  }
+
+  &-icons {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header__container {
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.homepage__wrapper {
+  height: 80vh;
+  background-color: #f0ede2;
+  padding: 10px 30px;
+}
+
+// FOOTER
+
+.footer__wrapper {
+  background-color: #f0ede2;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
