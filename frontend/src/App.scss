@@ -45,11 +45,57 @@
 }
 
 .homepage__wrapper {
-  height: 80vh;
+  height: 115vh;
   background-color: #f0ede2;
   padding: 10px 30px;
+
+  &-title {
+    display: flex;
+    justify-content: center;
+  }
 }
 
+.homepage__container {
+  background-color: red;
+  height: 90%;
+  margin-top: 30px;
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.homepage__cardContainer {
+  height: 380px;
+  width: 50%;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  &-pictures {
+    width: 100%;
+    height: 70%;
+  }
+
+  &-description {
+    width: 100%;
+    height: 30%;
+    background-color: white;
+    padding: 10px;
+
+    &-first {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.product__pictures {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
 // FOOTER
 
 .footer__wrapper {

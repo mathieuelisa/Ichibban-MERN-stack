@@ -1,15 +1,19 @@
 import "../App.scss";
+import Card from "../Components/Card";
+import products from "../products";
 
-function HomePage({ products }) {
+function HomePage() {
   return (
     <div className="homepage__wrapper">
-      <h5>Homepage content</h5>
-      {products.map((element) => (
-        <>
-          <p>{element.name}</p>
-          <p>{element.rating}</p>
-        </>
-      ))}
+      <div className="homepage__wrapper-title">
+        <h5>The Lastest Products</h5>
+      </div>
+
+      <div className="homepage__container">
+        {products.map((product) => (
+          <Card product={product} />
+        ))}
+      </div>
     </div>
   );
 }

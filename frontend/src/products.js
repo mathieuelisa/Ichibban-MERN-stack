@@ -43,7 +43,7 @@ const products = [
     name: "Jouliyo",
     image: "/images/jouliyo.jpg",
     description:
-      "Nunc semper porttitor orci, sit amet rhoncus odio accumsan a. In quis molestie libero, id dapibus massa. Phasellus sodales ante nec fermentum molestie.",
+      "Nunc semper porttitor orci, sit amet rhoncus odio accumsan a. In quis molestie libero, id dapibus massa.",
     brand: "Ichibban",
     category: "Glasses",
     price: 399.99,
@@ -56,7 +56,7 @@ const products = [
     name: "Titus",
     image: "/images/titus.jpg",
     description:
-      "Suspendisse ex tellus, pellentesque eu diam facilisis, interdum commodo neque. Pellentesque id viverra urna. Sed suscipit et diam eu rhoncus.",
+      "Suspendisse ex tellus, pellentesque eu diam facilisis, interdum commodo neque.",
     brand: "Ichibban",
     category: "Glasses",
     price: 149.99,
@@ -69,7 +69,7 @@ const products = [
     name: "Goulyo",
     image: "/images/goulyo.jpg",
     description:
-      "Nulla a elit purus. Ut vitae ligula eget dui rhoncus hendrerit. Morbi dignissim ultrices diam vitae tempus. Morbi facilisis ultrices sem nec ullamcorper.",
+      "Inulla a elit purus. Ut vitae ligula eget dui rhoncus hendrerit. Morbi facilisis ultrices sem nec ullamcorper.",
     brand: "Ichibban",
     category: "Glasses",
     price: 229.99,
