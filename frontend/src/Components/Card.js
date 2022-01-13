@@ -1,3 +1,5 @@
+import Rating from "./Rating";
+
 function Card({ product }) {
   return (
     <div className="homepage__cardContainer">
@@ -8,14 +10,21 @@ function Card({ product }) {
       </div>
       <div className="homepage__cardContainer-description">
         <div className="homepage__cardContainer-description-first">
-          <h2>{product.name}</h2>
-          <h3>{product.price} €</h3>
+          <a
+            href={`/product/${product._id}`}
+            className="homepage__cardContainer-description-title"
+          >
+            <h2>{product.name}</h2>
+          </a>
+          <h3 className="homepage__cardContainer-description-price">
+            {product.price} €
+          </h3>
         </div>
         <div className="homepage__cardContainer-description-second">
           <p>{product.description}</p>
         </div>
         <div className="homepage__cardContainer-description-third">
-          <p>RATING and number views</p>
+          <Rating value={product.rating} review={product.numReviews} />
         </div>
       </div>
     </div>

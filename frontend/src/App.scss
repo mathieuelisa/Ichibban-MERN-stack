@@ -79,7 +79,6 @@
 .homepage__container {
   display: flex;
   flex-wrap: wrap;
-  //   background-color: red;
   height: 90%;
   margin-top: 30px;
   padding: 15px;
@@ -89,9 +88,9 @@
 .homepage__cardContainer {
   height: 380px;
   width: 50%;
-  background-color: yellow;
   border: 1px solid black;
   border-radius: 5px;
+  margin: 10px;
 
   &-pictures {
     width: 100%;
@@ -101,8 +100,16 @@
   &-description {
     width: 100%;
     height: 30%;
-    background-color: white;
     padding: 10px;
+
+    &-title {
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+    &-price {
+      font-size: 1.3em;
+    }
 
     &-first {
       display: flex;
@@ -130,6 +137,19 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
+
+// RATING
+
+.rating__avis {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.rating__star {
+  margin-right: 2px;
+  font-size: 0.7em;
+}
+
 // FOOTER
 
 .footer__wrapper {
