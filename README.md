@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# <img src="./frontend/public/images/info.png" style = "width:30px" > ICHIBBAN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## CONTEXT
 
-## Available Scripts
+Ichibban is an e-commerce project. <br>
+The purpose of this project was to pratice MERN Stack.
 
-In the project directory, you can run:
+Whats the Mern stack ?
 
-### `npm start`
+- **MongoDB**
+- **Express**
+- **React**
+- **Node**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## MY PROJECT
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ichibban is an application that tries to combine originality and design.
+With this application you can manage some stuff like: add, remove, update products. You can also pay with stripe API.
 
-### `npm test`
+## TECHNICAL STACK
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### FRONT
 
-### `npm run build`
+- **React combined with Redux**
+- **React Router Dom**
+- **Axios**
+- **Sass**
+- **Jest**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### BACK
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node**
+- **Express JS**
+- **Stripe API**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### DEPLOYMENT
 
-### `npm run eject`
+- Front : **Netlify**
+- Back : **Heroku**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## HOW TO USE THIS APP ?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone <url of the repo>
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install the dependencies for the front and the back
 
-## Learn More
+```bash
+yarn install && npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Check for `.envExemple` for get the `.env` key
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the application in the **frontend** folder
 
-### Code Splitting
+```bash
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Upload your pictures, add descriptions and manage your items

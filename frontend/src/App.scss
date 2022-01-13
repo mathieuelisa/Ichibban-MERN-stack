@@ -34,9 +34,9 @@
 
 // HEADER
 .header__wrapper {
+  display: flex;
   height: 10vh;
   background-color: #f0ede2;
-  display: flex;
   justify-content: center;
 
   &-links {
@@ -51,16 +51,16 @@
   }
 
   &-icons {
-    width: 150px;
     display: flex;
+    width: 150px;
     justify-content: space-between;
     align-items: center;
   }
 }
 
 .header__container {
-  width: 97%;
   display: flex;
+  width: 97%;
   justify-content: space-between;
   border-bottom: 1px solid black;
 }
@@ -156,9 +156,9 @@
 // FOOTER
 
 .footer__wrapper {
-  background-color: #f0ede2;
-  height: 10vh;
   display: flex;
+  height: 10vh;
+  background-color: #f0ede2;
   align-items: center;
   justify-content: center;
 }
