@@ -4,7 +4,7 @@ const products = [
     name: "Barlow",
     image: "/images/barlow.jpg",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc libero, dignissim quis bibendum vel, sollicitudin eu diam. Maecenas iaculis mauris condimentum nunc consectetur interdum.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nunc libero, dignissim quis bibendum vel, sollicitudin eu diam.",
     brand: "Ichibban",
     category: "Glasses",
     price: 489.99,

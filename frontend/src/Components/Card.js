@@ -11,7 +11,12 @@ function Card({ product }) {
           <h2>{product.name}</h2>
           <h3>{product.price} €</h3>
         </div>
-        <p>{product.description}</p>
+        <div className="homepage__cardContainer-description-second">
+          <p>{product.description}</p>
+        </div>
+        <div className="homepage__cardContainer-description-third">
+          <p>RATING and number views</p>
+        </div>
       </div>
     </div>
   );
