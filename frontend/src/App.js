@@ -6,12 +6,18 @@ import HomePage from "./Pages/HomePage";
 
 import products from "./products";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="test">
-      <Header />
-      <HomePage products={products} />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage products={products} />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

@@ -48,6 +48,10 @@
     display: flex;
     align-items: center;
     font-family: "Walkway";
+
+    &-title {
+      text-decoration: none;
+    }
   }
 
   &-icons {
@@ -66,7 +70,7 @@
 }
 
 .homepage__wrapper {
-  height: 115vh;
+  height: auto;
   background-color: #f0ede2;
   padding: 10px 30px;
 
@@ -91,9 +95,8 @@
 .homepage__cardContainer {
   height: 380px;
   width: 400px;
-  border: 1px solid black;
+  border: 1px solid rgb(181, 181, 181);
   border-radius: 5px;
-  margin: 10px;
 
   &-pictures {
     width: 100%;

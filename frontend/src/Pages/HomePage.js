@@ -10,8 +10,8 @@ function HomePage() {
       </div>
 
       <div className="homepage__container">
-        {products.map((product) => (
-          <Card product={product} />
+        {products.map((product, index) => (
+          <Card key={index} product={product} />
         ))}
       </div>
     </div>

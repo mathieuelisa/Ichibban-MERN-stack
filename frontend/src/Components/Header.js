@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "../App.scss";
 
 function Header() {
@@ -5,15 +6,18 @@ function Header() {
     <div className="header__wrapper">
       <div className="header__container">
         <div className="header__wrapper-logo">
-          <h1>ICHIBBAN</h1>
+          <NavLink to="/" className="header__wrapper-logo-title">
+            <h1>ICHIBBAN</h1>
+          </NavLink>
         </div>
         <div className="header__wrapper-icons">
-          <a className="header__wrapper-links" href="/cart">
-            Panier
-          </a>
-          <a className="header__wrapper-links" href="/login">
-            Se connecter
-          </a>
+          <NavLink className="header__wrapper-links" to="/cart">
+            <h4>Panier</h4>
+          </NavLink>
+
+          <NavLink className="header__wrapper-links" to="/login">
+            <h4>Se connecter</h4>
+          </NavLink>
         </div>
       </div>
     </div>

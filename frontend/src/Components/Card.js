@@ -1,21 +1,23 @@
 import Rating from "./Rating";
+import { Link } from "react-router-dom";
 
 function Card({ product }) {
   return (
     <div className="homepage__cardContainer">
       <div className="homepage__cardContainer-pictures">
-        <a href={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`}>
           <img alt="myImg" className="product__pictures" src={product.image} />
-        </a>
+        </Link>
       </div>
       <div className="homepage__cardContainer-description">
         <div className="homepage__cardContainer-description-first">
-          <a
-            href={`/product/${product._id}`}
+          <Link
+            to={`/product/${product._id}`}
             className="homepage__cardContainer-description-title"
           >
             <h2>{product.name}</h2>
-          </a>
+          </Link>
+
           <h3 className="homepage__cardContainer-description-price">
             {product.price} €
           </h3>
