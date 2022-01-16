@@ -20,8 +20,10 @@ function Product() {
         <p className="product__description">Description</p>
         <p className="product__container-infos-text">{myProduct.description}</p>
 
-        <div>
-          <button>Valider votre achat</button>
+        <div className="product__container-button">
+          <button className="product__container-button-valide">
+            Valider votre achat
+          </button>
         </div>
       </div>
     </div>

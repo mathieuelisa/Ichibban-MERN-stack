@@ -215,6 +215,28 @@
   object-fit: cover;
 }
 
+.product__container-button {
+  margin: 15px 0 0 10px;
+
+  &-valide {
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: #f0ede2;
+    transition: ease-out 0.5s;
+    box-shadow: inset 0 0 0 0 #f0ede2;
+    font-family: "WalkwayBlack";
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: inset 250px 0 0 0 black;
+      color: whitesmoke;
+      font-size: 0.9em;
+    }
+  }
+}
+
 @media screen and (max-width: 900px) {
   .product__container {
     flex-direction: column;
