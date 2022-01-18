@@ -22,7 +22,7 @@ function Product() {
 
         <div className="product__container-button">
           <button className="product__container-button-valide">
-            Valider votre achat
+            Ajouter au panier
           </button>
         </div>
       </div>

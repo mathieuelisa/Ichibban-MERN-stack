@@ -12,11 +12,13 @@ function Header() {
         </div>
         <div className="header__wrapper-icons">
           <NavLink className="header__wrapper-links" to="/cart">
-            <h4>Panier</h4>
+            <i className="fas fa-shopping-cart"></i>
+            <h4 className="header__wrapper-links-title">Panier</h4>
           </NavLink>
 
           <NavLink className="header__wrapper-links" to="/login">
-            <h4>Se connecter</h4>
+            <i className="far fa-user"></i>
+            <h4 className="header__wrapper-links-title">Se connecter</h4>
           </NavLink>
         </div>
       </div>
