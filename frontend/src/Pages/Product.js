@@ -1,24 +1,39 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../products";
 
 function Product() {
   const { id } = useParams();
+  const [myProduct, setMyProduct] = useState({});
 
-  const myProduct = products.find((p) => p._id === id);
+  useEffect(() => {
+    const fetchDataProduct = () => {
+      axios.get(`/api/products/${id}`).then((response) => {
+        console.log(response.data);
+        setMyProduct(response.data);
+      });
+    };
+
+    fetchDataProduct();
+  }, []);
   return (
     <div className="product__container">
       <div className="product__container-pictures">
         <img
           className="product__container-pictures-img"
-          src={myProduct.image}
+          src={myProduct[0]?.image}
           alt="test"
         />
       </div>
       <div className="product__container-infos">
-        <h1 className="product__container-infos-name">{myProduct.name}</h1>
-        <h3 className="product__container-infos-price">€ {myProduct.price}</h3>
+        <h1 className="product__container-infos-name">{myProduct[0]?.name}</h1>
+        <h3 className="product__container-infos-price">
+          € {myProduct[0]?.price}
+        </h3>
         <p className="product__description">Description</p>
-        <p className="product__container-infos-text">{myProduct.description}</p>
+        <p className="product__container-infos-text">
+          {myProduct[0]?.description}
+        </p>
 
         <div className="product__container-button">
           <button className="product__container-button-valide">

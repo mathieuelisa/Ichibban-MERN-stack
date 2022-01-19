@@ -8,7 +8,7 @@ app.get("/api/products", (req, res) => {
 });
 
 // Get one products
-app.get("/api/:id", (req, res) => {
+app.get("/api/products/:id", (req, res) => {
   res.json(products.filter((product) => product._id === req.params.id));
 });
 

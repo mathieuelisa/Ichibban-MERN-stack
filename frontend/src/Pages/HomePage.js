@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import "../App.scss";
 import Card from "../Components/Card";
-// import products from "../products";
 import axios from "axios";
 
 function HomePage() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchDataProduct = () => {
-      axios.get("/api").then((response) => {
+    const fetchDataProducts = () => {
+      axios.get("/api/products").then((response) => {
         console.log(response.data);
         setProducts(response.data);
       });
     };
 
-    fetchDataProduct();
+    fetchDataProducts();
   }, []);
 
   return (
