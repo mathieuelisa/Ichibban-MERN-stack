@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Ichibban e-commerce",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server"
   },
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/mathieuelisa/Ichibban-MERN-stack#readme",
   "dependencies": {
+    "dotenv": "^14.2.0",
     "express": "^4.17.2"
   }
 }
