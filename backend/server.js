@@ -1,4 +1,5 @@
 import express from "express";
+import colors from "colors";
 import products from "./data/products.js";
 import dotenv from "dotenv";
 // Config mongoose
@@ -22,5 +23,7 @@ app.get("/api/products/:id", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Running application in ${process.env.DEV} on port ${PORT}`);
+  console.log(
+    `Running application in ${process.env.DEV} on port ${PORT}`.green.bold
+  );
 });
