@@ -8,10 +8,13 @@ function HomePage() {
 
   useEffect(() => {
     const fetchDataProducts = () => {
-      axios.get("/api/products").then((response) => {
-        console.log(response.data);
-        setProducts(response.data);
-      });
+      axios
+        .get("/api/products")
+        .then((response) => {
+          console.log(response.data);
+          setProducts(response.data);
+        })
+        .catch((err) => console.log(err));
     };
 
     fetchDataProducts();

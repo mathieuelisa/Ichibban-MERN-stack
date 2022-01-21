@@ -8,7 +8,7 @@ const products = [
     brand: "Ichibban",
     category: "Glasses",
     price: 489.99,
-    countInStock: 10,
+    countInStock: 1,
     rating: 4.5,
     numReviews: 12,
   },

@@ -1,10 +1,14 @@
 import express from "express";
 import products from "./data/products.js";
 import dotenv from "dotenv";
+// Config mongoose
+import connectDB from "./config/db.js";
 
-const app = express();
 dotenv.config();
 
+connectDB();
+
+const app = express();
 // Get all the products
 app.get("/api/products", (req, res) => {
   res.json(products);

@@ -8,14 +8,21 @@ function Product() {
 
   useEffect(() => {
     const fetchDataProduct = () => {
-      axios.get(`/api/products/${id}`).then((response) => {
-        console.log(response.data);
-        setMyProduct(response.data);
-      });
+      axios
+        .get(`/api/products/${id}`)
+        .then((response) => {
+          setMyProduct(response.data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
     };
 
     fetchDataProduct();
-  }, []);
+  }, [id]);
+
+  console.log(myProduct[0]?.countInStock);
+
   return (
     <div className="product__container">
       <div className="product__container-pictures">
@@ -33,6 +40,10 @@ function Product() {
         <p className="product__description">Description</p>
         <p className="product__container-infos-text">
           {myProduct[0]?.description}
+        </p>
+        <p className="product__description">Disponibilité</p>
+        <p className="product__container-infos-text">
+          {myProduct[0]?.countInStock > 0 ? "Disponible" : "Non disponible"}
         </p>
 
         <div className="product__container-button">
