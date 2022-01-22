@@ -51,6 +51,11 @@
 
     &-title {
       margin-left: 10px;
+
+      &:hover {
+        color: rgb(154, 153, 153);
+        transition: all 0.8s;
+      }
     }
   }
 
@@ -255,6 +260,7 @@
 @media screen and (max-width: 900px) {
   .product__container {
     flex-direction: column;
+    height: auto;
   }
 
   .product__container-infos {

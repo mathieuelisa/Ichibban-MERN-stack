@@ -32,6 +32,8 @@ With this application you can manage some stuff like: add, remove, update produc
 - **Node**
 - **Express JS**
 - **Stripe API**
+- **MongoDB / Mongoose**
+- **Jason Web Token**
 
 ### DEPLOYMENT
 
