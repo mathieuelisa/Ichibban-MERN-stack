@@ -21,8 +21,6 @@ function Product() {
     fetchDataProduct();
   }, [id]);
 
-  console.log(myProduct[0]?.countInStock);
-
   return (
     <div className="product__container">
       <div className="product__container-pictures">

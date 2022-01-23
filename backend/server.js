@@ -5,20 +5,15 @@ import dotenv from "dotenv";
 // Config mongoose
 import connectDB from "./config/db.js";
 
+import router from "./Routes/productRoutes.js";
+
 dotenv.config();
 
 connectDB();
 
 const app = express();
-// Get all the products
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
 
-// Get one products
-app.get("/api/products/:id", (req, res) => {
-  res.json(products.filter((product) => product._id === req.params.id));
-});
+app.use("/", router);
 
 const PORT = process.env.PORT || 5000;
 
