@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Barlow",
     image: "/images/barlow.jpg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "2",
     name: "Cubic",
     image: "/images/cubic.jpg",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: "3",
     name: "Kanow",
     image: "/images/kanow.jpg",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "4",
     name: "Jouliyo",
     image: "/images/jouliyo.jpg",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "5",
     name: "Titus",
     image: "/images/titus.jpg",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: "6",
     name: "Goulyo",
     image: "/images/goulyo.jpg",
     description:
