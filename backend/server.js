@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 
 import router from "./Routes/productRoutes.js";
+import pageNotFound from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ connectDB();
 const app = express();
 
 app.use("/api/products", router);
+app.use(pageNotFound);
 
 const PORT = process.env.PORT || 5000;
 
