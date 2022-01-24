@@ -6,4 +6,14 @@ const pageNotFound = (req, res, next) => {
   next(pageError);
 };
 
-export default pageNotFound;
+const errorHandler = (err, req, res, next) => {
+  const statusError = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(statusError);
+
+  res.json({
+    message: err.message,
+    stack: process.env.NODE_ENV === "production" ? null : err.message,
+  });
+};
+
+export { pageNotFound, errorHandler };
