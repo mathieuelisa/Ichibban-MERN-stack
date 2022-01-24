@@ -34,6 +34,7 @@ With this application you can manage some stuff like: add, remove, update produc
 - **Stripe API**
 - **MongoDB / Mongoose**
 - **Jason Web Token**
+- **Bcrypt**
 
 ### DEPLOYMENT
 

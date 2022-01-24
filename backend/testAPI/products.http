@@ -1,0 +1,12 @@
+// @ Get all the products
+GET http://localhost:5000/api/products
+Accept: application/json
+Content-Type: application/json
+###
+
+// @ Get single product
+GET http://localhost:5000/api/products/61ed55c0c938c2dc6b20c007
+Accept: application/json
+Content-Type: application/json
+###
+
