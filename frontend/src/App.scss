@@ -97,6 +97,11 @@
   }
 }
 
+.homepage__loading,
+.homepage__error {
+  height: 90vh;
+}
+
 .homepage__container {
   display: grid;
   width: 100%;
