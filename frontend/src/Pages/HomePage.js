@@ -20,6 +20,7 @@ function HomePage() {
       <div className="homepage__wrapper-title">
         <h5>The Lastest Products</h5>
       </div>
+      {/* make a loading component */}
       {loading ? (
         <div className="homepage__loading">
           <h1>LOADING...</h1>

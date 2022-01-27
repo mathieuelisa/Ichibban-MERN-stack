@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Actions type
 export const PRODUCT_LIST_REQ = "product_list_req";
 export const PRODUCT_LIST_SUCCESSFUL = "product_list_successful";
 export const PRODUCT_LIST_FAIL = "product_list_fail";

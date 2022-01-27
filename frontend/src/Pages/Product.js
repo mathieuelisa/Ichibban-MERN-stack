@@ -26,22 +26,18 @@ function Product() {
       <div className="product__container-pictures">
         <img
           className="product__container-pictures-img"
-          src={myProduct[0]?.image}
+          src={myProduct.image}
           alt="test"
         />
       </div>
       <div className="product__container-infos">
-        <h1 className="product__container-infos-name">{myProduct[0]?.name}</h1>
-        <h3 className="product__container-infos-price">
-          € {myProduct[0]?.price}
-        </h3>
+        <h1 className="product__container-infos-name">{myProduct.name}</h1>
+        <h3 className="product__container-infos-price">€ {myProduct.price}</h3>
         <p className="product__description">Description</p>
-        <p className="product__container-infos-text">
-          {myProduct[0]?.description}
-        </p>
+        <p className="product__container-infos-text">{myProduct.description}</p>
         <p className="product__description">Disponibilité</p>
         <p className="product__container-infos-text">
-          {myProduct[0]?.countInStock > 0 ? "Disponible" : "Non disponible"}
+          {myProduct.countInStock > 0 ? "Disponible" : "Non disponible"}
         </p>
 
         <div className="product__container-button">
