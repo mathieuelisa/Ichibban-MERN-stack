@@ -98,11 +98,15 @@
 }
 
 .homepage__loading,
-.homepage__error {
+.homepage__errorMessage {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 75vh;
+}
+
+.homepage__errorMessage {
+  flex-direction: column;
 }
 
 .homepage__logo {

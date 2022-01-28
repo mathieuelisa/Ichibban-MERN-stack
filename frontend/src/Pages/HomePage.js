@@ -6,6 +6,7 @@ import Loader from "../Components/Loader";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import { productList } from "../redux/actions/productsActions.js";
+import ErrorMessage from "../Components/ErrorMessage";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function HomePage() {
   return (
     <div className="homepage__wrapper">
       <div className="homepage__wrapper-title">
-        <h5>The Lastest Products</h5>
+        <h5>Nos nouveautés</h5>
       </div>
 
       {loading ? (
@@ -30,9 +31,7 @@ function HomePage() {
           logoClassName="homepage__logo"
         />
       ) : error ? (
-        <div className="homepage__error">
-          <h3>ERREUR...</h3>
-        </div>
+        <ErrorMessage className="homepage__errorMessage" />
       ) : (
         <div className="homepage__container">
           {products.map((product, index) => (
