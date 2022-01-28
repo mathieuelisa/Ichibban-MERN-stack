@@ -99,7 +99,14 @@
 
 .homepage__loading,
 .homepage__error {
-  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.homepage__logo {
+  height: 40px;
 }
 
 .homepage__container {
