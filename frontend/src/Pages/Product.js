@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router-dom";
@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { productDetailList } from "../redux/actions/productsActions";
 
 function Product() {
+  const [quantity, setQuantity] = useState(0);
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -32,9 +34,21 @@ function Product() {
         <p className="product__container-infos-text">{product.description}</p>
         <p className="product__description">Disponibilité</p>
         <p className="product__container-infos-text">
-          {product.countInStock > 0 ? "Disponible" : "Non disponible"}
+          {product.countInStock > 0 ? (
+            "Disponible"
+          ) : (
+            <span style={{ color: "red" }}>Non disponible</span>
+          )}
         </p>
 
+        <p className="product__description">Quantité</p>
+        <form>
+          <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </form>
         <div className="product__container-button">
           <button className="product__container-button-valide">
             Ajouter au panier
