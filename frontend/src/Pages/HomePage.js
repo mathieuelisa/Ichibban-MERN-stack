@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import "../App.scss";
+
 import Card from "../Components/Card";
 import Loader from "../Components/Loader";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import { productList } from "../redux/actions/productsActions.js";
+
 import ErrorMessage from "../Components/ErrorMessage";
 
 function HomePage() {
