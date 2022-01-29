@@ -14,6 +14,10 @@ function Product() {
   const ListDetailProduct = useSelector((state) => state.ListDetailProduct);
   const { product } = ListDetailProduct;
 
+  const handleChangeQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+
   useEffect(() => {
     dispatch(productDetailList(id));
   }, [dispatch, id]);
@@ -42,13 +46,18 @@ function Product() {
         </p>
 
         <p className="product__description">Quantité</p>
-        <form>
-          <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-        </form>
+
+        {product.countInStock > 0 && (
+          <form>
+            <select value={quantity} onChange={handleChangeQuantity}>
+              {[...Array(product.countInStock).keys()].map((qty) => (
+                <option key={qty++} value={qty++}>
+                  {qty++}
+                </option>
+              ))}
+            </select>
+          </form>
+        )}
         <div className="product__container-button">
           <button className="product__container-button-valide">
             Ajouter au panier
