@@ -48,8 +48,12 @@ function Product() {
         <p className="product__description">Quantité</p>
 
         {product.countInStock > 0 && (
-          <form>
-            <select value={quantity} onChange={handleChangeQuantity}>
+          <form className="product__quantity">
+            <select
+              className="product__select"
+              value={quantity}
+              onChange={handleChangeQuantity}
+            >
               {[...Array(product.countInStock).keys()].map((qty) => (
                 <option key={qty++} value={qty++}>
                   {qty++}
