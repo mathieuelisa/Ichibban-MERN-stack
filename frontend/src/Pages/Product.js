@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { productDetailList } from "../redux/actions/productsActions";
 
@@ -9,6 +9,8 @@ function Product() {
   const [quantity, setQuantity] = useState(0);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { id } = useParams();
 
   const ListDetailProduct = useSelector((state) => state.ListDetailProduct);
@@ -16,6 +18,11 @@ function Product() {
 
   const handleChangeQuantity = (e) => {
     setQuantity(e.target.value);
+  };
+
+  const addHandler = (e) => {
+    e.preventDefault();
+    navigate(`/cart/${id}?qty=${quantity}`);
   };
 
   useEffect(() => {
@@ -55,15 +62,19 @@ function Product() {
               onChange={handleChangeQuantity}
             >
               {[...Array(product.countInStock).keys()].map((qty) => (
-                <option key={qty++} value={qty++}>
-                  {qty++}
+                <option key={qty + 1} value={qty + 1}>
+                  {qty + 1}
                 </option>
               ))}
             </select>
           </form>
         )}
         <div className="product__container-button">
-          <button className="product__container-button-valide">
+          <button
+            type="submit"
+            className="product__container-button-valide"
+            onClick={addHandler}
+          >
             Ajouter au panier
           </button>
         </div>

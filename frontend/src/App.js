@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 // Pages
 import HomePage from "./Pages/HomePage";
 import Product from "./Pages/Product";
+import Cart from "./Pages/Cart";
 
 // Data
 import products from "./products";
@@ -21,6 +22,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage products={products} />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/:id" element={<Cart />} />
         </Routes>
         <Footer />
       </BrowserRouter>
