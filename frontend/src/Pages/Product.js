@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { productDetailList } from "../redux/actions/productsActions";
 
 function Product() {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
