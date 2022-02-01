@@ -1,8 +1,8 @@
-import { axios } from "axios";
+import axios from "axios";
 
 // Actions type add and remove items
 export const CART_ADD_ITEM = "cart_add_item";
-export const CART_REMOVE_ITEM = "cart_remove_item";
+// export const CART_REMOVE_ITEM = "cart_remove_item";
 
 export const addingCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);

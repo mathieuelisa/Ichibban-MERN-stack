@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { addingCart } from "../redux/actions/cartActions";
 
@@ -10,17 +10,17 @@ function Cart() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
 
-  console.log(qty);
-  console.log(id);
-  console.log(productId);
+  const cart = useSelector((state) => state.Cart);
+  const { cartItems } = cart;
 
+  console.log(cartItems);
   useEffect(() => {
     if (id) {
-      dispatch(addingCart(id, qty));
+      dispatch(addingCart(id, quantity));
     }
-  }, [dispatch, id, qty]);
+  }, [dispatch, id, quantity]);
 
   return (
     <>

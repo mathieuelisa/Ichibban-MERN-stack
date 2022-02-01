@@ -1,6 +1,6 @@
 import { CART_ADD_ITEM } from "../actions/cartActions";
 
-export const cartReducer = (state = { cartItems: [] }, action = {}) => {
+export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;
@@ -12,14 +12,14 @@ export const cartReducer = (state = { cartItems: [] }, action = {}) => {
       if (existingItem) {
         return {
           ...state,
-          cartItem: state.cartItems.map((element) =>
+          cartItems: state.cartItems.map((element) =>
             element.product === existingItem.product ? item : element
           ),
         };
       } else {
         return {
           ...state,
-          cartItem: [...state.cartItems, item],
+          cartItems: [...state.cartItems, item],
         };
       }
     default:
