@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { addingCart } from "../redux/actions/cartActions";
 
+import ErrorMessage from "../Components/ErrorMessage";
+
 function Cart() {
   const productId = useParams();
   const { id } = productId;
@@ -26,6 +28,13 @@ function Cart() {
     <div className="cart__container">
       <div className="cart__container-wrapperProduct">
         <h2 className="cart__container-title">Liste de produits choisis</h2>
+        {cartItems.length === 0 ? (
+          <ErrorMessage className="cart__container-error" />
+        ) : (
+          <div>
+            <p>rempli</p>
+          </div>
+        )}
       </div>
 
       <div className="cart__container-wrapperTotal">

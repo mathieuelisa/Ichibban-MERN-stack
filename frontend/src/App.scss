@@ -320,14 +320,19 @@
   background-color: #f0ede2;
   display: flex;
 
+  &-error {
+    margin-left: 15px;
+    margin-top: 20px;
+  }
+
   &-wrapperProduct {
     background-color: yellow;
-    width: 70%;
+    width: 60%;
   }
 
   &-wrapperTotal {
     background-color: green;
-    width: 30%;
+    width: 40%;
 
     &-title {
       font-size: 1.5em;
