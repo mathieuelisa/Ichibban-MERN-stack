@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { addingCart } from "../redux/actions/cartActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
@@ -29,7 +29,14 @@ function Cart() {
       <div className="cart__container-wrapperProduct">
         <h2 className="cart__container-title">Liste de produits choisis</h2>
         {cartItems.length === 0 ? (
-          <ErrorMessage className="cart__container-error" />
+          <>
+            <ErrorMessage className="cart__container-error">
+              Pas de produits dans votre panier.
+            </ErrorMessage>
+            <Link to={"/"} className="cart__redirect-home">
+              Retour vers l'accueil
+            </Link>
+          </>
         ) : (
           <div className="carts__container">
             {cartItems.map((element, index) => {

@@ -323,6 +323,7 @@
   &-error {
     margin-left: 15px;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   &-wrapperProduct {
@@ -379,4 +380,14 @@
 
 .cart-image {
   height: 70px;
+}
+
+.cart__redirect-home {
+  margin-left: 15px;
+  margin-top: 15px;
+  text-decoration: none;
+
+  &:hover {
+    color: grey;
+  }
 }
