@@ -34,7 +34,9 @@ function HomePage() {
           logoClassName="homepage__logo"
         />
       ) : error ? (
-        <ErrorMessage className="homepage__errorMessage" />
+        <ErrorMessage className="homepage__errorMessage">
+          Désolé une erreur s'est produite, veuillez reeasayer
+        </ErrorMessage>
       ) : (
         <div className="homepage__container">
           {products.map((product, index) => (

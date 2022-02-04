@@ -58,9 +58,25 @@ function Cart() {
                     <p>{element.price} €</p>
                   </div>
 
-                  <div className="cart__element-wrapper-countInStock">
-                    <p>33</p>
-                  </div>
+                  <form className="product__quantity">
+                    <select
+                      className="product__select"
+                      value={element.quantity}
+                      onChange={(e) =>
+                        dispatch(
+                          addingCart(element.product, Number(e.target.value))
+                        )
+                      }
+                    >
+                      {[...Array(element.countInStock).keys()].map(
+                        (quantity) => (
+                          <option key={quantity + 1} value={quantity + 1}>
+                            {quantity + 1}
+                          </option>
+                        )
+                      )}
+                    </select>
+                  </form>
 
                   <div className="cart__element-wrapper-delete">
                     <i className="fas fa-trash-alt"></i>
