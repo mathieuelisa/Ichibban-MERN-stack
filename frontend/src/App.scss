@@ -326,7 +326,6 @@
   }
 
   &-wrapperProduct {
-    background-color: yellow;
     width: 60%;
   }
 
@@ -345,4 +344,39 @@
     margin-left: 15px;
     margin-top: 10px;
   }
+}
+
+.carts__container {
+  margin-top: 30px;
+}
+
+.cart__element-wrapper {
+  height: 90px;
+  width: 60%;
+  margin-left: 15px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  justify-content: space-between;
+
+  &-name,
+  &-price,
+  &-delete,
+  &-countInStock {
+    margin-right: 10px;
+  }
+
+  &-delete {
+    cursor: pointer;
+  }
+
+  &-image {
+    object-fit: contain;
+  }
+}
+
+.cart-image {
+  height: 70px;
 }

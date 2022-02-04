@@ -31,8 +31,36 @@ function Cart() {
         {cartItems.length === 0 ? (
           <ErrorMessage className="cart__container-error" />
         ) : (
-          <div>
-            <p>rempli</p>
+          <div className="carts__container">
+            {cartItems.map((element, index) => {
+              return (
+                <div className="cart__element-wrapper" key={index}>
+                  <div className="cart__element-wrapper-image">
+                    <img
+                      src={element.image}
+                      className="cart-image"
+                      alt="eachProduct"
+                    />
+                  </div>
+
+                  <div className="cart__element-wrapper-name">
+                    <p>{element.name}</p>
+                  </div>
+
+                  <div className="cart__element-wrapper-price">
+                    <p>{element.price} €</p>
+                  </div>
+
+                  <div className="cart__element-wrapper-countInStock">
+                    <p>33</p>
+                  </div>
+
+                  <div className="cart__element-wrapper-delete">
+                    <i className="fas fa-trash-alt"></i>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
