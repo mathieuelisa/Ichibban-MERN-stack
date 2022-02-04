@@ -23,9 +23,17 @@ function Cart() {
   }, [dispatch, id, quantity]);
 
   return (
-    <>
-      <h2>Cart page !!! {id}</h2>
-    </>
+    <div className="cart__container">
+      <div className="cart__container-wrapperProduct">
+        <h2 className="cart__container-title">Liste de produits choisis</h2>
+      </div>
+
+      <div className="cart__container-wrapperTotal">
+        <h3 className="cart__container-wrapperTotal-title">
+          TOTAL (3) PRODUITS
+        </h3>
+      </div>
+    </div>
   );
 }
 
