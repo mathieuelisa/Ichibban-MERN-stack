@@ -38,60 +38,61 @@ function Cart() {
             </Link>
           </>
         ) : (
-          <div className="carts__container">
-            {cartItems.map((element, index) => {
-              return (
-                <div className="cart__element-wrapper" key={index}>
-                  <div className="cart__element-wrapper-image">
-                    <img
-                      src={element.image}
-                      className="cart-image"
-                      alt="eachProduct"
-                    />
-                  </div>
+          <div className="carts__global-wrapper">
+            <div className="carts__container">
+              {cartItems.map((element, index) => {
+                return (
+                  <div className="cart__element-wrapper" key={index}>
+                    <div className="cart__element-wrapper-image">
+                      <img
+                        src={element.image}
+                        className="cart-image"
+                        alt="eachProduct"
+                      />
+                    </div>
 
-                  <div className="cart__element-wrapper-name">
-                    <p>{element.name}</p>
-                  </div>
+                    <div className="cart__element-wrapper-name">
+                      <p>{element.name}</p>
+                    </div>
 
-                  <div className="cart__element-wrapper-price">
-                    <p>{element.price} €</p>
-                  </div>
+                    <div className="cart__element-wrapper-price">
+                      <p>{element.price} €</p>
+                    </div>
 
-                  <form className="product__quantity">
-                    <select
-                      className="product__select"
-                      value={element.quantity}
-                      onChange={(e) =>
-                        dispatch(
-                          addingCart(element.product, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {[...Array(element.countInStock).keys()].map(
-                        (quantity) => (
-                          <option key={quantity + 1} value={quantity + 1}>
-                            {quantity + 1}
-                          </option>
-                        )
-                      )}
-                    </select>
-                  </form>
+                    <form className="product__quantity">
+                      <select
+                        className="product__select"
+                        value={element.quantity}
+                        onChange={(e) =>
+                          dispatch(
+                            addingCart(element.product, Number(e.target.value))
+                          )
+                        }
+                      >
+                        {[...Array(element.countInStock).keys()].map(
+                          (quantity) => (
+                            <option key={quantity + 1} value={quantity + 1}>
+                              {quantity + 1}
+                            </option>
+                          )
+                        )}
+                      </select>
+                    </form>
 
-                  <div className="cart__element-wrapper-delete">
-                    <i className="fas fa-trash-alt"></i>
+                    <div className="cart__element-wrapper-delete">
+                      <i className="fas fa-trash-alt"></i>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div className="cart__container-wrapperTotal">
+              <h3 className="cart__container-wrapperTotal-title">
+                TOTAL (3) PRODUITS
+              </h3>
+            </div>
           </div>
         )}
-      </div>
-
-      <div className="cart__container-wrapperTotal">
-        <h3 className="cart__container-wrapperTotal-title">
-          TOTAL (3) PRODUITS
-        </h3>
       </div>
     </div>
   );
