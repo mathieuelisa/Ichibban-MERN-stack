@@ -88,7 +88,7 @@ function Cart() {
             </div>
             <div className="cart__container-wrapperTotal">
               <h3 className="cart__container-wrapperTotal-title">
-                TOTAL (3) PRODUITS
+                TOTAL ({cartItems.length}) PRODUITS
               </h3>
             </div>
           </div>
