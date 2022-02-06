@@ -18,6 +18,7 @@ function Cart() {
   const { cartItems } = cart;
 
   console.log(cartItems);
+
   useEffect(() => {
     if (id) {
       dispatch(addingCart(id, quantity));
@@ -88,8 +89,20 @@ function Cart() {
             </div>
             <div className="cart__container-wrapperTotal">
               <h3 className="cart__container-wrapperTotal-title">
-                TOTAL ({cartItems.length}) PRODUITS
+                TOTAL (
+                {cartItems.reduce((acc, curr) => {
+                  return acc + curr.quantity;
+                }, 0)}
+                ) PRODUITS
               </h3>
+              <h2>
+                {cartItems
+                  .reduce(
+                    (acc, element) => acc + element.quantity * element.price,
+                    0
+                  )
+                  .toFixed(2)}
+              </h2>
             </div>
           </div>
         )}
