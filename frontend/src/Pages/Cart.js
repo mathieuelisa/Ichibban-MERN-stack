@@ -28,15 +28,15 @@ function Cart() {
   return (
     <div className="cart__container">
       <div className="cart__container-wrapperProduct">
-        <h2 className="cart__container-title">Liste de produits choisis</h2>
+        <h2 className="cart__container-title">Votre panier</h2>
         {cartItems.length === 0 ? (
           <>
             <ErrorMessage className="cart__container-error">
-              Pas de produits dans votre panier.
+              Pas de produits dans votre panier...
+              <Link to={"/"} className="cart__redirect-home">
+                Retour vers l'accueil
+              </Link>
             </ErrorMessage>
-            <Link to={"/"} className="cart__redirect-home">
-              Retour vers l'accueil
-            </Link>
           </>
         ) : (
           <div className="carts__global-wrapper">
@@ -89,19 +89,17 @@ function Cart() {
             </div>
             <div className="cart__container-wrapperTotal">
               <h3 className="cart__container-wrapperTotal-title">
-                TOTAL (
-                {cartItems.reduce((acc, curr) => {
-                  return acc + curr.quantity;
-                }, 0)}
+                TOTAL ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}
                 ) PRODUITS
               </h3>
-              <h2>
+              <h2 className="cart__container-wrapperTotal-secondTitle">
                 {cartItems
                   .reduce(
                     (acc, element) => acc + element.quantity * element.price,
                     0
                   )
-                  .toFixed(2)}
+                  .toFixed(2)}{" "}
+                €
               </h2>
             </div>
           </div>
