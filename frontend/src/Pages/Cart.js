@@ -17,6 +17,10 @@ function Cart() {
   const cart = useSelector((state) => state.Cart);
   const { cartItems } = cart;
 
+  const removeItem = () => {
+    console.log("Object removed");
+  };
+
   console.log(cartItems);
 
   useEffect(() => {
@@ -81,7 +85,7 @@ function Cart() {
                     </form>
 
                     <div className="cart__element-wrapper-delete">
-                      <i className="fas fa-trash-alt"></i>
+                      <i className="fas fa-trash-alt" onClick={removeItem}></i>
                     </div>
                   </div>
                 );
