@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { addingCart } from "../redux/actions/cartActions";
+import { addingCart, removeCart } from "../redux/actions/cartActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
+import Card from "../Components/Card";
 
 function Cart() {
   const productId = useParams();
@@ -17,10 +18,6 @@ function Cart() {
   const cart = useSelector((state) => state.Cart);
   const { cartItems } = cart;
 
-  const removeItem = () => {
-    console.log("Object removed");
-  };
-
   console.log(cartItems);
 
   useEffect(() => {
@@ -28,6 +25,11 @@ function Cart() {
       dispatch(addingCart(id, quantity));
     }
   }, [dispatch, id, quantity]);
+
+  const removeItem = (id) => {
+    console.log("ddlete");
+    dispatch(removeCart(id));
+  };
 
   return (
     <div className="cart__container">
@@ -85,7 +87,10 @@ function Cart() {
                     </form>
 
                     <div className="cart__element-wrapper-delete">
-                      <i className="fas fa-trash-alt" onClick={removeItem}></i>
+                      <i
+                        className="fas fa-trash-alt"
+                        onClick={() => removeItem(element.product)}
+                      ></i>
                     </div>
                   </div>
                 );
