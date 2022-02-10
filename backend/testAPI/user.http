@@ -1,0 +1,10 @@
+// @ Get all the products
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+ "email": "johnny@exemple.fr",
+ "password": "abcdef"
+}
+
+###

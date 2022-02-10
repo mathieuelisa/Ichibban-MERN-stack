@@ -5,7 +5,10 @@ import dotenv from "dotenv";
 // Config mongoose
 import connectDB from "./config/db.js";
 
-import router from "./Routes/productRoutes.js";
+// Routes
+import productsRouter from "./Routes/productRoutes.js";
+import userRouter from "./Routes/userRoutes.js";
+
 import { pageNotFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
@@ -14,7 +17,14 @@ connectDB();
 
 const app = express();
 
-app.use("/api/products", router);
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use("/api/products", productsRouter);
+app.use("/api/users", userRouter);
 
 // Page not found middleware
 app.use(pageNotFound);
