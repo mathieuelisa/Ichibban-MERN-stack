@@ -4,7 +4,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { addingCart, removeCart } from "../redux/actions/cartActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
-import Card from "../Components/Card";
+import emptyCart from "../Assets/Images/emptyCard.png";
 
 function Cart() {
   const productId = useParams();
@@ -38,11 +38,16 @@ function Cart() {
         {cartItems.length === 0 ? (
           <>
             <ErrorMessage className="cart__container-error">
+              <img
+                src={emptyCart}
+                className="cart__container-emptyCard"
+                alt="empty"
+              />
               Pas de produits dans votre panier...
-              <Link to={"/"} className="cart__redirect-home">
-                Retour vers l'accueil
-              </Link>
             </ErrorMessage>
+            <Link to={"/"} className="cart__redirect-home">
+              Retour vers l'accueil
+            </Link>
           </>
         ) : (
           <div className="carts__global-wrapper">
