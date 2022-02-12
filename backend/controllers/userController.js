@@ -3,6 +3,8 @@ import asyncHandler from "express-async-handler";
 // Models
 import User from "../models/userModel.js";
 
+import generateToken from "../utils/usersJsonWebToken.js";
+
 const userController = {
   authUser: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -15,6 +17,7 @@ const userController = {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        token: generateToken(user._id),
       });
     } else {
       res.status(401);
