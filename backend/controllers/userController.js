@@ -25,8 +25,8 @@ const userController = {
     }
   }),
 
-  authUserById: asyncHandler(async (req, res) => {
-    res.json({ message: "test" });
+  getUserById: asyncHandler(async (req, res) => {
+    res.json({ message: "Congrat's access granted" });
   }),
 };
 

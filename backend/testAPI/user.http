@@ -11,5 +11,7 @@ Content-Type: application/json
 
 GET http://localhost:5000/api/users/profile
 Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNCIsImlhdCI6MTY0NDY5OTE4NiwiZXhwIjoxNjQ4MTU1MTg2fQ.PG8bp9yawQwrKujOmq0oAxKzLttNfVXGTB_a4IJlM2Q
+
 
 ###
