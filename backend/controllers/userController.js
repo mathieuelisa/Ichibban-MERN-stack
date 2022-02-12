@@ -24,6 +24,10 @@ const userController = {
       throw new Error("Une petite erreur...");
     }
   }),
+
+  authUserById: asyncHandler(async (req, res) => {
+    res.json({ message: "test" });
+  }),
 };
 
 export default userController;
