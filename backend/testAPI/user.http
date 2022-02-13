@@ -3,15 +3,31 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
- "email": "johnny@exemple.fr",
+ "email": "admin@exemple.fr",
  "password": "abcdef"
 }
 
 ###
 
+# Find user profile
 GET http://localhost:5000/api/users/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNCIsImlhdCI6MTY0NDY5OTE4NiwiZXhwIjoxNjQ4MTU1MTg2fQ.PG8bp9yawQwrKujOmq0oAxKzLttNfVXGTB_a4IJlM2Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwMyIsImlhdCI6MTY0NDcwMDY0MywiZXhwIjoxNjQ4MTU2NjQzfQ.dzerBASClIku5NcXWjB8FjgXQ1Ul7eSHN_53hgDrNEE
+
+###
+
+
+# Create Users
+POST http://localhost:5000/api/users/
+Content-Type: application/json
+
+{
+    "name": "Mathieu",
+    "email": "mathieu.elisa@gmail.com",
+    "password" : "abcdef"
+}
+
+###
 
 
 ###
