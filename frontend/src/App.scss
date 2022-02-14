@@ -460,7 +460,6 @@
     width: 50%;
 
     &-form {
-      background-color: red;
       height: 275px;
       display: flex;
       align-items: center;
@@ -471,11 +470,12 @@
     width: 30%;
 
     &-bloc {
-      background-color: yellow;
       height: 275px;
       display: flex;
       align-items: center;
       font-size: 0.9em;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 }
@@ -492,5 +492,24 @@
     width: 50%;
     padding-bottom: 5px;
     margin-bottom: 20px;
+    outline: none;
   }
+}
+
+.login__form-button-validate {
+  width: 50%;
+  margin-top: 20px;
+  background-color: rgb(12, 12, 12);
+  color: whitesmoke;
+  height: 30px;
+  border: none;
+}
+
+.login__form-button-register {
+  width: 75%;
+  margin-top: 30px;
+  background-color: rgb(12, 12, 12);
+  color: whitesmoke;
+  height: 30px;
+  border: none;
 }

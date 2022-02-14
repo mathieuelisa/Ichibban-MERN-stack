@@ -35,7 +35,7 @@ function Login() {
 
             <label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 value={state.password}
                 onChange={handleChange}
@@ -43,6 +43,10 @@ function Login() {
                 className="login__form-inputs"
               />
             </label>
+
+            <button className="login__form-button-validate">
+              SE CONNECTER
+            </button>
           </form>
         </div>
       </div>
@@ -58,6 +62,10 @@ function Login() {
             NOUS VOUS DEMANDERONS LES INFORMATIONS NOUS PERMETTANT D'ACCÉLÉRER
             LE PROCESSUS D'ACHAT.
           </p>
+
+          <button className="login__form-button-register">
+            CREE UN COMPTE
+          </button>
         </div>
       </div>
     </div>
