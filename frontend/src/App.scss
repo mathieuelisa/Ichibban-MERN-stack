@@ -446,3 +446,34 @@
     margin-top: 30px;
   }
 }
+
+// LOGIN PAGE
+
+.login__container {
+  height: 80vh;
+  background-color: #f0ede2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-customer {
+    width: 50%;
+
+    &-form {
+      background-color: red;
+      height: 275px;
+    }
+  }
+
+  &-newCustomer {
+    width: 30%;
+
+    &-bloc {
+      background-color: yellow;
+      height: 275px;
+      display: flex;
+      align-items: center;
+      font-size: 0.9em;
+    }
+  }
+}

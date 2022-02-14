@@ -13,6 +13,7 @@ import products from "./products";
 
 // React Router Dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
