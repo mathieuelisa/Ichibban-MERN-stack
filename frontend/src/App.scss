@@ -462,6 +462,8 @@
     &-form {
       background-color: red;
       height: 275px;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -475,5 +477,20 @@
       align-items: center;
       font-size: 0.9em;
     }
+  }
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &-inputs {
+    border: none;
+    background-color: transparent;
+    border-bottom: solid black 1px;
+    width: 50%;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
   }
 }

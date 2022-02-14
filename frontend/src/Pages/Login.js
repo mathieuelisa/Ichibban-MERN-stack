@@ -21,24 +21,26 @@ function Login() {
         <h2>CONNEXION</h2>
 
         <div className="login__container-customer-form">
-          <form>
+          <form className="login__form">
             <label>
-              email
               <input
                 type="text"
                 name="email"
                 value={state.email}
                 onChange={handleChange}
+                placeholder="EMAIL"
+                className="login__form-inputs"
               />
             </label>
 
             <label>
-              password
               <input
                 type="text"
                 name="password"
                 value={state.password}
                 onChange={handleChange}
+                placeholder="PASSWORD"
+                className="login__form-inputs"
               />
             </label>
           </form>
