@@ -15,13 +15,17 @@ function Login() {
   };
   console.log(state);
 
+  const handleSubmit = () => {
+    console.log("Form submitted! ");
+  };
+
   return (
     <div className="login__container">
       <div className="login__container-customer">
         <h2>CONNEXION</h2>
 
         <div className="login__container-customer-form">
-          <form className="login__form">
+          <form className="login__form" onSubmit={handleSubmit}>
             <label>
               <input
                 type="text"

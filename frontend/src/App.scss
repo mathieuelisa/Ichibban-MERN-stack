@@ -513,3 +513,34 @@
   height: 30px;
   border: none;
 }
+
+@media screen and (max-width: 600px) {
+  .login__container {
+    flex-direction: column;
+  }
+
+  .login__container-customer-form {
+    height: 170px;
+  }
+
+  .login__container-newCustomer,
+  .login__container-customer {
+    width: 80%;
+  }
+
+  .login__container-customer {
+    margin-bottom: 45px;
+  }
+
+  .login__container-newCustomer-bloc {
+    height: 200px;
+  }
+
+  .login__form {
+    align-items: center;
+
+    &-inputs {
+      width: 100%;
+    }
+  }
+}
