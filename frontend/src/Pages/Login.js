@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../Components/ErrorMessage";
-import LoaderSpinner from "../Components/LoaderSpinner";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import ErrorMessage from "../Components/ErrorMessage";
+
+import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import { login } from "../redux/actions/userActions";
@@ -11,10 +12,14 @@ import { login } from "../redux/actions/userActions";
 function Login() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.UserLogin);
-  const { userInformations, error, loading } = userLogin;
+  const { userInformation, error, loading } = userLogin;
   console.log(userLogin);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+  console.log("this is the redirect : " + redirect);
 
   const [state, setState] = useState({
     email: "",
@@ -39,10 +44,10 @@ function Login() {
   };
 
   useEffect(() => {
-    if (userInformations) {
-      navigate("/");
+    if (userInformation) {
+      navigate(redirect);
     }
-  }, [navigate, userInformations]);
+  }, [navigate, userInformation, redirect]);
 
   return (
     <div className="login__container">
@@ -106,9 +111,12 @@ function Login() {
             LE PROCESSUS D'ACHAT.
           </p>
 
-          <button className="login__form-button-register">
+          <Link
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            className="login__form-button-register"
+          >
             CREE UN COMPTE
-          </button>
+          </Link>
         </div>
       </div>
     </div>
