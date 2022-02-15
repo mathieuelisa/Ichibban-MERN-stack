@@ -1,16 +1,21 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../App.scss";
+import { logout } from "../redux/actions/userActions";
 
 function Header() {
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
+  console.log(userInformation);
+
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
     console.log("logout");
+    dispatch(logout());
   };
 
-  console.log(userInformation.name);
   return (
     <div className="header__wrapper">
       <div className="header__container">

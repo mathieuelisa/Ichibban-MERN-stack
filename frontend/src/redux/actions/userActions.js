@@ -34,3 +34,11 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const logout = () => (dispath) => {
+  dispath({
+    type: USER_LOGOUT,
+  });
+
+  localStorage.removeItem("userInformations");
+};
