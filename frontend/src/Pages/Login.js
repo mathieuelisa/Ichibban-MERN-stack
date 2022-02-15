@@ -1,23 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../Components/ErrorMessage";
+import LoaderSpinner from "../Components/LoaderSpinner";
+
+import loadingLogo from "../Assets/Images/spinner2.gif";
+
+import { login } from "../redux/actions/userActions";
 
 function Login() {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformations, error, loading } = userLogin;
+  console.log(userLogin);
+
+  const navigate = useNavigate();
+
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
   const handleChange = (e) => {
-    e.preventDefault();
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
-  console.log(state);
 
-  const handleSubmit = () => {
-    console.log("Form submitted! ");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(login(state.email, state.password));
+    setState({
+      email: "",
+      password: "",
+    });
   };
+
+  useEffect(() => {
+    if (userInformations) {
+      navigate("/");
+    }
+  }, [navigate, userInformations]);
 
   return (
     <div className="login__container">
@@ -26,6 +51,7 @@ function Login() {
 
         <div className="login__container-customer-form">
           <form className="login__form" onSubmit={handleSubmit}>
+            {loading && <LoaderSpinner src={loadingLogo} />}
             <label>
               <input
                 type="text"
@@ -51,6 +77,19 @@ function Login() {
             <button className="login__form-button-validate">
               SE CONNECTER
             </button>
+
+            {error ? (
+              <>
+                <ErrorMessage
+                  className="login__container-error"
+                  textClassName="test"
+                >
+                  Une erreur est survenue dans votre mail ou password!
+                </ErrorMessage>
+              </>
+            ) : (
+              ""
+            )}
           </form>
         </div>
       </div>

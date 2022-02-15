@@ -503,6 +503,7 @@
   color: whitesmoke;
   height: 30px;
   border: none;
+  cursor: pointer;
 }
 
 .login__form-button-register {
@@ -512,6 +513,15 @@
   color: whitesmoke;
   height: 30px;
   border: none;
+  cursor: pointer;
+}
+
+.login__container-error {
+  margin-top: 20px;
+}
+
+.test {
+  color: red;
 }
 
 @media screen and (max-width: 600px) {
