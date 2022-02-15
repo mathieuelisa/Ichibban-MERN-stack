@@ -19,7 +19,6 @@ function Login() {
   const location = useLocation();
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
-  console.log("this is the redirect : " + redirect);
 
   const [state, setState] = useState({
     email: "",

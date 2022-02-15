@@ -1,7 +1,16 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../App.scss";
 
 function Header() {
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformation } = userLogin;
+
+  const handleLogout = () => {
+    console.log("logout");
+  };
+
+  console.log(userInformation.name);
   return (
     <div className="header__wrapper">
       <div className="header__container">
@@ -16,10 +25,26 @@ function Header() {
             <h4 className="header__wrapper-links-title">Panier</h4>
           </NavLink>
 
-          <NavLink className="header__wrapper-links" to="/login">
-            <i className="far fa-user"></i>
-            <h4 className="header__wrapper-links-title">Se connecter</h4>
-          </NavLink>
+          {userInformation ? (
+            <div className="dropdown">
+              <div className="profil">
+                <button className="header__profil">
+                  {userInformation.name}
+                </button>
+                <ul>
+                  <li className="header__profil-choice">Profil</li>
+                  <li className="header__profil-choice" onClick={handleLogout}>
+                    Logout
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <NavLink className="header__wrapper-links" to="/login">
+              <i className="far fa-user"></i>
+              <h4 className="header__wrapper-links-title">Se connecter</h4>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
