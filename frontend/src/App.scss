@@ -643,3 +643,39 @@
 .register__alreadyUser {
   margin: 10px 0 10px 0;
 }
+
+.register__form-button-validate {
+  width: 62%;
+  margin-top: 20px;
+  background-color: #0c0c0c;
+  color: whitesmoke;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .register__container-customer-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .register__form {
+    width: 70%;
+    margin-top: 40px;
+  }
+
+  .register__form-button-validate {
+    width: 62%;
+    margin-top: 20px;
+    background-color: #0c0c0c;
+    color: whitesmoke;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .register__form-button-validate {
+    width: 175px;
+  }
+}

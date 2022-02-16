@@ -22,11 +22,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/" element={<HomePage products={products} />} />
         </Routes>
         <Footer />

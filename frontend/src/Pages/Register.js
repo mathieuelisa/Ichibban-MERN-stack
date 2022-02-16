@@ -118,11 +118,11 @@ function Register() {
             ) : (
               ""
             )}
-            <button className="login__form-button-validate">
+            <button className="register__form-button-validate">
               CREE UN COMPTE
             </button>
 
-            <p className="register__alreadyUser">Vous avez deja un compte ?</p>
+            <p className="register__alreadyUser">Vous avez déjà un compte ?</p>
 
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
               Se connecter
