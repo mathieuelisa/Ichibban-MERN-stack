@@ -8,6 +8,7 @@ import HomePage from "./Pages/HomePage";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 // Data
 import products from "./products";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<HomePage products={products} />} />
         </Routes>
         <Footer />
