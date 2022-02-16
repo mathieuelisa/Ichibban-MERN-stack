@@ -20,9 +20,13 @@ function Register() {
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const [state, setState] = useState({
+    name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [message, setMessage] = useState(null);
 
   const handleChange = (e) => {
     setState({
@@ -33,12 +37,21 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Submitted");
 
-    dispatch(register(state.email, state.password));
-    setState({
-      email: "",
-      password: "",
-    });
+    if (state.password !== state.confirmPassword) {
+      console.error("the password dont match sorry");
+      setMessage(true);
+    } else {
+      dispatch(register(state.name, state.email, state.password));
+      setState({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      console.log("The password and the confirmPassword are good");
+    }
   };
 
   useEffect(() => {
@@ -49,49 +62,71 @@ function Register() {
 
   return (
     <div className="login__container">
-      <div className="login__container-customer">
-        <h2>CONNEXION</h2>
-
-        <div className="login__container-customer-form">
-          <form className="login__form" onSubmit={handleSubmit}>
+      <div className="register__container-customer">
+        <h2>INFORMATION PERSONNELLES</h2>
+        <div className="register__container-customer-form">
+          <form className="register__form" onSubmit={handleSubmit}>
             {loading && <LoaderSpinner src={loadingLogo} />}
 
-            <label>
+            <label className="register__form-label">
               <input
                 type="text"
                 name="name"
                 value={state.name}
                 onChange={handleChange}
-                placeholder="NAME"
-                className="login__form-inputs"
+                placeholder="NOM"
+                className="register__form-inputs"
               />
             </label>
 
-            <label>
+            <label className="register__form-label">
               <input
                 type="text"
                 name="email"
                 value={state.email}
                 onChange={handleChange}
                 placeholder="EMAIL"
-                className="login__form-inputs"
+                className="register__form-inputs"
               />
             </label>
 
-            <label>
+            <label className="register__form-label">
               <input
                 type="password"
                 name="password"
                 value={state.password}
                 onChange={handleChange}
-                placeholder="PASSWORD"
-                className="login__form-inputs"
+                placeholder="MOT DE PASSE"
+                className="register__form-inputs"
               />
             </label>
 
+            <label className="register__form-label">
+              <input
+                type="password"
+                name="confirmPassword"
+                value={state.confirmPassword}
+                onChange={handleChange}
+                placeholder="CONFIRMATION DU MOT DE PASSE"
+                className="register__form-inputs"
+              />
+            </label>
+            {message ? (
+              <ErrorMessage textClassName="redError">
+                Veuillez faire en sorte que vos mots de passes correspondent
+              </ErrorMessage>
+            ) : (
+              ""
+            )}
             <button className="login__form-button-validate">
-              SE CONNECTER
+              CREE UN COMPTE
             </button>
+
+            <p className="register__alreadyUser">Vous avez deja un compte ?</p>
+
+            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+              Se connecter
+            </Link>
 
             {error ? (
               <>
@@ -106,27 +141,6 @@ function Register() {
               ""
             )}
           </form>
-        </div>
-      </div>
-
-      <div className="login__container-newCustomer">
-        <h2>INSCRIVEZ-VOUS</h2>
-
-        <div className="login__container-newCustomer-bloc">
-          <p>
-            SI VOUS N'AVEZ PAS ENCORE DE COMPTE D'UTILISATEUR SUR ICHIBBAN,
-            UTILISEZ CETTE OPTION POUR ACCÉDER AU FORMULAIRE D'INSCRIPTION.
-            <br /> <br />
-            NOUS VOUS DEMANDERONS LES INFORMATIONS NOUS PERMETTANT D'ACCÉLÉRER
-            LE PROCESSUS D'ACHAT.
-          </p>
-
-          <Link
-            to={redirect ? `/register?redirect=${redirect}` : "/register"}
-            className="login__form-button-register"
-          >
-            CREE UN COMPTE
-          </Link>
         </div>
       </div>
     </div>

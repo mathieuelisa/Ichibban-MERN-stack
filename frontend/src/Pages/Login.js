@@ -86,9 +86,10 @@ function Login() {
               <>
                 <ErrorMessage
                   className="login__container-error"
-                  textClassName="test"
+                  textClassName="redError"
                 >
-                  Une erreur est survenue dans votre mail ou password!
+                  Une erreur est survenue lors de la saisie de votre email ou
+                  password
                 </ErrorMessage>
               </>
             ) : (

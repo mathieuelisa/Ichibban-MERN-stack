@@ -570,7 +570,7 @@
   margin-top: 20px;
 }
 
-.test {
+.redError {
   color: red;
 }
 
@@ -603,4 +603,43 @@
       width: 100%;
     }
   }
+}
+
+// REGISTER PAGE
+
+.register__container-customer-form {
+  width: 100%;
+  text-align: center;
+}
+
+.register__container-customer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 90px;
+}
+
+.register__form-inputs {
+  border: none;
+  background-color: transparent;
+  border-bottom: solid black 1px;
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.register__form-label {
+  width: 100%;
+}
+
+.register__alreadyUser {
+  margin: 10px 0 10px 0;
 }
