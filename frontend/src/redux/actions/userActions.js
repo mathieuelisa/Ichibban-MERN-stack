@@ -11,6 +11,11 @@ export const USER_REGISTER_REQUEST = "user_register_request";
 export const USER_REGISTER_SUCCESSFUL = "user_register_successful";
 export const USER_REGISTER_FAIL = "user_register_fail";
 
+// Uopdate actions
+export const USER_INFO_REQUEST = "user_info_request";
+export const USER_INFO_SUCCESSFUL = "user_info_successful";
+export const USER_INFO_FAIL = "user_info_fail";
+
 // Login profil user
 export const login = (email, password) => async (dispatch) => {
   try {
