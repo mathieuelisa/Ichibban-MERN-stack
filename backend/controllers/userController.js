@@ -6,6 +6,21 @@ import User from "../models/userModel.js";
 import generateToken from "../utils/usersJsonWebToken.js";
 
 const userController = {
+  // Get all users
+  // GET request
+  getAllUsers: asyncHandler(async (req, res) => {
+    let user = await User.find();
+
+    console.log(user);
+
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404);
+      throw new Error("No users found");
+    }
+  }),
+
   // Auth user and get the token
   // POST request
   authUser: asyncHandler(async (req, res) => {
@@ -71,6 +86,34 @@ const userController = {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+      });
+    } else {
+      res.status(404);
+      throw new Error("User not found sorry...");
+    }
+  }),
+
+  // Update profile user
+  // PUT request
+  updateUserById: asyncHandler(async (req, res) => {
+    let user = await User.findById(req.user._id);
+
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+
+      if (req.body.password) {
+        user.password = req.body.password;
+      }
+
+      const updatedUser = await User.save();
+
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser._id),
       });
     } else {
       res.status(404);
