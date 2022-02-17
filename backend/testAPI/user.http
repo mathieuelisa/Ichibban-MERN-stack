@@ -3,7 +3,7 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
- "email": "admin@exemple.fr",
+ "email": "jeannot@exemple.fr",
  "password": "abcdef"
 }
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 # GET METHOD
 GET http://localhost:5000/api/users/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwMyIsImlhdCI6MTY0NDcwMDY0MywiZXhwIjoxNjQ4MTU2NjQzfQ.dzerBASClIku5NcXWjB8FjgXQ1Ul7eSHN_53hgDrNEE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNSIsImlhdCI6MTY0NTEwMjUxMSwiZXhwIjoxNjQ4NTU4NTExfQ.ZBBd20W7o4mUZ3kaS8XfF_cRqT1wTE0La4vExAwtEa0
 
 ###
 
@@ -43,9 +43,11 @@ Content-Type: application/json
 # PUT METHOD
 PUT http://localhost:5000/api/users/profile
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNSIsImlhdCI6MTY0NTEwMjUxMSwiZXhwIjoxNjQ4NTU4NTExfQ.ZBBd20W7o4mUZ3kaS8XfF_cRqT1wTE0La4vExAwtEa0
+
 
 {
-    "name": "Mathieu"
+    "name": "Jeannotte"
 }
 
 ###

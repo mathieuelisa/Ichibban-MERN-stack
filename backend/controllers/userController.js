@@ -11,8 +11,6 @@ const userController = {
   getAllUsers: asyncHandler(async (req, res) => {
     let user = await User.find();
 
-    console.log(user);
-
     if (user) {
       res.send(user);
     } else {
@@ -106,7 +104,7 @@ const userController = {
         user.password = req.body.password;
       }
 
-      const updatedUser = await User.save();
+      const updatedUser = await user.save();
 
       res.json({
         _id: updatedUser._id,

@@ -9,6 +9,6 @@ router.get("/", userController.getAllUsers);
 router.post("/", userController.registerUser);
 router.post("/login", userController.authUser);
 router.get("/profile", protect, userController.getUserById);
-router.put("/profile", userController.updateUserById);
+router.put("/profile", protect, userController.updateUserById);
 
 export default router;
