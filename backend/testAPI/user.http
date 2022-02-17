@@ -45,7 +45,6 @@ PUT http://localhost:5000/api/users/profile
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNSIsImlhdCI6MTY0NTEwMjUxMSwiZXhwIjoxNjQ4NTU4NTExfQ.ZBBd20W7o4mUZ3kaS8XfF_cRqT1wTE0La4vExAwtEa0
 
-
 {
     "name": "Jeannotte"
 }

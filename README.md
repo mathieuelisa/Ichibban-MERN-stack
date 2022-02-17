@@ -29,12 +29,13 @@ With this application you can manage some stuff like: add, remove, update produc
 
 ### BACK
 
-- **Node**
+- **Node JS**
 - **Express JS**
 - **Stripe API**
 - **MongoDB / Mongoose**
-- **Jason Web Token**
+- **JsonWebToken**
 - **Bcrypt**
+- **REST API**
 
 ### DEPLOYMENT
 
@@ -63,4 +64,4 @@ yarn install && npm install
 yarn start
 ```
 
-5. Upload your pictures, add descriptions and manage your items
+5. Upload your pictures, add descriptions and manage your items.
