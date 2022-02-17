@@ -87,3 +87,35 @@ export const register = (name, email, password) => async (dispatch) => {
     });
   }
 };
+
+// Get infos and update profils
+export const getProfilInfo = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_INFO_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    console.log("voici ton infos" + userInformation.token);
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.post(`/api/users/${id}`, config);
+
+    dispatch({ type: USER_INFO_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: USER_INFO_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
