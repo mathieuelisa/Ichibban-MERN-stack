@@ -48,8 +48,8 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Logout profil user
-export const logout = () => (dispath) => {
-  dispath({
+export const logout = () => (dispatch) => {
+  dispatch({
     type: USER_LOGOUT,
   });
 
