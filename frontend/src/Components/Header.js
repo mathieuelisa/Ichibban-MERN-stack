@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "../App.scss";
 import { logout } from "../redux/actions/userActions";
 
@@ -37,7 +37,9 @@ function Header() {
                   {userInformation.name}
                 </button>
                 <ul>
-                  <li className="header__profil-choice">Profil</li>
+                  <Link to="/profil" className="header__profil-choice">
+                    Profil
+                  </Link>
                   <li className="header__profil-choice" onClick={handleLogout}>
                     Logout
                   </li>

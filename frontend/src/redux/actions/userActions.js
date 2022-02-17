@@ -97,7 +97,7 @@ export const getProfilInfo = (id) => async (dispatch, getState) => {
       UserLogin: { userInformation },
     } = getState();
 
-    console.log("voici ton infos" + userInformation.token);
+    console.log("voici ton infos token" + userInformation.token);
 
     let config = {
       headers: {
