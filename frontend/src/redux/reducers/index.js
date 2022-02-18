@@ -7,6 +7,7 @@ import {
   userInfoReducer,
   userLoginReducer,
   userRegisterReducer,
+  userUpdateProfilReducer,
 } from "./userReducer";
 
 // Setting each reducers
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   UserLogin: userLoginReducer,
   UserRegister: userRegisterReducer,
   UserInfo: userInfoReducer,
+  UserUpdateProfil: userUpdateProfilReducer,
 });
 
 export default reducers;

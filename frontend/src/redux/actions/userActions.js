@@ -11,10 +11,16 @@ export const USER_REGISTER_REQUEST = "user_register_request";
 export const USER_REGISTER_SUCCESSFUL = "user_register_successful";
 export const USER_REGISTER_FAIL = "user_register_fail";
 
-// Uopdate actions
+// Detail actions
 export const USER_INFO_REQUEST = "user_info_request";
 export const USER_INFO_SUCCESSFUL = "user_info_successful";
 export const USER_INFO_FAIL = "user_info_fail";
+
+// Update actions
+export const USER_UPDATE_PROFIL_REQUEST = "user_update_request";
+export const USER_UPDATE_PROFIL_SUCCESSFUL = "user_update_successful";
+export const USER_UPDATE_PROFIL_FAIL = "user_update_fail";
+export const USER_UPDATE_PROFIL_RESET = "user_update_reset";
 
 // Login profil user
 export const login = (email, password) => async (dispatch) => {
@@ -88,7 +94,7 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-// Get infos and update profils
+// Get infos profils
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_INFO_REQUEST });
@@ -110,6 +116,36 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_INFO_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
+
+// Get infos profils
+export const updateUserProfil = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_UPDATE_PROFIL_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/users/profil`, user, config);
+
+    dispatch({ type: USER_UPDATE_PROFIL_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_PROFIL_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
