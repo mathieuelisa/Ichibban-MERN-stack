@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", userController.getAllUsers);
 router.post("/", userController.registerUser);
 router.post("/login", userController.authUser);
-router.get("/profile", protect, userController.getUserById);
-router.put("/profile", protect, userController.updateUserById);
+router.get("/profil", protect, userController.getUserById);
+router.put("/profil", protect, userController.updateUserById);
 
 export default router;

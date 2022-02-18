@@ -24,8 +24,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/profil" element={<Profil />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profil" element={<Profil />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />

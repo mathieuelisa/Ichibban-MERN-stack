@@ -7,8 +7,6 @@ function Header() {
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
-  console.log(userInformation);
-
   const dispatch = useDispatch();
 
   const handleLogout = () => {

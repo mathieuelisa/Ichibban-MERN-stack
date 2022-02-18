@@ -89,15 +89,13 @@ export const register = (name, email, password) => async (dispatch) => {
 };
 
 // Get infos and update profils
-export const getProfilInfo = (id) => async (dispatch, getState) => {
+export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_INFO_REQUEST });
 
     const {
       UserLogin: { userInformation },
     } = getState();
-
-    console.log("voici ton infos token" + userInformation.token);
 
     let config = {
       headers: {
@@ -106,7 +104,7 @@ export const getProfilInfo = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/users/${id}`, config);
+    const { data } = await axios.get(`/api/users/${id}`, config);
 
     dispatch({ type: USER_INFO_SUCCESSFUL, payload: data });
   } catch (error) {

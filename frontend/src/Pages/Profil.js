@@ -1,52 +1,59 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { register } from "../redux/actions/userActions";
+import { getUserDetails } from "../redux/actions/userActions";
 
 function Profil() {
   const dispatch = useDispatch();
-  const userRegister = useSelector((state) => state.UserRegister);
-  const { userInformation, error, loading } = userRegister;
+
+  const userInfo = useSelector((state) => state.UserInfo);
+  const { user, error, loading } = userInfo;
+
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformation } = userLogin;
 
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
-  };
+  useEffect(() => {
+    if (!userInformation) {
+      navigate("/login");
+    } else {
+      if (!user.name) {
+        dispatch(getUserDetails("profil"));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+      }
+    }
+  }, [navigate, userInformation, user, dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
 
-  //   useEffect(() => {
-  //     if (!userInformation) {
-  //       navigate("/login");
-  //     }
-  //   }, [navigate, userInformation]);
+    if (password !== confirmPassword) {
+      console.error("Erreur de password");
+      setMessage(true);
+    } else {
+      //DISPATCH UPDATE PROFIL
+    }
+  };
 
   return (
     <div className="login__container">
       <div className="register__container-customer">
-        <h2>INFORMATION PERSONNELLES</h2>
+        <h2>INFORMATIONS PERSONNELLES</h2>
         <div className="register__container-customer-form">
           <form className="register__form" onSubmit={handleSubmit}>
             {loading && <LoaderSpinner src={loadingLogo} />}
@@ -54,9 +61,8 @@ function Profil() {
             <label className="register__form-label">
               <input
                 type="text"
-                name="name"
-                value={state.name}
-                onChange={handleChange}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="NOM"
                 className="register__form-inputs"
               />
@@ -65,9 +71,8 @@ function Profil() {
             <label className="register__form-label">
               <input
                 type="text"
-                name="email"
-                value={state.email}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="EMAIL"
                 className="register__form-inputs"
               />
@@ -76,9 +81,8 @@ function Profil() {
             <label className="register__form-label">
               <input
                 type="password"
-                name="password"
-                value={state.password}
-                onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="MOT DE PASSE"
                 className="register__form-inputs"
               />
@@ -87,9 +91,8 @@ function Profil() {
             <label className="register__form-label">
               <input
                 type="password"
-                name="confirmPassword"
-                value={state.confirmPassword}
-                onChange={handleChange}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="CONFIRMATION DU MOT DE PASSE"
                 className="register__form-inputs"
               />
@@ -102,10 +105,9 @@ function Profil() {
               ""
             )}
             <button className="register__form-button-validate">
-              CREE UN COMPTE
+              MISE A JOUR
             </button>
 
-            <p className="register__alreadyUser">Vous avez déjà un compte ?</p>
             {/* 
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
               Se connecter
@@ -125,6 +127,10 @@ function Profil() {
             )}
           </form>
         </div>
+      </div>
+
+      <div className="order__container-customer">
+        <h2>MES COMMANDES</h2>
       </div>
     </div>
   );
