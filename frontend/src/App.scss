@@ -575,6 +575,10 @@
   color: red;
 }
 
+.greenError {
+  color: green;
+}
+
 @media screen and (max-width: 600px) {
   .login__container {
     flex-direction: column;

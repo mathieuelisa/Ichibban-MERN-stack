@@ -7,7 +7,11 @@ import ErrorMessage from "../Components/ErrorMessage";
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { getUserDetails } from "../redux/actions/userActions";
+import {
+  getUserDetails,
+  updateUserProfil,
+  USER_UPDATE_PROFIL_RESET,
+} from "../redux/actions/userActions";
 
 function Profil() {
   const dispatch = useDispatch();
@@ -17,6 +21,9 @@ function Profil() {
 
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
+
+  const userUpdateProfil = useSelector((state) => state.UserUpdateProfil);
+  const { success } = userUpdateProfil;
 
   const navigate = useNavigate();
 
@@ -30,14 +37,17 @@ function Profil() {
     if (!userInformation) {
       navigate("/login");
     } else {
-      if (!user.name) {
+      if (!user.name || success) {
+        dispatch({
+          type: USER_UPDATE_PROFIL_RESET,
+        });
         dispatch(getUserDetails("profil"));
       } else {
         setName(user.name);
         setEmail(user.email);
       }
     }
-  }, [navigate, userInformation, user, dispatch]);
+  }, [navigate, userInformation, user, dispatch, success]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +56,7 @@ function Profil() {
       console.error("Erreur de password");
       setMessage(true);
     } else {
-      //DISPATCH UPDATE PROFIL
+      dispatch(updateUserProfil({ id: user._id, name, email, password }));
     }
   };
 
@@ -107,6 +117,14 @@ function Profil() {
             <button className="register__form-button-validate">
               MISE A JOUR
             </button>
+
+            {success ? (
+              <ErrorMessage textClassName="greenError">
+                Votre profil a été mis à jour
+              </ErrorMessage>
+            ) : (
+              ""
+            )}
 
             {/* 
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
