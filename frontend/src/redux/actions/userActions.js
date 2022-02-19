@@ -6,22 +6,6 @@ export const USER_LOGIN_SUCCESSFUL = "user_login_successful";
 export const USER_LOGIN_FAIL = "user_login_fail";
 export const USER_LOGOUT = "user_logout";
 
-// Register actions
-export const USER_REGISTER_REQUEST = "user_register_request";
-export const USER_REGISTER_SUCCESSFUL = "user_register_successful";
-export const USER_REGISTER_FAIL = "user_register_fail";
-
-// Detail actions
-export const USER_INFO_REQUEST = "user_info_request";
-export const USER_INFO_SUCCESSFUL = "user_info_successful";
-export const USER_INFO_FAIL = "user_info_fail";
-
-// Update actions
-export const USER_UPDATE_PROFIL_REQUEST = "user_update_request";
-export const USER_UPDATE_PROFIL_SUCCESSFUL = "user_update_successful";
-export const USER_UPDATE_PROFIL_FAIL = "user_update_fail";
-export const USER_UPDATE_PROFIL_RESET = "user_update_reset";
-
 // Login profil user
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -62,6 +46,11 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInformations");
 };
 
+// Register actions
+export const USER_REGISTER_REQUEST = "user_register_request";
+export const USER_REGISTER_SUCCESSFUL = "user_register_successful";
+export const USER_REGISTER_FAIL = "user_register_fail";
+
 // Register new user
 export const register = (name, email, password) => async (dispatch) => {
   try {
@@ -94,6 +83,11 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
+// Detail actions
+export const USER_INFO_REQUEST = "user_info_request";
+export const USER_INFO_SUCCESSFUL = "user_info_successful";
+export const USER_INFO_FAIL = "user_info_fail";
+
 // Get infos profils
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
@@ -123,6 +117,12 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+// Update actions
+export const USER_UPDATE_PROFIL_REQUEST = "user_update_request";
+export const USER_UPDATE_PROFIL_SUCCESSFUL = "user_update_successful";
+export const USER_UPDATE_PROFIL_FAIL = "user_update_fail";
+export const USER_UPDATE_PROFIL_RESET = "user_update_reset";
 
 // Get infos profils
 export const updateUserProfil = (user) => async (dispatch, getState) => {
