@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { addingCart, removeCart } from "../redux/actions/cartActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
@@ -11,6 +11,7 @@ function Cart() {
   const { id } = productId;
 
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
@@ -27,8 +28,12 @@ function Cart() {
   }, [dispatch, id, quantity]);
 
   const removeItem = (id) => {
-    console.log("ddlete");
     dispatch(removeCart(id));
+  };
+
+  const checkoutHandler = () => {
+    console.log("checkout articles");
+    navigate("/login?redirect=shipping");
   };
 
   return (
@@ -115,6 +120,15 @@ function Cart() {
                   .toFixed(2)}{" "}
                 €
               </h2>
+              <div className="cart__container-checkoutButton">
+                <button
+                  type="submit"
+                  className="product__container-button-valide"
+                  onClick={checkoutHandler}
+                >
+                  Paiement
+                </button>
+              </div>
             </div>
           </div>
         )}
