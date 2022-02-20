@@ -25,10 +25,16 @@ function Header() {
           </NavLink>
         </div>
         <div className="header__wrapper-icons">
-          <NavLink className="header__wrapper-links" to="/cart">
-            <i className="fas fa-shopping-cart"></i>
-            <h4 className="header__wrapper-links-title">Panier</h4>
-          </NavLink>
+          {userInformation ? (
+            <>
+              <NavLink className="header__wrapper-links" to="/cart">
+                <i className="fas fa-shopping-cart"></i>
+                <h4 className="header__wrapper-links-title">Panier</h4>
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
 
           {userInformation ? (
             <div className="dropdown">
