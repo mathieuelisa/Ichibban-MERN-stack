@@ -100,6 +100,7 @@ function Login() {
       </div>
 
       <div className="login__container-newCustomer">
+        <p>Vous n'avez pas de compte ?</p>
         <h2>INSCRIVEZ-VOUS</h2>
 
         <div className="login__container-newCustomer-bloc">

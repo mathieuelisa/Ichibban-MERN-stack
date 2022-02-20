@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const handleSubmit = () => {
@@ -5,53 +6,58 @@ const handleSubmit = () => {
 };
 
 function Shipping() {
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+
   return (
     <div className="login__container">
-      <div className="register__container-customer">
+      <div className="shipping__container-customer">
         <h2>SHIPPING ADRESS</h2>
-        <div className="register__container-customer-form">
-          <form className="register__form" onSubmit={handleSubmit}>
-            <label className="register__form-label">
+        <div className="shipping__container-customer-form">
+          <form className="shipping__form" onSubmit={handleSubmit}>
+            <label className="shipping__form-label">
               <input
                 type="text"
-                name="adress"
-                // value={}
-                // onChange={handleChange}
+                name="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 placeholder="ADRESSE"
-                className="register__form-inputs"
+                className="shipping__form-inputs"
               />
             </label>
 
-            <label className="register__form-label">
+            <label className="shipping__form-label">
               <input
                 type="text"
                 name="city"
-                // value={}
-                // onChange={handleChange}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 placeholder="VILLE"
-                className="register__form-inputs"
+                className="shipping__form-inputs"
               />
             </label>
 
-            <label className="register__form-label">
+            <label className="shipping__form-label">
               <input
                 type="number"
                 name="postalCode"
-                // value={}
-                // onChange={handleChange}
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
                 placeholder="CODE POSTAL"
-                className="register__form-inputs"
+                className="shipping__form-inputs"
               />
             </label>
 
-            <label className="register__form-label">
+            <label className="shipping__form-label">
               <input
                 type="text"
                 name="country"
-                // value={}
-                // onChange={handleChange}
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
                 placeholder="PAYS"
-                className="register__form-inputs"
+                className="shipping__form-inputs"
               />
             </label>
 

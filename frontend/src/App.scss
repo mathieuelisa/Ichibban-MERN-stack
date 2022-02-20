@@ -695,3 +695,50 @@
   margin-left: 50px;
   height: 335px;
 }
+
+// SHIPPING PAGE
+
+.shipping__container-customer-form {
+  width: 100%;
+  text-align: center;
+}
+
+.shipping__container-customer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shipping__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 90px;
+}
+
+.shipping__form-inputs {
+  border: none;
+  background-color: transparent;
+  border-bottom: solid black 1px;
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.shipping__form-label {
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .shipping__container-customer-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .shipping__form {
+    width: 70%;
+    margin-top: 40px;
+  }
+}
