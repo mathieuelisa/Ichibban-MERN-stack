@@ -16,6 +16,7 @@ import products from "./products";
 
 // React Router Dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Shipping from "./Pages/Shipping";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/login/shipping" element={<Shipping />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profil" element={<Profil />} />

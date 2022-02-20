@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../App.scss";
 import { logout } from "../redux/actions/userActions";
 
 function Header() {
+  const navigate = useNavigate();
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
@@ -12,6 +13,7 @@ function Header() {
   const handleLogout = () => {
     console.log("logout");
     dispatch(logout());
+    navigate("/");
   };
 
   return (
