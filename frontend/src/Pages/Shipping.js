@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-const handleSubmit = () => {
+const handleSubmit = (e) => {
+  e.preventDefault();
   console.log("submit form");
 };
 
@@ -61,7 +61,13 @@ function Shipping() {
               />
             </label>
 
-            <Link to={"/confirmPayment"}>CONTINUE</Link>
+            <button
+              type="submit"
+              className="product__container-button-valide"
+              onClick={handleSubmit}
+            >
+              CONTINUE
+            </button>
           </form>
         </div>
       </div>
