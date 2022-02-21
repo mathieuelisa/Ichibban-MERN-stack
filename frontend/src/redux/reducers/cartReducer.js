@@ -1,6 +1,13 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../actions/cartActions";
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_SHIPPING_ADDRESS_SAVE,
+} from "../actions/cartActions";
 
-export const cartReducer = (state = { cartItems: [] }, action) => {
+export const cartReducer = (
+  state = { cartItems: [], shippingAddress: {} },
+  action
+) => {
   switch (action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;
@@ -28,6 +35,11 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         cartItems: state.cartItems.filter(
           (element) => element.product !== action.payload
         ),
+      };
+    case CART_SHIPPING_ADDRESS_SAVE:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;
