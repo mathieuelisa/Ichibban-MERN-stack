@@ -1,15 +1,25 @@
 import { useState } from "react";
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log("submit form");
-};
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { saveShippingAddress } from "../redux/actions/cartActions";
 
 function Shipping() {
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.Cart);
+  const { shippingAddress } = cart;
+
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submit form");
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    navigate("/payment");
+  };
 
   return (
     <div className="login__container">
@@ -22,6 +32,7 @@ function Shipping() {
                 type="text"
                 name="address"
                 value={address}
+                required
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="ADRESSE"
                 className="shipping__form-inputs"
@@ -33,6 +44,7 @@ function Shipping() {
                 type="text"
                 name="city"
                 value={city}
+                required
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="VILLE"
                 className="shipping__form-inputs"
@@ -44,6 +56,7 @@ function Shipping() {
                 type="number"
                 name="postalCode"
                 value={postalCode}
+                required
                 onChange={(e) => setPostalCode(e.target.value)}
                 placeholder="CODE POSTAL"
                 className="shipping__form-inputs"
@@ -51,14 +64,27 @@ function Shipping() {
             </label>
 
             <label className="shipping__form-label">
-              <input
+              {/* <input
                 type="text"
                 name="country"
                 value={country}
+                required
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="PAYS"
                 className="shipping__form-inputs"
-              />
+              /> */}
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="shipping__form-inputs"
+              >
+                <option value="France">FRANCE</option>
+                <option value="UK">ROYAUME UNIS</option>
+                <option value="Italy">ITALIE</option>
+                <option value="Espagne">ESPAGNE</option>
+                <option value="Allemagne">ALLEMAGNE</option>
+                <option value="Irlande">IRLANDE</option>
+              </select>
             </label>
 
             <button
@@ -66,7 +92,7 @@ function Shipping() {
               className="product__container-button-valide"
               onClick={handleSubmit}
             >
-              CONTINUE
+              CONTINUER
             </button>
           </form>
         </div>

@@ -126,7 +126,7 @@ function Cart() {
                   className="product__container-button-valide"
                   onClick={checkoutHandler}
                 >
-                  Paiement
+                  FINALISER LA COMMANDE
                 </button>
               </div>
             </div>

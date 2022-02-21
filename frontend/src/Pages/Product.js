@@ -75,7 +75,8 @@ function Product() {
             className="product__container-button-valide"
             onClick={addHandler}
           >
-            Ajouter au panier
+            <i className="fa-solid fa-basket-shopping"></i>
+            AJOUTER AU PANIER
           </button>
         </div>
       </div>
