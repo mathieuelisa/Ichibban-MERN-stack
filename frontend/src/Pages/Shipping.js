@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Steps from "../Components/Steps";
 import { saveShippingAddress } from "../redux/actions/cartActions";
 
 function Shipping() {
@@ -22,9 +23,10 @@ function Shipping() {
   };
 
   return (
-    <div className="login__container">
+    <div className="shipping__container">
+      <Steps step1 step2 />
       <div className="shipping__container-customer">
-        <h2>SHIPPING ADRESS</h2>
+        <h2>SHIPPING ADDRESS</h2>
         <div className="shipping__container-customer-form">
           <form className="shipping__form" onSubmit={handleSubmit}>
             <label className="shipping__form-label">

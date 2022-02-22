@@ -8,6 +8,7 @@ import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import { register } from "../redux/actions/userActions";
+import Steps from "../Components/Steps";
 
 function Register() {
   const dispatch = useDispatch();
@@ -61,7 +62,8 @@ function Register() {
   }, [navigate, userInformation, redirect]);
 
   return (
-    <div className="login__container">
+    <div className="register__container">
+      <Steps step1 />
       <div className="register__container-customer">
         <h2>INFORMATION PERSONNELLES</h2>
         <div className="register__container-customer-form">
