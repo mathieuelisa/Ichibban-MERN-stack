@@ -40,7 +40,9 @@ function Header() {
             <div className="dropdown">
               <div className="profil">
                 <button className="header__profil">
-                  {userInformation.name}
+                  {userInformation.name.replace(/\b\w/g, (c) =>
+                    c.toUpperCase()
+                  )}
                 </button>
                 <ul>
                   <Link to="/profil" className="header__profil-choice">
