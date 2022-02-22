@@ -781,11 +781,17 @@
       color: rgb(167, 167, 167);
       margin-right: 20px;
       text-decoration: none;
+      pointer-events: none;
     }
   }
 }
 
 // PAYMENT PAGE
+
+.payment__mainTitle {
+  text-align: center;
+  margin-bottom: 44px;
+}
 
 .payment__container {
   height: 80vh;
@@ -795,4 +801,39 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
+
+  &-customer {
+    height: 330px;
+  }
+}
+
+.payment__form {
+  display: flex;
+  flex-direction: column;
+
+  &-label {
+    margin-top: 20px;
+  }
+}
+
+.payment__form-paypalContainer {
+  margin-bottom: 20px;
+}
+
+.payment__form-stripeContainer {
+  margin-bottom: 40px;
+}
+
+.payment-logo-paypal {
+  position: relative;
+  height: 27px;
+  margin-left: 20px;
+  top: 10px;
+}
+
+.payment-logo-stripe {
+  position: relative;
+  height: 23px;
+  margin-left: 140px;
+  top: 6px;
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Steps from "../Components/Steps";
+import logoPaypal from "../Assets/Images/paypal.png";
+import logoStripe from "../Assets/Images/stripe.svg";
 
 function Payment() {
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -13,31 +15,37 @@ function Payment() {
   return (
     <div className="payment__container">
       <Steps step1 step2 step3 />
-      <div className="shipping__container-customer">
-        <h2>PAYMENT PAGE</h2>
+      <div className="payment__container-customer">
+        <h2 className="payment__mainTitle">PAYMENT METHOD</h2>
         <div className="shipping__container-customer-form">
-          <form className="shipping__form" onSubmit={handleSubmit}>
-            <label className="shipping__form-label">
-              <input
-                type="radio"
-                value={"Paypal"}
-                name="methodPayment"
-                className="shipping__form-inputs"
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              />{" "}
-              Paypal
-            </label>
+          <form className="payment__form" onSubmit={handleSubmit}>
+            <div className="payment__form-paypalContainer">
+              <label className="payment__form-label">
+                <input
+                  type="radio"
+                  value={"Paypal"}
+                  name="methodPayment"
+                  className="shipping__form-inputs"
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                />{" "}
+                Paypal or Credit Card
+              </label>
+              <img src={logoPaypal} className="payment-logo-paypal" />
+            </div>
 
-            <label className="shipping__form-label">
-              <input
-                type="radio"
-                value={"Stripe"}
-                name="methodPayment"
-                className="shipping__form-inputs"
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              />{" "}
-              Stripe
-            </label>
+            <div className="payment__form-stripeContainer">
+              <label className="payment__form-label">
+                <input
+                  type="radio"
+                  value={"Stripe"}
+                  name="methodPayment"
+                  className="shipping__form-inputs"
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                />{" "}
+                Stripe
+              </label>
+              <img src={logoStripe} className="payment-logo-stripe" />
+            </div>
 
             <button
               type="submit"
