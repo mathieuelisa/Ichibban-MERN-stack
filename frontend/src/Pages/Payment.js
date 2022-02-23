@@ -2,13 +2,20 @@ import { useState } from "react";
 import Steps from "../Components/Steps";
 import logoPaypal from "../Assets/Images/paypal.png";
 import logoStripe from "../Assets/Images/stripe.svg";
+import { useDispatch } from "react-redux";
+import { saveMethodPayment } from "../redux/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 
 function Payment() {
   const [paymentMethod, setPaymentMethod] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit payment form");
+    dispatch(saveMethodPayment(paymentMethod));
+    navigate("/order");
   };
 
   console.log(paymentMethod);
@@ -30,7 +37,11 @@ function Payment() {
                 />{" "}
                 Paypal or Credit Card
               </label>
-              <img src={logoPaypal} className="payment-logo-paypal" />
+              <img
+                src={logoPaypal}
+                alt="paypalLogo"
+                className="payment-logo-paypal"
+              />
             </div>
 
             <div className="payment__form-stripeContainer">
@@ -44,7 +55,11 @@ function Payment() {
                 />{" "}
                 Stripe
               </label>
-              <img src={logoStripe} className="payment-logo-stripe" />
+              <img
+                src={logoStripe}
+                alt="stripeLogo"
+                className="payment-logo-stripe"
+              />
             </div>
 
             <button

@@ -40,3 +40,14 @@ export const saveShippingAddress = (data) => (dispatch) => {
 
   localStorage.setItem("addressShipping", JSON.stringify(data));
 };
+
+// Actions type for save the shopping method
+export const CART_METHOD_PAYMENT_SAVE = "cart_method_payment_save";
+export const saveMethodPayment = (data) => (dispatch) => {
+  dispatch({
+    type: CART_METHOD_PAYMENT_SAVE,
+    payload: data,
+  });
+
+  localStorage.setItem("methodShopping", JSON.stringify(data));
+};
