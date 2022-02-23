@@ -62,90 +62,94 @@ function Register() {
   }, [navigate, userInformation, redirect]);
 
   return (
-    <div className="register__container">
+    <>
       <Steps step1 />
-      <div className="register__container-customer">
-        <h2>INFORMATION PERSONNELLES</h2>
-        <div className="register__container-customer-form">
-          <form className="register__form" onSubmit={handleSubmit}>
-            {loading && <LoaderSpinner src={loadingLogo} />}
+      <div className="register__container">
+        <div className="register__container-customer">
+          <h2>INFORMATION PERSONNELLES</h2>
+          <div className="register__container-customer-form">
+            <form className="register__form" onSubmit={handleSubmit}>
+              {loading && <LoaderSpinner src={loadingLogo} />}
 
-            <label className="register__form-label">
-              <input
-                type="text"
-                name="name"
-                value={state.name}
-                onChange={handleChange}
-                placeholder="NOM"
-                className="register__form-inputs"
-              />
-            </label>
+              <label className="register__form-label">
+                <input
+                  type="text"
+                  name="name"
+                  value={state.name}
+                  onChange={handleChange}
+                  placeholder="NOM"
+                  className="register__form-inputs"
+                />
+              </label>
 
-            <label className="register__form-label">
-              <input
-                type="text"
-                name="email"
-                value={state.email}
-                onChange={handleChange}
-                placeholder="EMAIL"
-                className="register__form-inputs"
-              />
-            </label>
+              <label className="register__form-label">
+                <input
+                  type="text"
+                  name="email"
+                  value={state.email}
+                  onChange={handleChange}
+                  placeholder="EMAIL"
+                  className="register__form-inputs"
+                />
+              </label>
 
-            <label className="register__form-label">
-              <input
-                type="password"
-                name="password"
-                value={state.password}
-                onChange={handleChange}
-                placeholder="MOT DE PASSE"
-                className="register__form-inputs"
-              />
-            </label>
+              <label className="register__form-label">
+                <input
+                  type="password"
+                  name="password"
+                  value={state.password}
+                  onChange={handleChange}
+                  placeholder="MOT DE PASSE"
+                  className="register__form-inputs"
+                />
+              </label>
 
-            <label className="register__form-label">
-              <input
-                type="password"
-                name="confirmPassword"
-                value={state.confirmPassword}
-                onChange={handleChange}
-                placeholder="CONFIRMATION DU MOT DE PASSE"
-                className="register__form-inputs"
-              />
-            </label>
-            {message ? (
-              <ErrorMessage textClassName="redError">
-                Veuillez faire en sorte que vos mots de passes correspondent
-              </ErrorMessage>
-            ) : (
-              ""
-            )}
-            <button className="register__form-button-validate">
-              CREE UN COMPTE
-            </button>
-
-            <p className="register__alreadyUser">Vous avez déjà un compte ?</p>
-
-            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              Se connecter
-            </Link>
-
-            {error ? (
-              <>
-                <ErrorMessage
-                  className="login__container-error"
-                  textClassName="test"
-                >
-                  Une erreur est survenue dans votre mail ou password!
+              <label className="register__form-label">
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={state.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="CONFIRMATION DU MOT DE PASSE"
+                  className="register__form-inputs"
+                />
+              </label>
+              {message ? (
+                <ErrorMessage textClassName="redError">
+                  Veuillez faire en sorte que vos mots de passes correspondent
                 </ErrorMessage>
-              </>
-            ) : (
-              ""
-            )}
-          </form>
+              ) : (
+                ""
+              )}
+              <button className="register__form-button-validate">
+                CREE UN COMPTE
+              </button>
+
+              <p className="register__alreadyUser">
+                Vous avez déjà un compte ?
+              </p>
+
+              <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+                Se connecter
+              </Link>
+
+              {error ? (
+                <>
+                  <ErrorMessage
+                    className="login__container-error"
+                    textClassName="test"
+                  >
+                    Une erreur est survenue dans votre mail ou password!
+                  </ErrorMessage>
+                </>
+              ) : (
+                ""
+              )}
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

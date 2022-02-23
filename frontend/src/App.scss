@@ -37,6 +37,10 @@
   background: rgb(241, 241, 224);
 }
 
+.test {
+  background-color: #f0ede2;
+}
+
 // HEADER
 .header__wrapper {
   display: flex;
@@ -766,6 +770,8 @@
 
 .steps__container {
   display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
   &-item {
     margin-right: 20px;
@@ -838,6 +844,11 @@
   top: 6px;
 }
 
+.payment__choicePayment-error {
+  text-align: center;
+  color: red;
+}
+
 // ORDER PAGE
 
 .order__container {
@@ -845,7 +856,26 @@
   background-color: #f0ede2;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+}
+
+.order__title {
+  position: relative;
+  top: -50px;
+  text-align: center;
+}
+
+.order__container-mainTitle {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  position: relative;
+}
+
+.order__container-parts {
+  margin-bottom: 90px;
+
+  &-articles {
+    margin-bottom: 280px;
+  }
 }
