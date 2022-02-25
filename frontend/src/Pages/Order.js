@@ -4,21 +4,21 @@ import Steps from "../Components/Steps";
 import { removeCart } from "../redux/actions/cartActions";
 
 function Order() {
-  const cart = useSelector((state) => state.Cart);
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.Cart);
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
   //   Get total HT
-  const totalPrice = cartItems.reduce(
+  cart.totalPrice = cartItems.reduce(
     (acc, curr) => acc + curr.quantity * curr.price,
     0
   );
   //   Get taxes
-  const totalTVA = Number((0.2 * totalPrice).toFixed(2));
+  cart.totalTVA = Number((0.2 * cart.totalPrice).toFixed(2));
   // Get delivery cost
-  const totalDelivery = totalPrice < 700 ? 90 : 0;
+  cart.totalDelivery = cart.totalPrice < 700 ? 90 : 0;
   //   Get total TTC
-  const totalResume = totalPrice + totalDelivery + totalTVA;
+  cart.totalResume = cart.totalPrice + cart.totalDelivery + cart.totalTVA;
 
   const orderHandlerSubmit = (e) => {
     e.preventDefault();
@@ -101,26 +101,26 @@ function Order() {
                   Total des articles HT
                 </h4>
 
-                <h4 className="order_results">{totalPrice} €</h4>
+                <h4 className="order_results">{cart.totalPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
                   Frais de livraison
                 </h4>
-                <h4 className="order_results">{totalDelivery} €</h4>
+                <h4 className="order_results">{cart.totalDelivery} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">TVA</h4>
-                <h4 className="order_results">{totalTVA} €</h4>
+                <h4 className="order_results">{cart.totalTVA} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
                   TOTAL TTC
                 </h4>
-                <h4 className="order_results">{totalResume}</h4>
+                <h4 className="order_results">{cart.totalResume}</h4>
               </div>
 
               <button
