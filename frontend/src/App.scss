@@ -323,12 +323,12 @@
     border-radius: 10px;
     border: 1px solid transparent;
     background-color: #f0ede2;
-    transition: ease-out 0.5s;
+    transition: ease-out 0.9s;
     box-shadow: inset 0 0 0 0 #f0ede2;
     font-family: "WalkwayBlack";
     cursor: pointer;
     font-size: 1em;
-    color: red;
+    color: black;
 
     &:hover {
       box-shadow: inset 250px 0 0 0 black;
@@ -974,4 +974,29 @@
 
 .order_results {
   font-weight: bold;
+}
+
+.order__container-button {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 0 10px;
+
+  &-valide {
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: #f0ede2;
+    transition: ease-out 0.9s;
+    box-shadow: inset 0 0 0 0 #f0ede2;
+    font-family: "WalkwayBlack";
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+
+    &:hover {
+      box-shadow: inset 500px 0 0 0 black;
+      color: whitesmoke;
+    }
+  }
 }

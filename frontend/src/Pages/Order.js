@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Steps from "../Components/Steps";
+import { removeCart } from "../redux/actions/cartActions";
 
 function Order() {
   const cart = useSelector((state) => state.Cart);
+  const dispatch = useDispatch();
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
   //   Get total HT
@@ -17,6 +19,15 @@ function Order() {
   const totalDelivery = totalPrice < 700 ? 90 : 0;
   //   Get total TTC
   const totalResume = totalPrice + totalDelivery + totalTVA;
+
+  const orderHandlerSubmit = (e) => {
+    e.preventDefault();
+    console.log("order selected");
+  };
+
+  const removeItem = (id) => {
+    dispatch(removeCart(id));
+  };
 
   return (
     <>
@@ -45,6 +56,12 @@ function Order() {
                         {element.quantity} x {element.price} € ={" "}
                         {element.quantity * element.price} €
                       </h3>
+                      <div className="cart__element-wrapper-delete">
+                        <i
+                          className="fas fa-trash-alt"
+                          onClick={() => removeItem(element.product)}
+                        ></i>
+                      </div>
                     </div>
                   );
                 })}
@@ -105,6 +122,14 @@ function Order() {
                 </h4>
                 <h4 className="order_results">{totalResume}</h4>
               </div>
+
+              <button
+                type="submit"
+                className="order__container-button-valide"
+                onClick={orderHandlerSubmit}
+              >
+                CONTINUER
+              </button>
             </div>
           </div>
         </div>
