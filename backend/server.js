@@ -8,6 +8,7 @@ import connectDB from "./config/db.js";
 // Routes
 import productsRouter from "./Routes/productRoutes.js";
 import userRouter from "./Routes/userRoutes.js";
+import orderRouter from "./Routes/orderRoutes.js";
 
 import { pageNotFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
@@ -25,6 +26,7 @@ app.use(
 );
 app.use("/api/products", productsRouter);
 app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
 
 // Page not found middleware
 app.use(pageNotFound);
