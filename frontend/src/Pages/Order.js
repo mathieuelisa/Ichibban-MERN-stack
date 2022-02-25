@@ -6,22 +6,17 @@ function Order() {
   const cart = useSelector((state) => state.Cart);
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
+  //   Get total HT
   const totalPrice = cartItems.reduce(
     (acc, curr) => acc + curr.quantity * curr.price,
     0
   );
-
-  let totalDelivery;
-  let totalTVA = 20;
-
-  if (totalPrice <= 700) {
-    totalDelivery = 80;
-  } else {
-    totalDelivery = 0;
-  }
-
-  console.log("totalPrice " + totalPrice);
-  console.log("totalDelivery " + totalDelivery);
+  //   Get taxes
+  const totalTVA = Number((0.2 * totalPrice).toFixed(2));
+  // Get delivery cost
+  const totalDelivery = totalPrice < 700 ? 90 : 0;
+  //   Get total TTC
+  const totalResume = totalPrice + totalDelivery + totalTVA;
 
   return (
     <>
@@ -86,7 +81,7 @@ function Order() {
             <div className="order__container_summary-title">
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
-                  Total des articles
+                  Total des articles HT
                 </h4>
 
                 <h4 className="order_results">{totalPrice} €</h4>
@@ -101,12 +96,14 @@ function Order() {
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">TVA</h4>
-                <h4 className="order_results">{totalTVA} %</h4>
+                <h4 className="order_results">{totalTVA} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
-                <h4 className="order__container_summary-secondTitle">TOTAL</h4>
-                <h4 className="order_results">TESTTT</h4>
+                <h4 className="order__container_summary-secondTitle">
+                  TOTAL TTC
+                </h4>
+                <h4 className="order_results">{totalResume}</h4>
               </div>
             </div>
           </div>
