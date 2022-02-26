@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
-// Models
-import Order from "../../frontend/src/Pages/Order";
 
+// Models
+import Order from "../models/orderModel.js";
 const orderController = {
   // Add a new order
   addingOrder: asyncHandler(async (req, res) => {

@@ -120,7 +120,7 @@ function Order() {
                 <h4 className="order__container_summary-secondTitle">
                   TOTAL TTC
                 </h4>
-                <h4 className="order_results">{cart.totalResume}</h4>
+                <h4 className="order_results">{cart.totalResume} €</h4>
               </div>
 
               <button

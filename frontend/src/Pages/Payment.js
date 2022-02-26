@@ -15,7 +15,6 @@ function Payment() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit payment form");
     if (!paymentMethod) {
       setError("Erreur, veuillez selectionner un type de paiment !");
     } else {
