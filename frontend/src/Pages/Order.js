@@ -1,10 +1,14 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Steps from "../Components/Steps";
 import { removeCart } from "../redux/actions/cartActions";
+import { createOrder } from "../redux/actions/orderActions";
+import ErrorMessage from "../Components/ErrorMessage.js";
 
 function Order() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.Cart);
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
@@ -20,9 +24,30 @@ function Order() {
   //   Get total TTC
   cart.totalResume = cart.totalPrice + cart.totalDelivery + cart.totalTVA;
 
+  const orderCreate = useSelector((state) => state.CreateOrder);
+  const { order, success, error } = orderCreate;
+
+  useEffect(() => {
+    if (success) {
+      navigate(`/order/${order._id}`);
+    }
+    // eslint-disable-next-line
+  }, [success, navigate]);
+
   const orderHandlerSubmit = (e) => {
     e.preventDefault();
     console.log("order selected");
+    dispatch(
+      createOrder({
+        orderItems: cartItems,
+        paymentMethod: paymentMethod,
+        shippingAddress: shippingAddress,
+        totalResume: cart.totalResume,
+        totalDelivery: cart.totalDelivery,
+        totalPrice: cart.totalPrice,
+        totalTVA: cart.totalTVA,
+      })
+    );
   };
 
   const removeItem = (id) => {
@@ -122,6 +147,8 @@ function Order() {
                 </h4>
                 <h4 className="order_results">{cart.totalResume} €</h4>
               </div>
+
+              {error && <ErrorMessage>{error}</ErrorMessage>}
 
               <button
                 type="submit"

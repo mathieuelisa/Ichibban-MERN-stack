@@ -7,8 +7,8 @@ const orderSchema = new mongoose.Schema(
       required: true,
       ref: "User",
     },
-    shippingAdress: {
-      adress: {
+    shippingAddress: {
+      address: {
         type: String,
         required: true,
       },
