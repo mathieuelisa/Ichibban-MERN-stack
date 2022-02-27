@@ -33,6 +33,18 @@ const orderController = {
       res.status(201).json(createdNewOrder);
     }
   }),
+
+  getOrderById: asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+
+    if (order) {
+      res.json(order);
+    } else {
+      res
+        .status(404)
+        .json({ message: "Your order have been not found, sorry" });
+    }
+  }),
 };
 
 export default orderController;
