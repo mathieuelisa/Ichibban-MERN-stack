@@ -6,8 +6,8 @@ const orderController = {
   // Add a new order
   addingOrder: asyncHandler(async (req, res) => {
     const {
-      cartItems,
       orderItems,
+      cartItems,
       shippingAddress,
       paymentMethod,
       totalPrice,

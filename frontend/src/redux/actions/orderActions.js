@@ -32,3 +32,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     });
   }
 };
+
+export const DETAIL_ORDER_REQUEST = "detail_order_request";
+export const DETAIL_ORDER_SUCCESSFUL = "detail_order_successful";
+export const DETAIL_ORDER_FAIL = "detail_order_fail";
