@@ -7,6 +7,7 @@ const orderController = {
   addingOrder: asyncHandler(async (req, res) => {
     const {
       cartItems,
+      orderItems,
       shippingAddress,
       paymentMethod,
       totalPrice,
@@ -17,10 +18,12 @@ const orderController = {
     if (cartItems && cartItems.length === 0) {
       res.status(400);
       throw new Error("No items founds, sorry");
+      return;
     } else {
       const order = new Order({
         user: req.user._id,
         cartItems,
+        orderItems,
         shippingAddress,
         paymentMethod,
         totalPrice,
@@ -34,8 +37,12 @@ const orderController = {
     }
   }),
 
+  // Find an order with id
   getOrderById: asyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params.id);
+    const order = await Order.findById(req.params.id).populate(
+      "user",
+      "name email"
+    );
 
     if (order) {
       res.json(order);

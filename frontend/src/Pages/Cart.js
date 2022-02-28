@@ -19,8 +19,6 @@ function Cart() {
   const cart = useSelector((state) => state.Cart);
   const { cartItems } = cart;
 
-  console.log(cartItems);
-
   useEffect(() => {
     if (id) {
       dispatch(addingCart(id, quantity));

@@ -1,19 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
 import Steps from "../Components/Steps";
+
 import { removeCart } from "../redux/actions/cartActions";
 import { createOrder } from "../redux/actions/orderActions";
+
 import ErrorMessage from "../Components/ErrorMessage.js";
 
 function Order() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const cart = useSelector((state) => state.Cart);
-  const { cartItems, shippingAddress, paymentMethod } = cart;
+
+  console.log(cart.cartItems);
 
   //   Get total HT
-  cart.totalPrice = cartItems.reduce(
+  cart.totalPrice = cart.cartItems.reduce(
     (acc, curr) => acc + curr.quantity * curr.price,
     0
   );
@@ -34,14 +39,12 @@ function Order() {
     // eslint-disable-next-line
   }, [success, navigate]);
 
-  const orderHandlerSubmit = (e) => {
-    e.preventDefault();
-    console.log("order selected");
+  const orderHandlerSubmit = () => {
     dispatch(
       createOrder({
-        orderItems: cartItems,
-        paymentMethod: paymentMethod,
-        shippingAddress: shippingAddress,
+        orderItems: [...cart.cartItems],
+        paymentMethod: cart.paymentMethod,
+        shippingAddress: cart.shippingAddress,
         totalResume: cart.totalResume,
         totalDelivery: cart.totalDelivery,
         totalPrice: cart.totalPrice,
@@ -63,7 +66,7 @@ function Order() {
             <div className="order__container-parts-articles">
               <h4>Liste des articles selectionnés :</h4>
               <div className="order__container_elements">
-                {cartItems.map((element, index) => {
+                {cart.cartItems.map((element, index) => {
                   return (
                     <div className="order__container_elements-each" key={index}>
                       <img
@@ -97,16 +100,16 @@ function Order() {
               <h4>Votre adresse de livraison :</h4>
               <div className="order__container_elements-shipping">
                 <h4 className="order__container-parts-shipping-title">
-                  {shippingAddress.address}
+                  {cart.shippingAddress.address}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {shippingAddress.city}
+                  {cart.shippingAddress.city}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {shippingAddress.postalCode}
+                  {cart.shippingAddress.postalCode}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {shippingAddress.country}
+                  {cart.shippingAddress.country}
                 </h4>
               </div>
             </div>
@@ -114,7 +117,7 @@ function Order() {
             <div className="order__container-parts-paymentMethod">
               <h4>Votre methode de paiement :</h4>
               <h4 className="order__container-parts-paymentMethod-title">
-                {paymentMethod}
+                {cart.paymentMethod}
               </h4>
             </div>
           </div>
