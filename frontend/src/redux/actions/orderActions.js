@@ -36,3 +36,31 @@ export const createOrder = (order) => async (dispatch, getState) => {
 export const DETAIL_ORDER_REQUEST = "detail_order_request";
 export const DETAIL_ORDER_SUCCESSFUL = "detail_order_successful";
 export const DETAIL_ORDER_FAIL = "detail_order_fail";
+
+export const getOrderDetail = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: DETAIL_ORDER_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/orders/${id}`, config);
+
+    dispatch({ type: DETAIL_ORDER_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: DETAIL_ORDER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};

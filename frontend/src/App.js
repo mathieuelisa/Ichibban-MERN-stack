@@ -19,6 +19,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shipping from "./Pages/Shipping";
 import Payment from "./Pages/Payment";
 import Order from "./Pages/Order";
+import OrderDetails from "./Pages/OrderDetails";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />

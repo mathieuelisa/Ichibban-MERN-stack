@@ -1,71 +1,36 @@
+// import { useEffect } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import ErrorMessage from "../Components/ErrorMessage";
+import LoaderSpinner from "../Components/LoaderSpinner";
+import { getOrderDetail } from "../redux/actions/orderActions";
 
-import Steps from "../Components/Steps";
-
-import { removeCart } from "../redux/actions/cartActions";
-import { createOrder } from "../redux/actions/orderActions";
-
-import ErrorMessage from "../Components/ErrorMessage.js";
-
-function Order() {
+function OrderDetails() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const cart = useSelector((state) => state.Cart);
-
-  console.log(cart.cartItems);
-
-  //   Get total HT
-  cart.totalPrice = cart.cartItems.reduce(
-    (acc, curr) => acc + curr.quantity * curr.price,
-    0
-  );
-  //   Get taxes
-  cart.taxPrice = Number((0.2 * cart.totalPrice).toFixed(2));
-  // Get delivery cost
-  cart.shippingPrice = cart.totalPrice < 700 ? 90 : 0;
-  //   Get total TTC
-  cart.totalPrice = cart.totalPrice + cart.shippingPrice + cart.taxPrice;
-
-  const orderCreate = useSelector((state) => state.CreateOrder);
-  const { order, success, error } = orderCreate;
+  const orderDetail = useSelector((state) => state.DetailOrder);
+  const { order, loading, error } = orderDetail;
+  console.log(orderDetail);
 
   useEffect(() => {
-    if (success) {
-      navigate(`/order/${order._id}`);
-    }
-    // eslint-disable-next-line
-  }, [success, navigate]);
+    dispatch(getOrderDetail(id));
+  }, [id, dispatch]);
 
-  const orderHandlerSubmit = () => {
-    dispatch(
-      createOrder({
-        orderItems: [...cart.cartItems],
-        paymentMethod: cart.paymentMethod,
-        shippingAddress: cart.shippingAddress,
-        totalPrice: cart.totalPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-      })
-    );
-  };
-
-  const removeItem = (id) => {
-    dispatch(removeCart(id));
-  };
-
-  return (
+  return loading ? (
+    <LoaderSpinner />
+  ) : error ? (
+    <ErrorMessage>Une petite erreur est survenur</ErrorMessage>
+  ) : (
     <>
-      <Steps step1 step2 step3 step4 />
       <div className="order__container">
         <div className="order__container_twoParts">
           <div className="order__container-mainTitle">
             <div className="order__container-parts-articles">
-              <h4>Liste des articles selectionnés :</h4>
+              <h2>Votre numero de commande : {order._id}</h2>
               <div className="order__container_elements">
-                {cart.cartItems.map((element, index) => {
+                {order.orderItems.map((element, index) => {
                   return (
                     <div className="order__container_elements-each" key={index}>
                       <img
@@ -73,22 +38,16 @@ function Order() {
                         className="order__container-image"
                         alt="EachProduct"
                       ></img>
-                      <Link
-                        to={`/product/${element.product}`}
+                      <a
+                        href={`/product/${element.product}`}
                         className="order__container-nameOfProduct"
                       >
                         {element.name}
-                      </Link>
+                      </a>
                       <h3>
                         {element.quantity} x {element.price} € ={" "}
                         {element.quantity * element.price} €
                       </h3>
-                      <div className="cart__element-wrapper-delete">
-                        <i
-                          className="fas fa-trash-alt"
-                          onClick={() => removeItem(element.product)}
-                        ></i>
-                      </div>
                     </div>
                   );
                 })}
@@ -99,24 +58,30 @@ function Order() {
               <h4>Votre adresse de livraison :</h4>
               <div className="order__container_elements-shipping">
                 <h4 className="order__container-parts-shipping-title">
-                  {cart.shippingAddress.address}
+                  {order.user.name}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {cart.shippingAddress.city}
+                  {order.user.email}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {cart.shippingAddress.postalCode}
+                  {order.shippingAddress.address}
                 </h4>
                 <h4 className="order__container-parts-shipping-title">
-                  {cart.shippingAddress.country}
+                  {order.shippingAddress.city}
+                </h4>
+                <h4 className="order__container-parts-shipping-title">
+                  {order.shippingAddress.postalCode}
+                </h4>
+                <h4 className="order__container-parts-shipping-title">
+                  {order.shippingAddress.country}
                 </h4>
               </div>
             </div>
 
             <div className="order__container-parts-paymentMethod">
-              <h4>Votre methode de paiement :</h4>
+              <h4>Mode de paiement choisi :</h4>
               <h4 className="order__container-parts-paymentMethod-title">
-                {cart.paymentMethod}
+                {order.paymentMethod}
               </h4>
             </div>
           </div>
@@ -128,37 +93,27 @@ function Order() {
                   Total des articles HT
                 </h4>
 
-                <h4 className="order_results">{cart.totalPrice} €</h4>
+                <h4 className="order_results">{order.totalPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
                   Frais de livraison
                 </h4>
-                <h4 className="order_results">{cart.shippingPrice} €</h4>
+                <h4 className="order_results">{order.shippingPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">TVA</h4>
-                <h4 className="order_results">{cart.taxPrice} €</h4>
+                <h4 className="order_results">{order.taxPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
                   TOTAL TTC
                 </h4>
-                <h4 className="order_results">{cart.totalPrice} €</h4>
+                <h4 className="order_results">{order.totalPrice} €</h4>
               </div>
-
-              {error && <ErrorMessage>{error}</ErrorMessage>}
-
-              <button
-                type="submit"
-                className="order__container-button-valide"
-                onClick={orderHandlerSubmit}
-              >
-                CONTINUER
-              </button>
             </div>
           </div>
         </div>
@@ -167,4 +122,4 @@ function Order() {
   );
 }
 
-export default Order;
+export default OrderDetails;
