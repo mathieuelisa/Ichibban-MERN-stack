@@ -64,3 +64,8 @@ export const getOrderDetail = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const ORDER_PAY_REQUEST = "detail_pay_request";
+export const ORDER_PAY_SUCCESSFUL = "detail_pay_successful";
+export const ORDER_PAY_FAIL = "detail_pay_fail";
+export const ORDER_PAY_RESET = "detail_pay_reset";

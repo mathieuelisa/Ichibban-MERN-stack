@@ -22,8 +22,10 @@ function OrderDetails() {
   }
 
   useEffect(() => {
-    dispatch(getOrderDetail(id));
-  }, [id, dispatch]);
+    if (!order || order._id !== id) {
+      dispatch(getOrderDetail(id));
+    }
+  }, [order, id, dispatch]);
 
   return loading ? (
     <Loader
