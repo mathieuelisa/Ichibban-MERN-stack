@@ -124,7 +124,9 @@ function Order() {
             </div>
           </div>
           <div className="order__container_summary">
-            <h3>Resume de votre commande</h3>
+            <h3 className="order__container_summary-mainTitle">
+              Resume de votre commande
+            </h3>
             <div className="order__container_summary-title">
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
