@@ -27,8 +27,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/order" element={<Order />} />
           <Route path="/order/:id" element={<OrderDetails />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/login/shipping" element={<Shipping />} />

@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ErrorMessage from "../Components/ErrorMessage";
-import LoaderSpinner from "../Components/LoaderSpinner";
+import Loader from "../Components/Loader";
+import loadingLogo from "../Assets/Images/spinner2.gif";
 import { getOrderDetail } from "../redux/actions/orderActions";
 
 function OrderDetails() {
@@ -14,7 +15,6 @@ function OrderDetails() {
   const { order, loading, error } = orderDetail;
 
   if (!loading) {
-    //   Get total HT
     order.itemsPrice = order.orderItems.reduce(
       (acc, curr) => acc + curr.quantity * curr.price,
       0
@@ -26,7 +26,11 @@ function OrderDetails() {
   }, [id, dispatch]);
 
   return loading ? (
-    <LoaderSpinner />
+    <Loader
+      className="homepage__loading"
+      src={loadingLogo}
+      logoClassName="homepage__logo"
+    />
   ) : error ? (
     <ErrorMessage>Une petite erreur est survenue</ErrorMessage>
   ) : (
