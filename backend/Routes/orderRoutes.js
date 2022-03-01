@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post("/", protect, orderController.addingOrder);
 router.get("/:id", protect, orderController.getOrderById);
+router.put("/:id/pay", protect, orderController.updateOrderPaid);
 
 export default router;

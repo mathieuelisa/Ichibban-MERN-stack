@@ -2,8 +2,10 @@ import asyncHandler from "express-async-handler";
 
 // Models
 import Order from "../models/orderModel.js";
+
 const orderController = {
   // Add a new order
+  // POST request
   addingOrder: asyncHandler(async (req, res) => {
     const {
       orderItems,
@@ -37,6 +39,7 @@ const orderController = {
   }),
 
   // Find an order with id
+  // GET request
   getOrderById: asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id).populate(
       "user",
@@ -52,6 +55,8 @@ const orderController = {
     }
   }),
 
+  // Update order
+  // PUT request
   updateOrderPaid: asyncHandler(async (req, res) => {
     let order = await Order.findById(req.params.id);
 
