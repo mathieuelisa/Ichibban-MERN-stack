@@ -25,7 +25,11 @@ function Order() {
   cart.taxPrice = Number((0.2 * cart.itemsPrice).toFixed(2));
   //   Get total TTC
 
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+  cart.totalPrice = (
+    cart.itemsPrice +
+    cart.shippingPrice +
+    cart.taxPrice
+  ).toFixed(2);
 
   const orderCreate = useSelector((state) => state.CreateOrder);
   const { order, success, error } = orderCreate;

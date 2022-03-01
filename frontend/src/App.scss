@@ -581,10 +581,12 @@
 
 .redError {
   color: red;
+  font-family: "WalkwayBlack";
 }
 
 .greenError {
   color: green;
+  font-family: "WalkwayBlack";
 }
 
 @media screen and (max-width: 600px) {
@@ -700,13 +702,6 @@
   .register__form-button-validate {
     width: 175px;
   }
-}
-
-// ORDERS
-
-.order__container-customer {
-  margin-left: 50px;
-  height: 335px;
 }
 
 // SHIPPING PAGE
@@ -908,6 +903,11 @@
   }
 }
 
+.order__container-customer {
+  margin-left: 50px;
+  height: 335px;
+}
+
 .order__container_twoParts {
   display: flex;
 }
@@ -974,6 +974,10 @@
 
 .order__container-parts-shipping-title {
   margin-left: 10px;
+
+  &-email {
+    margin-left: 10px;
+  }
 }
 
 .order_results {
@@ -1007,4 +1011,60 @@
 
 .order__description-paid {
   margin-left: 20px;
+}
+
+.order__container-parts-articles-title {
+  font-family: "WalkwayBlack";
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.order__container_summary-mainTitle {
+  text-decoration: underline;
+}
+
+.order__container_elements-nameAndEmail {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .order__container {
+    height: auto;
+  }
+  .order__container_twoParts {
+    flex-direction: column;
+  }
+
+  .order__container_summary {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    text-align: center;
+    &-title {
+      align-items: center;
+    }
+  }
+
+  .order__container_summary-secondTitle {
+    margin-left: 0;
+  }
+
+  .order__container-mainTitle {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .order__container-parts-paymentMethod-title {
+    margin-left: 15px;
+  }
+
+  .order__container-parts-paymentMethod {
+    margin-bottom: 20px;
+  }
+
+  .order__container-parts-articles-title {
+    text-align: center;
+    font-size: 1em;
+    font-family: "WalkwayBlack";
+  }
 }

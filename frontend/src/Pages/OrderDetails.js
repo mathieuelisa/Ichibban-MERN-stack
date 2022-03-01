@@ -41,7 +41,9 @@ function OrderDetails() {
         <div className="order__container_twoParts">
           <div className="order__container-mainTitle">
             <div className="order__container-parts-articles">
-              <h2>Votre numero de commande : {order._id}</h2>
+              <h2 className="order__container-parts-articles-title">
+                Votre numéro de commande : {order._id}
+              </h2>
               <div className="order__container_elements">
                 {order.orderItems.map((element, index) => {
                   return (
@@ -87,12 +89,16 @@ function OrderDetails() {
                 )}
               </div>
               <div className="order__container_elements-shipping">
-                <h4 className="order__container-parts-shipping-title">
-                  {order.user.name}
-                </h4>
-                <h4 className="order__container-parts-shipping-title">
-                  {order.user.email}
-                </h4>
+                <div className="order__container_elements-nameAndEmail">
+                  <h4 className="order__container-parts-shipping-title">
+                    {order.user.name.replace(/\b\w/g, (c) => c.toUpperCase())}
+                  </h4>
+                  <a href={`mailto:${order.user.email}`}>
+                    <h4 className="order__container-parts-shipping-title-email">
+                      {order.user.email}
+                    </h4>
+                  </a>
+                </div>
                 <h4 className="order__container-parts-shipping-title">
                   {order.shippingAddress.address}
                 </h4>
@@ -131,7 +137,9 @@ function OrderDetails() {
             </div>
           </div>
           <div className="order__container_summary">
-            <h3>Resume de votre commande</h3>
+            <h3 className="order__container_summary-mainTitle">
+              Resume de votre commande
+            </h3>
             <div className="order__container_summary-title">
               <div className="order__container_summary-title-container">
                 <h4 className="order__container_summary-secondTitle">
