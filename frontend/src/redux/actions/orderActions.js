@@ -65,7 +65,40 @@ export const getOrderDetail = (id) => async (dispatch, getState) => {
   }
 };
 
-export const ORDER_PAY_REQUEST = "detail_pay_request";
-export const ORDER_PAY_SUCCESSFUL = "detail_pay_successful";
-export const ORDER_PAY_FAIL = "detail_pay_fail";
-export const ORDER_PAY_RESET = "detail_pay_reset";
+export const ORDER_PAY_REQUEST = "order_pay_request";
+export const ORDER_PAY_SUCCESSFUL = "order_pay_successful";
+export const ORDER_PAY_FAIL = "order_pay_fail";
+export const ORDER_PAY_RESET = "order_pay_reset";
+
+export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_PAY_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/orders/${id}/pay`,
+      paymentResult,
+      config
+    );
+
+    dispatch({ type: ORDER_PAY_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_PAY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
