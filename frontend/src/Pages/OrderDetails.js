@@ -12,7 +12,12 @@ function OrderDetails() {
 
   const orderDetail = useSelector((state) => state.DetailOrder);
   const { order, loading, error } = orderDetail;
-  console.log(orderDetail);
+
+  //   Get total HT
+  order.itemsPrice = order.orderItems.reduce(
+    (acc, curr) => acc + curr.quantity * curr.price,
+    0
+  );
 
   useEffect(() => {
     dispatch(getOrderDetail(id));
@@ -93,7 +98,7 @@ function OrderDetails() {
                   Total des articles HT
                 </h4>
 
-                <h4 className="order_results">{order.totalPrice} €</h4>
+                <h4 className="order_results">{order.itemsPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">

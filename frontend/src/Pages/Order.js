@@ -15,19 +15,17 @@ function Order() {
 
   const cart = useSelector((state) => state.Cart);
 
-  console.log(cart.cartItems);
-
   //   Get total HT
-  cart.totalPrice = cart.cartItems.reduce(
+  cart.itemsPrice = cart.cartItems.reduce(
     (acc, curr) => acc + curr.quantity * curr.price,
     0
   );
-  //   Get taxes
-  cart.taxPrice = Number((0.2 * cart.totalPrice).toFixed(2));
-  // Get delivery cost
-  cart.shippingPrice = cart.totalPrice < 700 ? 90 : 0;
+
+  cart.shippingPrice = cart.itemsPrice < 700 ? 90 : 0;
+  cart.taxPrice = Number((0.2 * cart.itemsPrice).toFixed(2));
   //   Get total TTC
-  cart.totalPrice = cart.totalPrice + cart.shippingPrice + cart.taxPrice;
+
+  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
   const orderCreate = useSelector((state) => state.CreateOrder);
   const { order, success, error } = orderCreate;
@@ -42,12 +40,13 @@ function Order() {
   const orderHandlerSubmit = () => {
     dispatch(
       createOrder({
-        orderItems: [...cart.cartItems],
-        paymentMethod: cart.paymentMethod,
+        orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
-        totalPrice: cart.totalPrice,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
       })
     );
   };
@@ -128,7 +127,7 @@ function Order() {
                   Total des articles HT
                 </h4>
 
-                <h4 className="order_results">{cart.totalPrice} €</h4>
+                <h4 className="order_results">{cart.itemsPrice} €</h4>
               </div>
 
               <div className="order__container_summary-title-container">

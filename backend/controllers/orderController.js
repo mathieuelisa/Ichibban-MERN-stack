@@ -6,27 +6,27 @@ const orderController = {
   // Add a new order
   addingOrder: asyncHandler(async (req, res) => {
     const {
-      cartItems,
       orderItems,
       shippingAddress,
       paymentMethod,
-      shippingPrice,
+      itemsPrice,
       taxPrice,
+      shippingPrice,
       totalPrice,
     } = req.body;
 
-    if (cartItems && cartItems.length === 0) {
+    if (orderItems && orderItems.length === 0) {
       res.status(400);
       throw new Error("No items founds, sorry");
     } else {
       const order = new Order({
-        user: req.user._id,
-        cartItems,
         orderItems,
+        user: req.user._id,
         shippingAddress,
         paymentMethod,
-        shippingPrice,
+        itemsPrice,
         taxPrice,
+        shippingPrice,
         totalPrice,
       });
 
