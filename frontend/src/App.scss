@@ -958,6 +958,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  &-delivery {
+    display: flex;
+  }
 }
 
 .order__container-parts-paymentMethod {
@@ -999,4 +1003,8 @@
       color: whitesmoke;
     }
   }
+}
+
+.order__description-paid {
+  margin-left: 20px;
 }

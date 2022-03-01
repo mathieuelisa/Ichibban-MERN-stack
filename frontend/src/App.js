@@ -27,12 +27,12 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/login/shipping" element={<Shipping />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/payment" element={<Payment />} />
           <Route path="/order" element={<Order />} />
           <Route path="/order/:id" element={<OrderDetails />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/shipping" element={<Shipping />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />

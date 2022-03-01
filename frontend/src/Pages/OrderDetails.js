@@ -13,11 +13,13 @@ function OrderDetails() {
   const orderDetail = useSelector((state) => state.DetailOrder);
   const { order, loading, error } = orderDetail;
 
-  //   Get total HT
-  order.itemsPrice = order.orderItems.reduce(
-    (acc, curr) => acc + curr.quantity * curr.price,
-    0
-  );
+  if (!loading) {
+    //   Get total HT
+    order.itemsPrice = order.orderItems.reduce(
+      (acc, curr) => acc + curr.quantity * curr.price,
+      0
+    );
+  }
 
   useEffect(() => {
     dispatch(getOrderDetail(id));
@@ -26,7 +28,7 @@ function OrderDetails() {
   return loading ? (
     <LoaderSpinner />
   ) : error ? (
-    <ErrorMessage>Une petite erreur est survenur</ErrorMessage>
+    <ErrorMessage>Une petite erreur est survenue</ErrorMessage>
   ) : (
     <>
       <div className="order__container">
@@ -60,7 +62,24 @@ function OrderDetails() {
             </div>
 
             <div className="order__container-parts-shipping">
-              <h4>Votre adresse de livraison :</h4>
+              <div className="order__container-parts-delivery">
+                <h4>Votre adresse de livraison :</h4>
+                {order.isDelivered ? (
+                  <ErrorMessage
+                    className="order__description-paid"
+                    textClassName="greenError"
+                  >
+                    Delivered
+                  </ErrorMessage>
+                ) : (
+                  <ErrorMessage
+                    textClassName="redError"
+                    className="order__description-paid"
+                  >
+                    Order not delivered
+                  </ErrorMessage>
+                )}
+              </div>
               <div className="order__container_elements-shipping">
                 <h4 className="order__container-parts-shipping-title">
                   {order.user.name}
@@ -88,6 +107,21 @@ function OrderDetails() {
               <h4 className="order__container-parts-paymentMethod-title">
                 {order.paymentMethod}
               </h4>
+              {order.isPaid ? (
+                <ErrorMessage
+                  className="order__description-paid"
+                  textClassName="greenError"
+                >
+                  Order paid
+                </ErrorMessage>
+              ) : (
+                <ErrorMessage
+                  textClassName="redError"
+                  className="order__description-paid"
+                >
+                  Order not paid
+                </ErrorMessage>
+              )}
             </div>
           </div>
           <div className="order__container_summary">
