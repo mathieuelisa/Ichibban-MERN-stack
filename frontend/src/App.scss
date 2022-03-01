@@ -688,6 +688,10 @@
     justify-content: center;
   }
 
+  .register__container-customer {
+    margin-top: 20px;
+  }
+
   .register__form {
     width: 70%;
     margin-top: 40px;
@@ -929,8 +933,8 @@
 }
 
 .order__container-customer {
-  margin-left: 50px;
   height: 335px;
+  margin-top: 20px;
 }
 
 .order__container_twoParts {
