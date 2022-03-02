@@ -1,3 +1,4 @@
 PORT=putYourPortHere
 MONGO_URI=putYourMongoDBUniformResourceIdentifierHere
 SECRET_KEY_JWT=putYourSecretKeyHere
+PAYPAL_CLIENT_ID=putYourClientIdOfPaypalHere

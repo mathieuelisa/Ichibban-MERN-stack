@@ -1,5 +1,5 @@
-// import { useEffect } from "react";
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ErrorMessage from "../Components/ErrorMessage";
@@ -8,6 +8,7 @@ import loadingLogo from "../Assets/Images/spinner2.gif";
 import { getOrderDetail } from "../redux/actions/orderActions";
 
 function OrderDetails() {
+  const [sdkPaypalReady, setSdkPaypalReady] = useState(false);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -22,6 +23,22 @@ function OrderDetails() {
   }
 
   useEffect(() => {
+    const addPaypalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+      const script = document.createElement("script");
+
+      script.type = "text/javascript";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.async = true;
+      script.onload = () => {
+        setSdkPaypalReady(true);
+      };
+
+      document.body.appendChild(script);
+    };
+
+    addPaypalScript();
+
     if (!order || order._id !== id) {
       dispatch(getOrderDetail(id));
     }

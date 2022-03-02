@@ -28,6 +28,10 @@ app.use("/api/products", productsRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 
+app.get("/api/config/paypal", (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+);
+
 // Page not found middleware
 app.use(pageNotFound);
 app.use(errorHandler);
