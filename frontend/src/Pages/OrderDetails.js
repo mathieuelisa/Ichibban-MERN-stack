@@ -2,10 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+// Components
 import ErrorMessage from "../Components/ErrorMessage";
 import Loader from "../Components/Loader";
+import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
-import { getOrderDetail } from "../redux/actions/orderActions";
+// Actions
+import { getOrderDetail, payOrder } from "../redux/actions/orderActions";
+import { ORDER_PAY_RESET } from "../redux/actions/orderActions";
+// Paypal Button
+import { PayPalButton } from "react-paypal-button-v2";
 
 function OrderDetails() {
   const [sdkPaypalReady, setSdkPaypalReady] = useState(false);
@@ -14,6 +20,9 @@ function OrderDetails() {
 
   const orderDetail = useSelector((state) => state.DetailOrder);
   const { order, loading, error } = orderDetail;
+
+  const orderPay = useSelector((state) => state.OrderPay);
+  const { success: successPay, loading: loadingPay } = orderPay;
 
   if (!loading) {
     order.itemsPrice = order.orderItems.reduce(
@@ -37,12 +46,22 @@ function OrderDetails() {
       document.body.appendChild(script);
     };
 
-    addPaypalScript();
-
-    if (!order || order._id !== id) {
+    if (!order || successPay || order._id !== id) {
+      dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetail(id));
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPaypalScript();
+      } else {
+        setSdkPaypalReady(true);
+      }
     }
-  }, [order, id, dispatch]);
+  }, [order, id, dispatch, successPay]);
+
+  const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
+    dispatch(payOrder(id, paymentResult));
+  };
 
   return loading ? (
     <Loader
@@ -94,14 +113,14 @@ function OrderDetails() {
                     className="order__description-paid"
                     textClassName="greenError"
                   >
-                    Delivered
+                    Commande delivrée
                   </ErrorMessage>
                 ) : (
                   <ErrorMessage
                     textClassName="redError"
                     className="order__description-paid"
                   >
-                    Order not delivered
+                    Commande non delivrée
                   </ErrorMessage>
                 )}
               </div>
@@ -137,25 +156,27 @@ function OrderDetails() {
                 {order.paymentMethod}
               </h4>
               {order.isPaid ? (
-                <ErrorMessage
-                  className="order__description-paid"
-                  textClassName="greenError"
-                >
-                  Order paid
-                </ErrorMessage>
+                <>
+                  <ErrorMessage
+                    className="order__description-paid"
+                    textClassName="greenError"
+                  >
+                    Commande payée {order.paidAt}
+                  </ErrorMessage>
+                </>
               ) : (
                 <ErrorMessage
                   textClassName="redError"
                   className="order__description-paid"
                 >
-                  Order not paid
+                  Commande non payée
                 </ErrorMessage>
               )}
             </div>
           </div>
           <div className="order__container_summary">
             <h3 className="order__container_summary-mainTitle">
-              Resume de votre commande
+              Résumé de votre commande
             </h3>
             <div className="order__container_summary-title">
               <div className="order__container_summary-title-container">
@@ -184,6 +205,20 @@ function OrderDetails() {
                 </h4>
                 <h4 className="order_results">{order.totalPrice} €</h4>
               </div>
+
+              {!order.isPaid && (
+                <>
+                  {loadingPay && <LoaderSpinner />}
+                  {!sdkPaypalReady ? (
+                    <LoaderSpinner />
+                  ) : (
+                    <PayPalButton
+                      amount={order.totalPrice}
+                      onSuccess={successPaymentHandler}
+                    />
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
