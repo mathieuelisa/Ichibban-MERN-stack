@@ -97,6 +97,7 @@ function Cart() {
                     <div className="cart__element-wrapper-delete">
                       <i
                         className="fas fa-trash-alt"
+                        style={{ color: "grey" }}
                         onClick={() => removeItem(element.product)}
                       ></i>
                     </div>

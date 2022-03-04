@@ -106,6 +106,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
 export const ORDER_LIST_MY_REQUEST = "order_list_my_request";
 export const ORDER_LIST_MY_SUCCESSFUL = "order_list_my_successful";
 export const ORDER_LIST_MY_FAIL = "order_list_my_fail";
+export const ORDER_LIST_MY_RESET = "order_list_my_reset";
 
 export const listMyOrders = () => async (dispatch, getState) => {
   try {

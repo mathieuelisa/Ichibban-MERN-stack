@@ -13,7 +13,6 @@ function Login() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation, error, loading } = userLogin;
-  console.log(userLogin);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,7 +54,9 @@ function Login() {
 
         <div className="login__container-customer-form">
           <form className="login__form" onSubmit={handleSubmit}>
-            {loading && <LoaderSpinner src={loadingLogo} />}
+            {loading && (
+              <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+            )}
             <label>
               <input
                 type="text"

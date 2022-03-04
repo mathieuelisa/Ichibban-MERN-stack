@@ -1,6 +1,7 @@
 import {
   USER_INFO_FAIL,
   USER_INFO_REQUEST,
+  USER_INFO_RESET,
   USER_INFO_SUCCESSFUL,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
@@ -51,6 +52,8 @@ export const userInfoReducer = (state = { user: {} }, action = {}) => {
       return { loading: false, user: action.payload };
     case USER_INFO_FAIL:
       return { loading: false, error: action.payload };
+    case USER_INFO_RESET:
+      return { user: {} };
     default:
       return state;
   }

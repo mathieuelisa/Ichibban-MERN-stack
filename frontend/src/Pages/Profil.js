@@ -76,7 +76,9 @@ function Profil() {
         <h2>INFORMATIONS PERSONNELLES</h2>
         <div className="register__container-customer-form">
           <form className="register__form" onSubmit={handleSubmit}>
-            {loading && <LoaderSpinner src={loadingLogo} />}
+            {loading && (
+              <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+            )}
 
             <label className="register__form-label">
               <input
@@ -183,10 +185,25 @@ function Profil() {
                       {element.isPaid ? (
                         element.paidAt.substring(0, 10)
                       ) : (
-                        <p>pas payé</p>
+                        <i
+                          class="fa-solid fa-xmark"
+                          style={{ color: "red" }}
+                        ></i>
                       )}
                     </td>
-                    <td>{element.isDelivered ? <p>oui</p> : <p>non</p>}</td>
+                    <td>
+                      {element.isDelivered ? (
+                        <i
+                          class="fa-solid fa-check"
+                          style={{ color: "green" }}
+                        ></i>
+                      ) : (
+                        <i
+                          class="fa-solid fa-xmark"
+                          style={{ color: "red" }}
+                        ></i>
+                      )}
+                    </td>
                     <td>details</td>
                   </tr>
                 );
