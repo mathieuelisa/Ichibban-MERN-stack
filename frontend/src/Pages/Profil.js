@@ -13,6 +13,8 @@ import {
   USER_UPDATE_PROFIL_RESET,
 } from "../redux/actions/userActions";
 
+import { listMyOrders } from "../redux/actions/orderActions";
+
 function Profil() {
   const dispatch = useDispatch();
 
@@ -24,6 +26,13 @@ function Profil() {
 
   const userUpdateProfil = useSelector((state) => state.UserUpdateProfil);
   const { success } = userUpdateProfil;
+
+  const orderListMy = useSelector((state) => state.OrderListMy);
+  const {
+    success: successList,
+    loading: loadingList,
+    error: errorList,
+  } = orderListMy;
 
   const navigate = useNavigate();
 
@@ -42,6 +51,7 @@ function Profil() {
           type: USER_UPDATE_PROFIL_RESET,
         });
         dispatch(getUserDetails("profil"));
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
