@@ -78,6 +78,14 @@ const orderController = {
       throw new Error("Order not found");
     }
   }),
+
+  // Get all orders of user
+  // GET request
+  getMyOrders: asyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+
+    res.json(orders);
+  }),
 };
 
 export default orderController;

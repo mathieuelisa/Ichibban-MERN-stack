@@ -5,6 +5,7 @@ import { protect } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post("/", protect, orderController.addingOrder);
+router.get("/myorders", protect, orderController.getMyOrders);
 router.get("/:id", protect, orderController.getOrderById);
 router.put("/:id/pay", protect, orderController.updateOrderPaid);
 
