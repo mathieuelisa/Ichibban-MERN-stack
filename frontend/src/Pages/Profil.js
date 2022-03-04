@@ -29,7 +29,7 @@ function Profil() {
 
   const orderListMy = useSelector((state) => state.OrderListMy);
   const {
-    success: successList,
+    order: orderList,
     loading: loadingList,
     error: errorList,
   } = orderListMy;
@@ -159,6 +159,41 @@ function Profil() {
 
       <div className="order__container-customer">
         <h2>MES COMMANDES</h2>
+        <div>
+          <table className="tableau-style">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Prix total</th>
+                <th>Date de paiement</th>
+                <th>Livraison</th>
+                <th>Infos</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {orderList?.map((element, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{element._id}</td>
+                    <td>{element.createdAt.substring(0, 10)}</td>
+                    <td>{element.totalPrice} €</td>
+                    <td>
+                      {element.isPaid ? (
+                        element.paidAt.substring(0, 10)
+                      ) : (
+                        <p>pas payé</p>
+                      )}
+                    </td>
+                    <td>{element.isDelivered ? <p>oui</p> : <p>non</p>}</td>
+                    <td>details</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

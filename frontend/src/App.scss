@@ -512,7 +512,7 @@
   height: 80vh;
   background-color: #f0ede2;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
   &-customer {
@@ -644,6 +644,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
 }
 
 .register__form {
@@ -933,8 +934,12 @@
 }
 
 .order__container-customer {
+  display: flex;
   height: 335px;
   margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
 }
 
 .order__container_twoParts {
@@ -1117,4 +1122,19 @@
   .cart__element-wrapper-delete {
     margin-right: 0;
   }
+}
+
+// PROFIL ORDER PAGE
+
+.tableau-style {
+  border-collapse: collapse;
+  min-width: 400px;
+  width: auto;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 15px 8px;
+  text-align: center;
 }
