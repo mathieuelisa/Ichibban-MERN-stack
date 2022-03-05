@@ -9,6 +9,17 @@ Content-Type: application/json
 
 ###
 
+// @ Get authentification user (admin)
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+ "email": "admin@exemple.fr",
+ "password": "abcdef"
+}
+
+###
+
 # Get all Users
 # GET METHOD
 GET http://localhost:5000/api/users
