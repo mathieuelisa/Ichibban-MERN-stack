@@ -174,6 +174,9 @@ function Profil() {
               </tr>
             </thead>
 
+            {loadingList && (
+              <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+            )}
             <tbody>
               {orderList?.map((element, index) => {
                 return (

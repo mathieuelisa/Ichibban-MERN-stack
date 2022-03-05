@@ -86,6 +86,18 @@ const orderController = {
 
     res.json(orders);
   }),
+
+  // Get all orders
+  // GET request
+  getAllOrder: asyncHandler(async (req, res) => {
+    const order = await Order.find();
+
+    if (order) {
+      res.json(order);
+    } else {
+      throw new Error("Sorry no orders was found");
+    }
+  }),
 };
 
 export default orderController;

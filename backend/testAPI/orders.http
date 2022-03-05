@@ -10,3 +10,9 @@ GET http://localhost:5000/api/orders/myorders
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNCIsImlhdCI6MTY0NjM4ODIyMiwiZXhwIjoxNjQ5ODQ0MjIyfQ.PGONMoEs4Qulmfd9dSU1kODGGzPuY8uM8wx11Jy3cA8
 ###
+
+
+GET http://localhost:5000/api/orders
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwNCIsImlhdCI6MTY0NjM4ODIyMiwiZXhwIjoxNjQ5ODQ0MjIyfQ.PGONMoEs4Qulmfd9dSU1kODGGzPuY8uM8wx11Jy3cA8
+###
