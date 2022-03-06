@@ -24,6 +24,7 @@ Content-Type: application/json
 # GET METHOD
 GET http://localhost:5000/api/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwMyIsImlhdCI6MTY0NjQ5MzgzMSwiZXhwIjoxNjQ5OTQ5ODMxfQ.x7zLD6ilM7iOcvSwEp1y9rCAv1xuWB7bmGq-r5ZnWLo
 
 ###
 

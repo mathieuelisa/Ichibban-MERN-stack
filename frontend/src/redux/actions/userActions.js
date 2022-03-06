@@ -161,3 +161,40 @@ export const updateUserProfil = (user) => async (dispatch, getState) => {
     });
   }
 };
+
+export const USER_LIST_REQUEST = "user_list_request";
+export const USER_LIST_SUCCESSFUL = "user_list_successful";
+export const USER_LIST_FAIL = "user_list_fail";
+export const USER_LIST_RESET = "user_list_reset";
+
+// Get all the users
+export const listOfUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_LIST_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users`, config);
+
+    dispatch({ type: USER_LIST_SUCCESSFUL, payload: data });
+
+    localStorage.setItem("userInformations", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};

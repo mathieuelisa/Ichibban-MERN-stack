@@ -20,6 +20,7 @@ import Shipping from "./Pages/Shipping";
 import Payment from "./Pages/Payment";
 import Order from "./Pages/Order";
 import OrderDetails from "./Pages/OrderDetails";
+import UserList from "./Pages/UserList";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
+          <Route path="/admin/users" element={<UserList />} />
           <Route path="/" element={<HomePage products={products} />} />
         </Routes>
         <Footer />
