@@ -79,7 +79,7 @@
 
   &-icons {
     display: flex;
-    width: 200px;
+    width: 240px;
     justify-content: space-around;
     align-items: center;
   }
@@ -99,14 +99,32 @@
 .dropdown ul {
   position: absolute;
   background-color: #f0ede2;
-  // background-color: red;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  padding-left: 9px;
-  width: 79px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.6s ease;
+}
+
+.dropdown__admin {
+  width: 67px;
+}
+
+.dropdown__admin ul {
+  position: absolute;
+  top: 50px;
+  background-color: #f0ede2;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 80px;
   height: 50px;
   opacity: 0;
   transform: translateY(-10px);
@@ -1141,4 +1159,16 @@ th,
 td {
   padding: 15px 8px;
   text-align: center;
+}
+
+// USERLIST PAGE
+
+.userList__container-customer {
+  display: flex;
+  height: 568px;
+  margin-top: 20px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
 }

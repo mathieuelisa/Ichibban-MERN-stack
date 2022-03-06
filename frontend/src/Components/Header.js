@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../App.scss";
+
 import { logout } from "../redux/actions/userActions";
 
 function Header() {
@@ -40,9 +41,7 @@ function Header() {
             <div className="dropdown">
               <div className="profil">
                 <button className="header__profil">
-                  {userInformation.name.replace(/\b\w/g, (c) =>
-                    c.toUpperCase()
-                  )}
+                  {userInformation.name}
                 </button>
                 <ul>
                   <Link to="/profil" className="header__profil-choice">
@@ -59,6 +58,31 @@ function Header() {
               <i className="far fa-user"></i>
               <h4 className="header__wrapper-links-title">Se connecter</h4>
             </NavLink>
+          )}
+
+          {userInformation && userInformation.isAdmin ? (
+            <div className="dropdown__admin">
+              <div className="profil">
+                <button className="header__profil">
+                  {userInformation.name}
+                </button>
+                <ul>
+                  <Link to="/admin/users" className="header__profil-choice">
+                    All Users
+                  </Link>
+
+                  <Link to="/admin/orders" className="header__profil-choice">
+                    All Orders
+                  </Link>
+
+                  <Link to="/admin/product" className="header__profil-choice">
+                    All Product
+                  </Link>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            ""
           )}
         </div>
       </div>
