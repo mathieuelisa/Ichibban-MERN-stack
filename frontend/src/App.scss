@@ -1163,12 +1163,27 @@ td {
 
 // USERLIST PAGE
 
-.userList__container-customer {
-  display: flex;
-  height: 568px;
-  margin-top: 20px;
-  margin: 0 auto;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
+.userList__container {
+  &-customer {
+    display: flex;
+    height: 568px;
+    margin-top: 20px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  &-title {
+    margin-top: 20px;
+  }
+}
+
+.fa-edit {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.fa-trash-alt {
+  cursor: pointer;
 }

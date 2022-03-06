@@ -11,5 +11,6 @@ router.post("/", userController.registerUser);
 router.post("/login", userController.authUser);
 router.get("/profil", protect, userController.getUserById);
 router.put("/profil", protect, userController.updateUserById);
+router.delete("/:id", protect, isAdmin, userController.deleteUser);
 
 export default router;

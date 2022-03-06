@@ -14,7 +14,7 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
- "email": "admin@exemple.fr",
+ "email": "admin@exemple.com",
  "password": "abcdef"
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 # GET METHOD
 GET http://localhost:5000/api/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmYzkzOGMyZGM2YjIwYzAwMyIsImlhdCI6MTY0NjQ5MzgzMSwiZXhwIjoxNjQ5OTQ5ODMxfQ.x7zLD6ilM7iOcvSwEp1y9rCAv1xuWB7bmGq-r5ZnWLo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0NjYwNjk0NCwiZXhwIjoxNjUwMDYyOTQ0fQ.wGL3_47nQTd1g2mIIQmrfeUU_5sPGooeEUNgTcsIMtc
 
 ###
 
@@ -44,9 +44,10 @@ POST http://localhost:5000/api/users/
 Content-Type: application/json
 
 {
-    "name": "Mathieu",
-    "email": "mathieu.elisa@gmail.com",
-    "password" : "abcdef"
+    "name": "Admin",
+    "email": "admin@exemple.com",
+    "password" : "abcdef",
+    "isAdmin" : "true"
 }
 
 ###
@@ -63,4 +64,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmY
 
 ###
 
+# Delete User
+# DELETED METHOD
+DELETE http://localhost:5000/api/users/620d1220e2d527c28a5e8c6d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0NjYwNjk0NCwiZXhwIjoxNjUwMDYyOTQ0fQ.wGL3_47nQTd1g2mIIQmrfeUU_5sPGooeEUNgTcsIMtc
 
+###

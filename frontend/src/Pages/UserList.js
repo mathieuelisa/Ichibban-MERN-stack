@@ -1,6 +1,6 @@
-// import axios from "axios"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
@@ -28,15 +28,15 @@ function UserList() {
 
   return (
     <div className="userList__container-customer">
-      <h2>UTILISATEURS</h2>
+      <h2 className="userList__container-title">UTILISATEURS</h2>
       <div>
         <table className="tableau-style">
           <thead>
             <tr>
               <th>ID</th>
-              <th>NOM</th>
-              <th>EMAIL</th>
-              <th>ADMINISTRATEUR</th>
+              <th>NOMS</th>
+              <th>EMAILS</th>
+              <th>ADMINISTRATEURS</th>
               <th>DETAILS</th>
             </tr>
           </thead>
@@ -70,6 +70,7 @@ function UserList() {
                     </td>
                     <td>
                       {" "}
+                      <i className="fas fa-edit" style={{ color: "gray" }}></i>
                       <i
                         className="fas fa-trash-alt"
                         style={{ color: "gray" }}

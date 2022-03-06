@@ -138,11 +138,6 @@ function Profil() {
               ""
             )}
 
-            {/* 
-            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              Se connecter
-            </Link> */}
-
             {error ? (
               <>
                 <ErrorMessage
@@ -189,7 +184,7 @@ function Profil() {
                         element.paidAt.substring(0, 10)
                       ) : (
                         <i
-                          class="fa-solid fa-xmark"
+                          className="fa-solid fa-xmark"
                           style={{ color: "red" }}
                         ></i>
                       )}
@@ -197,12 +192,12 @@ function Profil() {
                     <td>
                       {element.isDelivered ? (
                         <i
-                          class="fa-solid fa-check"
+                          className="fa-solid fa-check"
                           style={{ color: "green" }}
                         ></i>
                       ) : (
                         <i
-                          class="fa-solid fa-xmark"
+                          className="fa-solid fa-xmark"
                           style={{ color: "red" }}
                         ></i>
                       )}
