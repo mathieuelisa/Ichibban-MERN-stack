@@ -18,21 +18,26 @@ function UserList() {
     users: usersMyList,
   } = usersList;
 
+  const removeItem = (id) => {
+    console.log(`Your user ${id} have been deleted`);
+  };
+
   useEffect(() => {
     dispatch(listOfUsers());
   }, [dispatch]);
 
   return (
     <div className="userList__container-customer">
-      <h2>MES COMMANDES</h2>
+      <h2>UTILISATEURS</h2>
       <div>
         <table className="tableau-style">
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
+              <th>NOM</th>
               <th>EMAIL</th>
-              <th>ADMIN</th>
+              <th>ADMINISTRATEUR</th>
+              <th>DETAILS</th>
             </tr>
           </thead>
 
@@ -44,7 +49,7 @@ function UserList() {
             </ErrorMessage>
           ) : (
             <tbody>
-              {usersMyList.map((element, index) => {
+              {usersMyList.map((element) => {
                 return (
                   <tr key={element._id}>
                     <td>{element._id}</td>
@@ -53,15 +58,23 @@ function UserList() {
                     <td>
                       {element.isAdmin ? (
                         <i
-                          class="fa-solid fa-check"
+                          className="fa-solid fa-check"
                           style={{ color: "green" }}
                         ></i>
                       ) : (
                         <i
-                          class="fa-solid fa-xmark"
+                          className="fa-solid fa-xmark"
                           style={{ color: "red" }}
                         ></i>
                       )}
+                    </td>
+                    <td>
+                      {" "}
+                      <i
+                        className="fas fa-trash-alt"
+                        style={{ color: "gray" }}
+                        onClick={() => removeItem(element._id)}
+                      ></i>
                     </td>
                   </tr>
                 );

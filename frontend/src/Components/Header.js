@@ -48,7 +48,7 @@ function Header() {
                     Profil
                   </Link>
                   <li className="header__profil-choice" onClick={handleLogout}>
-                    Logout
+                    Déconnexion
                   </li>
                 </ul>
               </div>
@@ -68,15 +68,15 @@ function Header() {
                 </button>
                 <ul>
                   <Link to="/admin/users" className="header__profil-choice">
-                    All Users
+                    Utilisateurs
                   </Link>
 
                   <Link to="/admin/orders" className="header__profil-choice">
-                    All Orders
+                    Commandes
                   </Link>
 
                   <Link to="/admin/product" className="header__profil-choice">
-                    All Product
+                    Produits
                   </Link>
                 </ul>
               </div>
