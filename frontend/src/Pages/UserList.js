@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { listOfUsers } from "../redux/actions/userActions";
+import { deleteUser, listOfUsers } from "../redux/actions/userActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
@@ -18,13 +18,21 @@ function UserList() {
     users: usersMyList,
   } = usersList;
 
+  const deleteTheUser = useSelector((state) => state.UserDelete);
+  const {
+    error: errorDelete,
+    success: successDelete,
+    loading: loadingDelete,
+  } = deleteTheUser;
+
   const removeItem = (id) => {
     console.log(`Your user ${id} have been deleted`);
+    dispatch(deleteUser(id));
   };
 
   useEffect(() => {
     dispatch(listOfUsers());
-  }, [dispatch]);
+  }, [dispatch, successDelete]);
 
   return (
     <div className="userList__container-customer">

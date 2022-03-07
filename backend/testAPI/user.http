@@ -44,10 +44,9 @@ POST http://localhost:5000/api/users/
 Content-Type: application/json
 
 {
-    "name": "Admin",
-    "email": "admin@exemple.com",
-    "password" : "abcdef",
-    "isAdmin" : "true"
+    "name": "Test2",
+    "email": "test2@exemple.com",
+    "password" : "abcdef"
 }
 
 ###
@@ -66,7 +65,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmY
 
 # Delete User
 # DELETED METHOD
-DELETE http://localhost:5000/api/users/620d1220e2d527c28a5e8c6d
+DELETE http://localhost:5000/api/users/62261c981b3e6e5d45bd8b3e
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0NjYwNjk0NCwiZXhwIjoxNjUwMDYyOTQ0fQ.wGL3_47nQTd1g2mIIQmrfeUU_5sPGooeEUNgTcsIMtc
 

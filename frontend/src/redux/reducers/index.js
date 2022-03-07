@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 import { productsReducer, productDetailReducer } from "./productsReducer";
 import { cartReducer } from "./cartReducer";
 import {
+  userDeleteReducer,
   userInfoReducer,
   userListReducer,
   userLoginReducer,
@@ -26,6 +27,7 @@ const reducers = combineReducers({
   UserRegister: userRegisterReducer,
   UserInfo: userInfoReducer,
   UserUpdateProfil: userUpdateProfilReducer,
+  UserDelete: userDeleteReducer,
   CreateOrder: createOrderReducer,
   DetailOrder: detailOrderReducer,
   OrderPay: orderPayReducer,
