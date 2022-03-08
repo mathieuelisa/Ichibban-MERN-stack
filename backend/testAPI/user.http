@@ -63,10 +63,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmY
 
 ###
 
-# Delete User
+# Delete in Admin
 # DELETED METHOD
 DELETE http://localhost:5000/api/users/62261c981b3e6e5d45bd8b3e
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0NjYwNjk0NCwiZXhwIjoxNjUwMDYyOTQ0fQ.wGL3_47nQTd1g2mIIQmrfeUU_5sPGooeEUNgTcsIMtc
+
+###
+
+# Find user profile in Admin
+# GET METHOD
+GET http://localhost:5000/api/users/62090a419aa65ec46c090637
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0Njc0MDQ5MSwiZXhwIjoxNjUwMTk2NDkxfQ.KJLCarSZmoLd9VM3EEI1ln7wYIv4qp8JAqqQ15GTpeQ
+
+###
+
+# Update Users in Admin
+# PUT METHOD
+PUT http://localhost:5000/api/users/62090a419aa65ec46c090637
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0Njc0MDQ5MSwiZXhwIjoxNjUwMTk2NDkxfQ.KJLCarSZmoLd9VM3EEI1ln7wYIv4qp8JAqqQ15GTpeQ
+
+{
+    "name": "Mathieu",
+    "isAdmin" : true
+}
 
 ###
