@@ -186,8 +186,6 @@ export const listOfUsers = () => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/users`, config);
 
     dispatch({ type: USER_LIST_SUCCESSFUL, payload: data });
-
-    localStorage.setItem("userInformations", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LIST_FAIL,
@@ -219,11 +217,9 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/users/${id}`, config);
+    await axios.delete(`/api/users/${id}`, config);
 
     dispatch({ type: USER_DELETE_SUCCESSFUL });
-
-    localStorage.setItem("userInformations", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_DELETE_FAIL,

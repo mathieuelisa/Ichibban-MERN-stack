@@ -129,7 +129,10 @@ function OrderDetails() {
                   <h4 className="order__container-parts-shipping-title">
                     {order.user.name.replace(/\b\w/g, (c) => c.toUpperCase())}
                   </h4>
-                  <a href={`mailto:${order.user.email}`}>
+                  <a
+                    href={`mailto:${order.user.email}`}
+                    className="anchor__orderDetails"
+                  >
                     <h4 className="order__container-parts-shipping-title-email">
                       {order.user.email}
                     </h4>

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
@@ -10,6 +12,7 @@ import ErrorMessage from "../Components/ErrorMessage";
 
 function UserList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const usersList = useSelector((state) => state.UserList);
 
   const {
@@ -25,44 +28,57 @@ function UserList() {
     loading: loadingDelete,
   } = deleteTheUser;
 
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformation } = userLogin;
+
   const removeItem = (id) => {
     console.log(`Your user ${id} have been deleted`);
     dispatch(deleteUser(id));
   };
 
   useEffect(() => {
-    dispatch(listOfUsers());
+    if (userInformation && userInformation.isAdmin) {
+      dispatch(listOfUsers());
+    } else {
+      navigate("/login");
+    }
   }, [dispatch, successDelete]);
 
   return (
     <div className="userList__container-customer">
       <h2 className="userList__container-title">UTILISATEURS</h2>
       <div>
-        <table className="tableau-style">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NOMS</th>
-              <th>EMAILS</th>
-              <th>ADMINISTRATEURS</th>
-              <th>DETAILS</th>
-            </tr>
-          </thead>
-
-          {loadingUserList ? (
-            <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-          ) : errorUserList ? (
-            <ErrorMessage textClassName="redError">
-              Sorry, we have a problem about your list
-            </ErrorMessage>
-          ) : (
+        {loadingUserList ? (
+          <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+        ) : errorUserList ? (
+          <ErrorMessage textClassName="redError">
+            Sorry, we have a problem about your list
+          </ErrorMessage>
+        ) : (
+          <table className="tableau-style">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NOMS</th>
+                <th>EMAILS</th>
+                <th>ADMINISTRATEURS</th>
+                <th>DETAILS</th>
+              </tr>
+            </thead>
             <tbody>
               {usersMyList.map((element) => {
                 return (
                   <tr key={element._id}>
                     <td>{element._id}</td>
                     <td>{element.name}</td>
-                    <td>{element.email}</td>
+                    <td>
+                      <a
+                        href={`mailto:${element.email}`}
+                        className="anchor__userList"
+                      >
+                        {element.email}
+                      </a>
+                    </td>
                     <td>
                       {element.isAdmin ? (
                         <i
@@ -78,7 +94,12 @@ function UserList() {
                     </td>
                     <td>
                       {" "}
-                      <i className="fas fa-edit" style={{ color: "gray" }}></i>
+                      <Link to={`/user/${element._id}/edit`}>
+                        <i
+                          className="fas fa-edit"
+                          style={{ color: "gray" }}
+                        ></i>
+                      </Link>
                       <i
                         className="fas fa-trash-alt"
                         style={{ color: "gray" }}
@@ -89,8 +110,8 @@ function UserList() {
                 );
               })}
             </tbody>
-          )}
-        </table>
+          </table>
+        )}
       </div>
     </div>
   );

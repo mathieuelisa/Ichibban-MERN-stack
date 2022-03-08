@@ -1087,6 +1087,14 @@
   text-decoration: underline;
 }
 
+.anchor__orderDetails {
+  text-decoration: none;
+
+  &:hover {
+    color: red;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .order__container {
     height: auto;
@@ -1186,4 +1194,12 @@ td {
 
 .fa-trash-alt {
   cursor: pointer;
+}
+
+.anchor__userList {
+  text-decoration: none;
+
+  &:hover {
+    color: grey;
+  }
 }

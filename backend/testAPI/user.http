@@ -44,8 +44,8 @@ POST http://localhost:5000/api/users/
 Content-Type: application/json
 
 {
-    "name": "Test2",
-    "email": "test2@exemple.com",
+    "name": "Test4",
+    "email": "test4@exemple.fr",
     "password" : "abcdef"
 }
 
