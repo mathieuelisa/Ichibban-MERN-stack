@@ -16,19 +16,19 @@ function UserEdit() {
   const userInfo = useSelector((state) => state.UserInfo);
   const { user, error, loading } = userInfo;
 
-  //   const userLogin = useSelector((state) => state.UserLogin);
-  //   const { userInformation } = userLogin;
-
-  //   const userUpdateProfil = useSelector((state) => state.UserUpdateProfil);
-  //   const { success } = userUpdateProfil;
-
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [isAdmin, setIsAdmin] = useState(user.isAdmin);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    dispatch(getUserDetails(id));
-  }, [dispatch, id]);
+    if (!user.name || user._id !== id) {
+      dispatch(getUserDetails(id));
+    } else {
+      setName(user.name);
+      setEmail(user.email);
+      setIsAdmin(user.isAdmin);
+    }
+  }, [dispatch, user, id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,11 +65,10 @@ function UserEdit() {
                 type="checkbox"
                 // id="isAdmin"
                 // name="isAdmin"
-                value={isAdmin}
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               />
-              isAdmin
+              is Admin
             </label>
 
             <button className="register__form-button-validate">
