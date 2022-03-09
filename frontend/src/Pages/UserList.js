@@ -42,7 +42,7 @@ function UserList() {
     } else {
       navigate("/login");
     }
-  }, [dispatch, successDelete]);
+  }, [dispatch, successDelete, navigate, userInformation]);
 
   return (
     <div className="userList__container-customer">
@@ -94,7 +94,7 @@ function UserList() {
                     </td>
                     <td>
                       {" "}
-                      <Link to={`/user/${element._id}/edit`}>
+                      <Link to={`/admin/user/${element._id}/edit`}>
                         <i
                           className="fas fa-edit"
                           style={{ color: "gray" }}

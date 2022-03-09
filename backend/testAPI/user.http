@@ -63,7 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWQ1NWJmY
 
 ###
 
-# Delete in Admin
+# Delete user in Admin
 # DELETED METHOD
 DELETE http://localhost:5000/api/users/62261c981b3e6e5d45bd8b3e
 Content-Type: application/json
