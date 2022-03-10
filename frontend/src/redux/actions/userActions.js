@@ -230,3 +230,8 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const USER_UPDATE_REQUEST = "user_update_request";
+export const USER_UPDATE_SUCCESSFUL = "user_update_successful";
+export const USER_UPDATE_FAIL = "user_update_fail";
+export const USER_UPDATE_RESET = "user_update_reset";
