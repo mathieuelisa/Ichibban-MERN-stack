@@ -201,7 +201,7 @@ export const USER_DELETE_REQUEST = "user_delete_request";
 export const USER_DELETE_SUCCESSFUL = "user_delete_successful";
 export const USER_DELETE_FAIL = "user_delete_fail";
 
-// Delete one user
+// Delete one user admin
 export const deleteUser = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_DELETE_REQUEST });
@@ -235,3 +235,34 @@ export const USER_UPDATE_REQUEST = "user_update_request";
 export const USER_UPDATE_SUCCESSFUL = "user_update_successful";
 export const USER_UPDATE_FAIL = "user_update_fail";
 export const USER_UPDATE_RESET = "user_update_reset";
+
+// update user admin
+export const updateUser = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_UPDATE_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/users/${user._id}`, user, config);
+
+    dispatch({ type: USER_UPDATE_SUCCESSFUL });
+    dispatch({ type: USER_INFO_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
