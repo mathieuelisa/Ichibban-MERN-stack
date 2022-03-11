@@ -1203,3 +1203,27 @@ td {
     color: grey;
   }
 }
+
+.userEdit__back {
+  width: 60px;
+  margin-left: 15px;
+  position: absolute;
+  margin-top: 25px;
+  cursor: pointer;
+
+  &-title {
+    &:hover {
+      color: gray;
+    }
+  }
+}
+
+// PRODUCTSLIST PAGE
+
+.anchor__productList {
+  text-decoration: none;
+
+  &:hover {
+    color: gray;
+  }
+}

@@ -47,6 +47,10 @@ function UserEdit() {
     dispatch(updateUser({ _id: id, name, email, isAdmin }));
   };
 
+  const handleBackButton = () => {
+    navigate("/admin/users");
+  };
+
   return (
     <>
       {errorUpdating && (
@@ -54,6 +58,11 @@ function UserEdit() {
           Une erreur est survenue
         </ErrorMessage>
       )}
+      <div className="userEdit__back">
+        <h4 className="userEdit__back-title" onClick={handleBackButton}>
+          Retour
+        </h4>
+      </div>
       <div className="login__container">
         <div className="register__container-customer">
           <h2>EDIT USER</h2>
@@ -82,8 +91,6 @@ function UserEdit() {
               <label className="register__form-label">
                 <input
                   type="checkbox"
-                  // id="isAdmin"
-                  // name="isAdmin"
                   checked={isAdmin}
                   onChange={(e) => setIsAdmin(e.target.checked)}
                 />
