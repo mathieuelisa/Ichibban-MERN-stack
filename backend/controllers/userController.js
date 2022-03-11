@@ -119,6 +119,8 @@ const userController = {
     }
   }),
 
+  // Delete profile user in Admin
+  // DELETE request
   deleteUser: asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
 

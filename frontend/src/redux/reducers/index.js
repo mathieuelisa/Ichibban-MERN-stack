@@ -1,7 +1,11 @@
 import { combineReducers } from "redux";
 
 // Reducers
-import { productsReducer, productDetailReducer } from "./productsReducer";
+import {
+  productsReducer,
+  productDetailReducer,
+  productDeleteReducer,
+} from "./productsReducer";
 import { cartReducer } from "./cartReducer";
 import {
   userDeleteReducer,
@@ -22,6 +26,7 @@ import {
 // Setting each reducers
 const reducers = combineReducers({
   ListProducts: productsReducer,
+  ProductDelete: productDeleteReducer,
   ListDetailProduct: productDetailReducer,
   Cart: cartReducer,
   UserLogin: userLoginReducer,

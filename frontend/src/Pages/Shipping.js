@@ -66,15 +66,6 @@ function Shipping() {
               </label>
 
               <label className="shipping__form-label">
-                {/* <input
-                type="text"
-                name="country"
-                value={country}
-                required
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="PAYS"
-                className="shipping__form-inputs"
-              /> */}
                 <select
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}

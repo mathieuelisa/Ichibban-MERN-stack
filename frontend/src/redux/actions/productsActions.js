@@ -41,3 +41,36 @@ export const productDetailList = (id) => async (dispatch) => {
     });
   }
 };
+
+// A verifier
+export const PRODUCT_DELETE_REQ = "product_delete_req";
+export const PRODUCT_DELETE_SUCCESSFUL = "product_delete_successful";
+export const PRODUCT_DELETE_FAIL = "product_delete_fail";
+
+export const deleteProduct = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: PRODUCT_DELETE_REQ });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    await axios.delete(`/api/products/${id}`, config);
+
+    dispatch({ type: PRODUCT_DELETE_SUCCESSFUL });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};

@@ -14,7 +14,6 @@ function UserList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const usersList = useSelector((state) => state.UserList);
-
   const {
     error: errorUserList,
     loading: loadingUserList,
@@ -23,9 +22,9 @@ function UserList() {
 
   const deleteTheUser = useSelector((state) => state.UserDelete);
   const {
-    error: errorDelete,
+    // error: errorDelete,
     success: successDelete,
-    loading: loadingDelete,
+    // loading: loadingDelete,
   } = deleteTheUser;
 
   const userLogin = useSelector((state) => state.UserLogin);

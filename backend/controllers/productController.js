@@ -20,6 +20,19 @@ const productsController = {
       res.status(404).json({ message: "Your products is not found sorry" });
     }
   }),
+
+  // a verifier pour delete product admin
+  deleteProduct: asyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      await product.remove();
+      res.json({ message: "Product removed" });
+    } else {
+      res.status(404);
+      throw new Error("Problem with removing products...");
+    }
+  }),
 };
 
 export default productsController;

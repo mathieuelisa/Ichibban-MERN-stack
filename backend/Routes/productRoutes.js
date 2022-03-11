@@ -9,4 +9,7 @@ const router = express.Router();
 router.get("/", productsController.getProducts);
 router.get("/:id", productsController.getProductById);
 
+// A verifier pour delete product en admin
+router.delete("/:id", protect, isAdmin, productsController.deleteProduct);
+
 export default router;

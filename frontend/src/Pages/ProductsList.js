@@ -1,27 +1,38 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { productList } from "../redux/actions/productsActions";
+import { deleteProduct, productList } from "../redux/actions/productsActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
 function ProductsList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const ListProducts = useSelector((state) => state.ListProducts);
-  const { loading, products, error } = ListProducts;
+  const {
+    loading: loadingProducts,
+    products,
+    error: errorProducts,
+  } = ListProducts;
+
+  const productDelete = useSelector((state) => state.ProductDelete);
+  const { success: successDeleteProduct } = productDelete;
 
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
   const removeItem = (id) => {
-    console.log(`Your user ${id} have been deleted`);
+    console.log(`Your product ${id} have been deleted`);
+    dispatch(deleteProduct(id));
+  };
+
+  const handleAddingProduct = () => {
+    console.log("Product added");
   };
 
   useEffect(() => {
@@ -30,15 +41,23 @@ function ProductsList() {
     } else {
       navigate("/login");
     }
-  }, [dispatch, navigate, userInformation]);
+  }, [dispatch, navigate, userInformation, successDeleteProduct]);
 
   return (
     <div className="userList__container-customer">
       <h2 className="userList__container-title">PRODUITS</h2>
       <div>
-        {loading ? (
+        <button
+          onClick={handleAddingProduct}
+          className="product__container-button-valide"
+        >
+          Ajouter un produit
+        </button>
+      </div>
+      <div>
+        {loadingProducts ? (
           <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-        ) : error ? (
+        ) : errorProducts ? (
           <ErrorMessage textClassName="redError">
             Sorry, we have a problem about your list
           </ErrorMessage>
