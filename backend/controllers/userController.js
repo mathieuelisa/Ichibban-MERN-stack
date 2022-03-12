@@ -8,6 +8,7 @@ import generateToken from "../utils/usersJsonWebToken.js";
 const userController = {
   // Get all users
   // GET request
+  // ADMIN
   getAllUsers: asyncHandler(async (req, res) => {
     let user = await User.find();
 
@@ -121,6 +122,7 @@ const userController = {
 
   // Delete profile user in Admin
   // DELETE request
+  // ADMIN
   deleteUser: asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
 
@@ -148,6 +150,7 @@ const userController = {
 
   // Update profile in Admin
   // PUT request
+  // ADMIN
   updateUser: asyncHandler(async (req, res) => {
     let user = await User.findById(req.params.id);
 

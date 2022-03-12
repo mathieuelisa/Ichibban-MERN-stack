@@ -14,7 +14,7 @@ POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
- "email": "admin@exemple.com",
+ "email": "admin@exemple.fr",
  "password": "abcdef"
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 # GET METHOD
 GET http://localhost:5000/api/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjUzYTYwYjQ4ZTcwZTQ0ZGEzNTU3OSIsImlhdCI6MTY0NjYwNjk0NCwiZXhwIjoxNjUwMDYyOTQ0fQ.wGL3_47nQTd1g2mIIQmrfeUU_5sPGooeEUNgTcsIMtc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkOWY1N2NkNGI4MTdiNzg3NiIsImlhdCI6MTY0NzExNTk4NCwiZXhwIjoxNjUwNTcxOTg0fQ.nK34z3mruGkEAz8kMgZLuwo5rWmmiRobeY2zlm5xngA
 
 ###
 
