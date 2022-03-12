@@ -19,7 +19,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkO
 ###
 
 // @ PUT for update product
-GET http://localhost:5000/api/products/61ed55c0c938c2dc6b20c007
-Accept: application/json
+PUT http://localhost:5000/api/products/622cff637fe21ab54144ea23
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkOWY1N2NkNGI4MTdiNzg3NiIsImlhdCI6MTY0NzExNTk4NCwiZXhwIjoxNjUwNTcxOTg0fQ.nK34z3mruGkEAz8kMgZLuwo5rWmmiRobeY2zlm5xngA
+
+{
+      "image" : "/images/sample.jpg",
+      "name" : "update name",
+      "user" : "622c8b6d9f57cd4b817b7876",
+      "description" : "update description",
+      "brand" : "update brand",
+      "category" : "update category",
+      "price" : 100,
+      "countInStock" : 90,
+      "numReviews" : 10
+}
+
 ###
