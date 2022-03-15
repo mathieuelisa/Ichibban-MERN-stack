@@ -31,8 +31,8 @@ function ProductsList() {
     dispatch(deleteProduct(id));
   };
 
-  const handleAddingProduct = () => {
-    console.log("Product added");
+  const handleCreatingProduct = () => {
+    console.log("Product created");
   };
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function ProductsList() {
       <h2 className="userList__container-title">PRODUITS</h2>
       <div>
         <button
-          onClick={handleAddingProduct}
+          onClick={handleCreatingProduct}
           className="product__container-button-valide"
         >
           Ajouter un produit

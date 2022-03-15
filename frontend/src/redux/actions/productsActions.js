@@ -42,7 +42,6 @@ export const productDetailList = (id) => async (dispatch) => {
   }
 };
 
-// A verifier
 export const PRODUCT_DELETE_REQ = "product_delete_req";
 export const PRODUCT_DELETE_SUCCESSFUL = "product_delete_successful";
 export const PRODUCT_DELETE_FAIL = "product_delete_fail";
@@ -74,3 +73,8 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const PRODUCT_CREATE_REQ = "product_create_req";
+export const PRODUCT_CREATE_SUCCESSFUL = "product_create_successful";
+export const PRODUCT_CREATE_FAIL = "product_create_fail";
+export const PRODUCT_CREATE_RESET = "product_create_reset";

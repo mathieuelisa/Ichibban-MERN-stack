@@ -89,6 +89,7 @@ const orderController = {
 
   // Get all orders
   // GET request
+  // ADMIN
   getAllOrder: asyncHandler(async (req, res) => {
     const order = await Order.find();
 
