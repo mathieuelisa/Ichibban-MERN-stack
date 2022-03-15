@@ -78,3 +78,31 @@ export const PRODUCT_CREATE_REQ = "product_create_req";
 export const PRODUCT_CREATE_SUCCESSFUL = "product_create_successful";
 export const PRODUCT_CREATE_FAIL = "product_create_fail";
 export const PRODUCT_CREATE_RESET = "product_create_reset";
+
+export const createProduct = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: PRODUCT_CREATE_REQ });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.post(`/api/products`, {}, config);
+
+    dispatch({ type: PRODUCT_CREATE_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
