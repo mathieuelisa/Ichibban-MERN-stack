@@ -6,7 +6,12 @@ import { useNavigate } from "react-router";
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { deleteProduct, productList } from "../redux/actions/productsActions";
+import {
+  createProduct,
+  deleteProduct,
+  productList,
+  PRODUCT_CREATE_RESET,
+} from "../redux/actions/productsActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
@@ -26,22 +31,45 @@ function ProductsList() {
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
+  const productCreate = useSelector((state) => state.ProductCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    product,
+    success: successCreate,
+  } = productCreate;
+
   const removeItem = (id) => {
     console.log(`Your product ${id} have been deleted`);
     dispatch(deleteProduct(id));
   };
 
   const handleCreatingProduct = () => {
-    console.log("Product created");
+    dispatch(createProduct());
   };
 
+  console.log(successCreate);
+
   useEffect(() => {
-    if (userInformation && userInformation.isAdmin) {
-      dispatch(productList());
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+
+    if (!userInformation.isAdmin) {
       navigate("/login");
     }
-  }, [dispatch, navigate, userInformation, successDeleteProduct]);
+
+    if (successCreate) {
+      navigate(`/admin/product/${product._id}/edit`);
+    } else {
+      dispatch(productList());
+    }
+  }, [
+    dispatch,
+    navigate,
+    userInformation,
+    successDeleteProduct,
+    successCreate,
+    product,
+  ]);
 
   return (
     <div className="userList__container-customer">
