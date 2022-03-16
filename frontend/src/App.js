@@ -23,6 +23,7 @@ import OrderDetails from "./Pages/OrderDetails";
 import UserList from "./Pages/UserList";
 import UserEdit from "./Pages/UserEdit";
 import ProductsList from "./Pages/ProductsList";
+import ProductEdit from "./Pages/ProductEdit";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
           <Route path="/admin/product" element={<ProductsList />} />
+          <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
           <Route path="/admin/user/:id/edit" element={<UserEdit />} />
           <Route path="/admin/users" element={<UserList />} />
         </Routes>

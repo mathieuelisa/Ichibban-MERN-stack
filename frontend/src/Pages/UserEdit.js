@@ -65,7 +65,7 @@ function UserEdit() {
       </div>
       <div className="login__container">
         <div className="register__container-customer">
-          <h2>EDIT USER</h2>
+          <h2>MISE A JOUR DES UTILISATEURS</h2>
           <div className="register__container-customer-form">
             <form className="register__form" onSubmit={handleSubmit}>
               <label className="register__form-label">
@@ -97,7 +97,7 @@ function UserEdit() {
                 is Admin
               </label>
 
-              <button className="register__form-button-validate">
+              <button className="product__container-button-valide">
                 MISE A JOUR
               </button>
             </form>

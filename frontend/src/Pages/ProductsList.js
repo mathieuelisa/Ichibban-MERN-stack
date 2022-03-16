@@ -40,7 +40,6 @@ function ProductsList() {
   } = productCreate;
 
   const removeItem = (id) => {
-    console.log(`Your product ${id} have been deleted`);
     dispatch(deleteProduct(id));
   };
 
@@ -49,6 +48,7 @@ function ProductsList() {
   };
 
   console.log(successCreate);
+  console.log(product);
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
@@ -82,7 +82,7 @@ function ProductsList() {
           Ajouter un produit
         </button>
       </div>
-      <div>
+      <div className="product__container-listing">
         {loadingProducts ? (
           <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
         ) : errorProducts ? (
@@ -91,7 +91,7 @@ function ProductsList() {
           </ErrorMessage>
         ) : (
           <table className="tableau-style">
-            <thead>
+            <thead className="product__container-thead">
               <tr>
                 <th>ID</th>
                 <th>NOMS</th>
@@ -101,7 +101,7 @@ function ProductsList() {
                 <th>DETAILS</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="product__container-tbody">
               {products.map((element) => {
                 return (
                   <tr key={element._id}>
