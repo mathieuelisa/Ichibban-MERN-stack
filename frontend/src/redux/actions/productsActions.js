@@ -106,3 +106,8 @@ export const createProduct = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const PRODUCT_UPDATE_REQ = "product_update_req";
+export const PRODUCT_UPDATE_SUCCESSFUL = "product_update_successful";
+export const PRODUCT_UPDATE_FAIL = "product_update_fail";
+export const PRODUCT_UPDATE_RESET = "product_update_reset";
