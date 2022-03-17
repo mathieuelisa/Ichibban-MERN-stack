@@ -111,3 +111,37 @@ export const PRODUCT_UPDATE_REQ = "product_update_req";
 export const PRODUCT_UPDATE_SUCCESSFUL = "product_update_successful";
 export const PRODUCT_UPDATE_FAIL = "product_update_fail";
 export const PRODUCT_UPDATE_RESET = "product_update_reset";
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: PRODUCT_UPDATE_REQ });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/products/${product._id}`,
+      product,
+      config
+    );
+
+    dispatch({ type: PRODUCT_UPDATE_SUCCESSFUL, payload: data });
+    dispatch({ type: PRODUCT_DETAIL_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};

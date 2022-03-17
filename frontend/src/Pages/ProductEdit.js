@@ -6,7 +6,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
-import { productDetailList } from "../redux/actions/productsActions";
+import {
+  productDetailList,
+  PRODUCT_UPDATE_RESET,
+  updateProduct,
+} from "../redux/actions/productsActions";
 
 function ProductEdit() {
   const dispatch = useDispatch();
@@ -16,6 +20,15 @@ function ProductEdit() {
   const productInfos = useSelector((state) => state.ListDetailProduct);
   const { product, error: errorProductInfos } = productInfos;
 
+  const update = useSelector((state) => state.ProductUpdate);
+  const {
+    error: errorProductUpdate,
+    success: successUpdate,
+    loading: loadingUpdate,
+  } = update;
+
+  const [user, setUser] = useState("");
+  const [numReviews, setNumReviews] = useState(0);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
@@ -25,22 +38,42 @@ function ProductEdit() {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    if (!product.name || product._id !== id) {
-      dispatch(productDetailList(id));
+    if (successUpdate) {
+      dispatch({ type: PRODUCT_UPDATE_RESET });
+      navigate("/admin/product");
     } else {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setCountInStock(product.countInStock);
-      setDescription(product.description);
+      if (!product.name || product._id !== id) {
+        dispatch(productDetailList(id));
+      } else {
+        setUser(product.user);
+        setNumReviews(product.numReviews);
+        setName(product.name);
+        setPrice(product.price);
+        setImage(product.image);
+        setBrand(product.brand);
+        setCategory(product.category);
+        setCountInStock(product.countInStock);
+        setDescription(product.description);
+      }
     }
-  }, [dispatch, product, id]);
+  }, [dispatch, product, id, navigate, successUpdate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Your product have been updated");
+    dispatch(
+      updateProduct({
+        _id: id,
+        numReviews,
+        user,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
+      })
+    );
   };
 
   const handleBackButton = () => {
