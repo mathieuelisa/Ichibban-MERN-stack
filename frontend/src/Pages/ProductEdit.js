@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-// import LoaderSpinner from "../Components/LoaderSpinner";
-// import loadingLogo from "../Assets/Images/spinner2.gif";
+import LoaderSpinner from "../Components/LoaderSpinner";
+import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import ErrorMessage from "../Components/ErrorMessage";
 
@@ -82,9 +82,19 @@ function ProductEdit() {
 
   return (
     <>
+      {errorProductUpdate && (
+        <ErrorMessage textClassName="redError">
+          Une erreur est survenue au niveau de la mise à jour
+        </ErrorMessage>
+      )}
+
+      {loadingUpdate && (
+        <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+      )}
+
       {errorProductInfos && (
         <ErrorMessage textClassName="redError">
-          Une erreur est survenue
+          Une erreur est survenue au niveau de l'affichage des produits
         </ErrorMessage>
       )}
       <div className="userEdit__back">

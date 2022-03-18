@@ -36,6 +36,7 @@ With this application you can manage some stuff like: add, remove, update produc
 - **JsonWebToken**
 - **Bcrypt**
 - **REST API**
+- **Multer**
 
 ### DEPLOYMENT
 
