@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
@@ -36,6 +37,7 @@ function ProductEdit() {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (successUpdate) {
@@ -78,6 +80,27 @@ function ProductEdit() {
 
   const handleBackButton = () => {
     navigate("/admin/product");
+  };
+
+  const uploadImageHandle = async (e) => {
+    const file = e.target.files[0];
+    const fd = new FormData();
+    fd.append("image", file);
+    setUploading(true);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const { data } = await axios.post("/api/upload", fd, config);
+
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
   };
 
   return (
@@ -129,9 +152,8 @@ function ProductEdit() {
 
               <label className="register__form-label">
                 <input
-                  type="text"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  type="file"
+                  onChange={uploadImageHandle}
                   placeholder="IMAGE"
                   className="register__form-inputs"
                 />
