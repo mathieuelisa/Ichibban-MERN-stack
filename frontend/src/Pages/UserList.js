@@ -60,7 +60,7 @@ function UserList() {
                 <th>ID</th>
                 <th>NOMS</th>
                 <th>EMAILS</th>
-                <th>ADMINISTRATEURS</th>
+                <th>ADMIN</th>
                 <th>DETAILS</th>
               </tr>
             </thead>

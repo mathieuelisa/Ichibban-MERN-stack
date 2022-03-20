@@ -73,7 +73,7 @@ function Profil() {
   return (
     <div className="login__container">
       <div className="register__container-customer">
-        <h2>INFORMATIONS PERSONNELLES</h2>
+        <h2 className="userList__container-title">INFORMATIONS PERSONNELLES</h2>
         <div className="register__container-customer-form">
           <form className="register__form" onSubmit={handleSubmit}>
             {loading && (

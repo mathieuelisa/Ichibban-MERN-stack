@@ -111,9 +111,10 @@ function ProductEdit() {
         </ErrorMessage>
       )}
 
-      {loadingUpdate && (
-        <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-      )}
+      {loadingUpdate ||
+        (uploading && (
+          <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+        ))}
 
       {errorProductInfos && (
         <ErrorMessage textClassName="redError">
@@ -127,7 +128,9 @@ function ProductEdit() {
       </div>
       <div className="login__container">
         <div className="register__container-customer">
-          <h2>MISE A JOUR DES PRODUITS</h2>
+          <h2 className="userList__container-title">
+            MISE A JOUR DES PRODUITS
+          </h2>
           <div className="register__container-customer-form">
             <form className="register__form" onSubmit={handleSubmit}>
               <label className="register__form-label">
