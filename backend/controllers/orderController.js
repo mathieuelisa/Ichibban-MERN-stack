@@ -55,7 +55,7 @@ const orderController = {
     }
   }),
 
-  // Update order
+  // Update paid order
   // PUT request
   updateOrderPaid: asyncHandler(async (req, res) => {
     let order = await Order.findById(req.params.id);
@@ -69,6 +69,24 @@ const orderController = {
           update_time: req.body.update_time,
           email_address: req.body.payer.email_address,
         });
+
+      const newUpdateOrder = await order.save();
+
+      res.json(newUpdateOrder);
+    } else {
+      res.status(404);
+      throw new Error("Order not found");
+    }
+  }),
+
+  // Update delivered order
+  // PUT request
+  // ADMIN
+  updateOrderDelivered: asyncHandler(async (req, res) => {
+    let order = await Order.findById(req.params.id);
+
+    if (order) {
+      (order.isDelivered = true), (order.deliveredAt = Date.now());
 
       const newUpdateOrder = await order.save();
 

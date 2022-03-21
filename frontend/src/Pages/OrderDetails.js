@@ -24,6 +24,9 @@ function OrderDetails() {
   const orderPay = useSelector((state) => state.OrderPay);
   const { success: successPay, loading: loadingPay } = orderPay;
 
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformation } = userLogin;
+
   if (!loading) {
     order.itemsPrice = order.orderItems.reduce(
       (acc, curr) => acc + curr.quantity * curr.price,
@@ -61,6 +64,10 @@ function OrderDetails() {
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
     dispatch(payOrder(id, paymentResult));
+  };
+
+  const handleDeliveredOrder = () => {
+    console.log("Votre produits a bien ete livré");
   };
 
   return loading ? (
@@ -221,6 +228,15 @@ function OrderDetails() {
                     />
                   )}
                 </>
+              )}
+
+              {userInformation && userInformation.isAdmin && (
+                <button
+                  onClick={handleDeliveredOrder}
+                  className="product__container-button-valide"
+                >
+                  Produit delivré
+                </button>
               )}
             </div>
           </div>

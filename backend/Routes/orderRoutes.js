@@ -10,5 +10,11 @@ router.get("/", protect, isAdmin, orderController.getAllOrder);
 router.get("/myorders", protect, orderController.getMyOrders);
 router.get("/:id", protect, orderController.getOrderById);
 router.put("/:id/pay", protect, orderController.updateOrderPaid);
+router.put(
+  "/:id/deliver",
+  protect,
+  isAdmin,
+  orderController.updateOrderDelivered
+);
 
 export default router;

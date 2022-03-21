@@ -14,8 +14,8 @@ Whats the Mern stack ?
 
 ## MY PROJECT
 
-Ichibban is an application that tries to combine originality and design.
-With this application you can manage some stuff like: add, remove, update products. You can also pay with stripe API.
+Ichibban is an application that tries to combine originality and minimalist design.
+With this application you can manage some stuff like: add, remove, update products/order or users.<br> You can also simulate a payment with paypal API.
 
 ## TECHNICAL STACK
 
@@ -31,7 +31,7 @@ With this application you can manage some stuff like: add, remove, update produc
 
 - **Node JS**
 - **Express JS**
-- **Stripe API**
+- **Paypal API**
 - **MongoDB / Mongoose**
 - **JsonWebToken**
 - **Bcrypt**
@@ -65,4 +65,4 @@ yarn install && npm install
 yarn start
 ```
 
-5. Upload your pictures, add descriptions and manage your items.
+5. Upload your pictures, add informations and descriptions and manage your items.
