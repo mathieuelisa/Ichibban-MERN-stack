@@ -108,7 +108,7 @@ export const ORDER_DELIVERED_SUCCESSFUL = "order_delivered_successful";
 export const ORDER_DELIVERED_FAIL = "order_delivered_fail";
 export const ORDER_DELIVERED_RESET = "order_delivered_reset";
 
-export const deliveredOrder = (id) => async (dispatch, getState) => {
+export const deliveredOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_DELIVERED_REQUEST });
 
@@ -122,7 +122,11 @@ export const deliveredOrder = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/orders/${id}/deliver`, config);
+    const { data } = await axios.put(
+      `/api/orders/${order._id}/deliver`,
+      {},
+      config
+    );
 
     dispatch({ type: ORDER_DELIVERED_SUCCESSFUL, payload: data });
   } catch (error) {

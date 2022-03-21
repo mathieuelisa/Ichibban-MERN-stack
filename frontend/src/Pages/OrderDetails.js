@@ -1,21 +1,31 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // Components
 import ErrorMessage from "../Components/ErrorMessage";
 import Loader from "../Components/Loader";
 import LoaderSpinner from "../Components/LoaderSpinner";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 // Actions
-import { getOrderDetail, payOrder } from "../redux/actions/orderActions";
-import { ORDER_PAY_RESET } from "../redux/actions/orderActions";
+import {
+  deliveredOrder,
+  getOrderDetail,
+  payOrder,
+} from "../redux/actions/orderActions";
+import {
+  ORDER_PAY_RESET,
+  ORDER_DELIVERED_RESET,
+} from "../redux/actions/orderActions";
 // Paypal Button
 import { PayPalButton } from "react-paypal-button-v2";
 
 function OrderDetails() {
   const [sdkPaypalReady, setSdkPaypalReady] = useState(false);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { id } = useParams();
 
   const orderDetail = useSelector((state) => state.DetailOrder);
@@ -23,6 +33,9 @@ function OrderDetails() {
 
   const orderPay = useSelector((state) => state.OrderPay);
   const { success: successPay, loading: loadingPay } = orderPay;
+
+  const orderDelivery = useSelector((state) => state.OrderDelivery);
+  const { success: successDelivery, loading: loadingDelivery } = orderDelivery;
 
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
@@ -49,8 +62,14 @@ function OrderDetails() {
       document.body.appendChild(script);
     };
 
-    if (!order || successPay || order._id !== id) {
+    if (!userInformation.isAdmin) {
+      navigate("/login");
+    }
+
+    if (!order || successPay || successDelivery || order._id !== id) {
       dispatch({ type: ORDER_PAY_RESET });
+      dispatch({ type: ORDER_DELIVERED_RESET });
+
       dispatch(getOrderDetail(id));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -59,15 +78,15 @@ function OrderDetails() {
         setSdkPaypalReady(true);
       }
     }
-  }, [order, id, dispatch, successPay]);
+  }, [order, id, dispatch, successPay, successDelivery, navigate]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(payOrder(id, paymentResult));
   };
 
   const handleDeliveredOrder = () => {
     console.log("Votre produits a bien ete livré");
+    dispatch(deliveredOrder(order));
   };
 
   return loading ? (
@@ -116,12 +135,7 @@ function OrderDetails() {
               <div className="order__container-parts-delivery">
                 <h4>Votre adresse de livraison :</h4>
                 {order.isDelivered ? (
-                  <ErrorMessage
-                    className="order__description-paid"
-                    textClassName="greenError"
-                  >
-                    Commande delivrée
-                  </ErrorMessage>
+                  order.deliveredAt.substring(0, 10)
                 ) : (
                   <ErrorMessage
                     textClassName="redError"
