@@ -136,3 +136,37 @@ export const listMyOrders = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const ORDER_LIST_REQUEST = "order_list_request";
+export const ORDER_LIST_SUCCESSFUL = "order_list_successful";
+export const ORDER_LIST_FAIL = "order_list_fail";
+
+// Get all the orders
+export const ordersList = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_LIST_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/orders`, config);
+
+    dispatch({ type: ORDER_LIST_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};

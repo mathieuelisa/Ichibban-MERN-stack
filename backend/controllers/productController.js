@@ -13,6 +13,7 @@ const productsController = {
 
   // Get one product by ID
   //GET request
+  // ADMIN
   getProductById: asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
 

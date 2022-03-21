@@ -28,11 +28,7 @@ function Profil() {
   const { success } = userUpdateProfil;
 
   const orderListMy = useSelector((state) => state.OrderListMy);
-  const {
-    order: orderList,
-    loading: loadingList,
-    error: errorList,
-  } = orderListMy;
+  const { order: orderList, loading: loadingList } = orderListMy;
 
   const navigate = useNavigate();
 
@@ -79,7 +75,11 @@ function Profil() {
             {loading && (
               <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
             )}
-
+            {error && (
+              <ErrorMessage textClassName="redError">
+                Désolé, nous avons un petit problème avec vos informations.
+              </ErrorMessage>
+            )}
             <label className="register__form-label">
               <input
                 type="text"
@@ -176,12 +176,12 @@ function Profil() {
               {orderList?.map((element, index) => {
                 return (
                   <tr key={index}>
-                    <td>{element._id}</td>
-                    <td>{element.createdAt.substring(0, 10)}</td>
+                    <td>{element._id?.substring(0, 10)}...</td>
+                    <td>{element.createdAt?.substring(0, 10)}</td>
                     <td>{element.totalPrice} €</td>
                     <td>
                       {element.isPaid ? (
-                        element.paidAt.substring(0, 10)
+                        element.paidAt?.substring(0, 10)
                       ) : (
                         <i
                           className="fa-solid fa-xmark"

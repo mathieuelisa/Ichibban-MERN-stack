@@ -24,6 +24,7 @@ import UserList from "./Pages/UserList";
 import UserEdit from "./Pages/UserEdit";
 import ProductsList from "./Pages/ProductsList";
 import ProductEdit from "./Pages/ProductEdit";
+import OrdersList from "./Pages/OrdersList";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<HomePage products={products} />} />
           <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/admin/orders" element={<OrdersList />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/login/shipping" element={<Shipping />} />
@@ -42,7 +44,7 @@ function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
-          <Route path="/admin/product" element={<ProductsList />} />
+          <Route path="/admin/products" element={<ProductsList />} />
           <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
           <Route path="/admin/user/:id/edit" element={<UserEdit />} />
           <Route path="/admin/users" element={<UserList />} />

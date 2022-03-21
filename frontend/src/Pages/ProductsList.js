@@ -33,8 +33,8 @@ function ProductsList() {
 
   const productCreate = useSelector((state) => state.ProductCreate);
   const {
-    loading: loadingCreate,
-    error: errorCreate,
+    // loading: loadingCreate,
+    // error: errorCreate,
     product,
     success: successCreate,
   } = productCreate;
@@ -87,7 +87,7 @@ function ProductsList() {
           <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
         ) : errorProducts ? (
           <ErrorMessage textClassName="redError">
-            Sorry, we have a problem about your list
+            Désolé, nous avons un petit problème avec votre liste de produits.
           </ErrorMessage>
         ) : (
           <table className="tableau-style">

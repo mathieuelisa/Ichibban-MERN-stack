@@ -91,7 +91,7 @@ const orderController = {
   // GET request
   // ADMIN
   getAllOrder: asyncHandler(async (req, res) => {
-    const order = await Order.find();
+    const order = await Order.find({}).populate("user", "id, name");
 
     if (order) {
       res.json(order);

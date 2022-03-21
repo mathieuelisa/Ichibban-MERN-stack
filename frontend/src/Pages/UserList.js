@@ -21,11 +21,7 @@ function UserList() {
   } = usersList;
 
   const deleteTheUser = useSelector((state) => state.UserDelete);
-  const {
-    // error: errorDelete,
-    success: successDelete,
-    // loading: loadingDelete,
-  } = deleteTheUser;
+  const { success: successDelete } = deleteTheUser;
 
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
@@ -51,7 +47,8 @@ function UserList() {
           <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
         ) : errorUserList ? (
           <ErrorMessage textClassName="redError">
-            Sorry, we have a problem about your list
+            Désolé, nous avons un petit problème avec votre liste
+            d'utilisateurs.
           </ErrorMessage>
         ) : (
           <table className="tableau-style">

@@ -75,7 +75,7 @@ function Header() {
                     Commandes
                   </Link>
 
-                  <Link to="/admin/product" className="header__profil-choice">
+                  <Link to="/admin/products" className="header__profil-choice">
                     Produits
                   </Link>
                 </ul>
