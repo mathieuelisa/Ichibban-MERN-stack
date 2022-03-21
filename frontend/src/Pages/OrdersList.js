@@ -68,14 +68,9 @@ function OrdersList() {
 
                     <td>{element.createdAt?.substring(0, 10)}</td>
                     <td>{element.totalPrice} €</td>
-                    <td>{element.paidAt?.substring(0, 10)}</td>
                     <td>
-                      {" "}
-                      {element.isDelivered ? (
-                        <i
-                          className="fa-solid fa-check"
-                          style={{ color: "green" }}
-                        ></i>
+                      {element.paidAt ? (
+                        element.paidAt.substring(0, 10)
                       ) : (
                         <i
                           className="fa-solid fa-xmark"
@@ -85,7 +80,18 @@ function OrdersList() {
                     </td>
                     <td>
                       {" "}
-                      <Link to={`/admin/orders/${element._id}`}>Details</Link>
+                      {element.isDelivered ? (
+                        element.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fa-solid fa-xmark"
+                          style={{ color: "red" }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {" "}
+                      <Link to={`/order/${element._id}`}>Details</Link>
                     </td>
                   </tr>
                 );
