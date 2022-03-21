@@ -66,151 +66,170 @@ function Profil() {
     }
   };
 
+  const handleBackButton = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="login__container">
-      <div className="register__container-customer">
-        <h2 className="userList__container-title">INFORMATIONS PERSONNELLES</h2>
-        <div className="register__container-customer-form">
-          <form className="register__form" onSubmit={handleSubmit}>
-            {loading && (
-              <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-            )}
-            {error && (
-              <ErrorMessage textClassName="redError">
-                Désolé, nous avons un petit problème avec vos informations.
-              </ErrorMessage>
-            )}
-            <label className="register__form-label">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="NOM"
-                className="register__form-inputs"
-              />
-            </label>
-
-            <label className="register__form-label">
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="EMAIL"
-                className="register__form-inputs"
-              />
-            </label>
-
-            <label className="register__form-label">
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="MOT DE PASSE"
-                className="register__form-inputs"
-              />
-            </label>
-
-            <label className="register__form-label">
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="CONFIRMATION DU MOT DE PASSE"
-                className="register__form-inputs"
-              />
-            </label>
-            {message ? (
-              <ErrorMessage textClassName="redError">
-                Veuillez faire en sorte que vos mots de passes correspondent
-              </ErrorMessage>
-            ) : (
-              ""
-            )}
-            <button className="register__form-button-validate">
-              MISE A JOUR
-            </button>
-
-            {success ? (
-              <ErrorMessage textClassName="greenError">
-                Votre profil a été mis à jour
-              </ErrorMessage>
-            ) : (
-              ""
-            )}
-
-            {error ? (
-              <>
-                <ErrorMessage
-                  className="login__container-error"
-                  textClassName="test"
-                >
-                  Une erreur est survenue dans votre mail ou password!
+    <>
+      <div className="userEdit__back">
+        <h4 className="userEdit__back-title" onClick={handleBackButton}>
+          Retour
+        </h4>
+      </div>
+      <div className="login__container">
+        <div className="register__container-customer">
+          <h2 className="userList__container-title">
+            INFORMATIONS PERSONNELLES
+          </h2>
+          <div className="register__container-customer-form">
+            <form className="register__form" onSubmit={handleSubmit}>
+              {loading && (
+                <LoaderSpinner
+                  logoClassName="loaderSpinner"
+                  src={loadingLogo}
+                />
+              )}
+              {error && (
+                <ErrorMessage textClassName="redError">
+                  Désolé, nous avons un petit problème avec vos informations.
                 </ErrorMessage>
-              </>
-            ) : (
-              ""
-            )}
-          </form>
+              )}
+              <label className="register__form-label">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="NOM"
+                  className="register__form-inputs"
+                />
+              </label>
+
+              <label className="register__form-label">
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="EMAIL"
+                  className="register__form-inputs"
+                />
+              </label>
+
+              <label className="register__form-label">
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="MOT DE PASSE"
+                  className="register__form-inputs"
+                />
+              </label>
+
+              <label className="register__form-label">
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="CONFIRMATION DU MOT DE PASSE"
+                  className="register__form-inputs"
+                />
+              </label>
+              {message ? (
+                <ErrorMessage textClassName="redError">
+                  Veuillez faire en sorte que vos mots de passes correspondent
+                </ErrorMessage>
+              ) : (
+                ""
+              )}
+              <button className="product__container-button-valide">
+                MISE A JOUR
+              </button>
+
+              {success ? (
+                <ErrorMessage textClassName="greenError">
+                  Votre profil a été mis à jour
+                </ErrorMessage>
+              ) : (
+                ""
+              )}
+
+              {error ? (
+                <>
+                  <ErrorMessage
+                    className="login__container-error"
+                    textClassName="test"
+                  >
+                    Une erreur est survenue dans votre mail ou password!
+                  </ErrorMessage>
+                </>
+              ) : (
+                ""
+              )}
+            </form>
+          </div>
+        </div>
+
+        <div className="order__container-customer">
+          <h2>MES COMMANDES</h2>
+          <div>
+            <table className="tableau-style">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Prix total</th>
+                  <th>Date de paiement</th>
+                  <th>Livraison</th>
+                  <th>Infos</th>
+                </tr>
+              </thead>
+
+              {loadingList && (
+                <LoaderSpinner
+                  logoClassName="loaderSpinner"
+                  src={loadingLogo}
+                />
+              )}
+              <tbody>
+                {orderList?.map((element, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{element._id?.substring(0, 10)}...</td>
+                      <td>{element.createdAt?.substring(0, 10)}</td>
+                      <td>{element.totalPrice} €</td>
+                      <td>
+                        {element.isPaid ? (
+                          element.paidAt?.substring(0, 10)
+                        ) : (
+                          <i
+                            className="fa-solid fa-xmark"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>
+                        {element.isDelivered ? (
+                          <i
+                            className="fa-solid fa-check"
+                            style={{ color: "green" }}
+                          ></i>
+                        ) : (
+                          <i
+                            className="fa-solid fa-xmark"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>details</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-
-      <div className="order__container-customer">
-        <h2>MES COMMANDES</h2>
-        <div>
-          <table className="tableau-style">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Prix total</th>
-                <th>Date de paiement</th>
-                <th>Livraison</th>
-                <th>Infos</th>
-              </tr>
-            </thead>
-
-            {loadingList && (
-              <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-            )}
-            <tbody>
-              {orderList?.map((element, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{element._id?.substring(0, 10)}...</td>
-                    <td>{element.createdAt?.substring(0, 10)}</td>
-                    <td>{element.totalPrice} €</td>
-                    <td>
-                      {element.isPaid ? (
-                        element.paidAt?.substring(0, 10)
-                      ) : (
-                        <i
-                          className="fa-solid fa-xmark"
-                          style={{ color: "red" }}
-                        ></i>
-                      )}
-                    </td>
-                    <td>
-                      {element.isDelivered ? (
-                        <i
-                          className="fa-solid fa-check"
-                          style={{ color: "green" }}
-                        ></i>
-                      ) : (
-                        <i
-                          className="fa-solid fa-xmark"
-                          style={{ color: "red" }}
-                        ></i>
-                      )}
-                    </td>
-                    <td>details</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 

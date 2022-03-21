@@ -150,6 +150,8 @@
   &-choice {
     cursor: pointer;
     text-decoration: none;
+    font-size: 0.8em;
+    margin: 6px 0;
 
     &:hover {
       color: rgb(206, 30, 30);
@@ -313,6 +315,7 @@
 
   &-name {
     margin-left: 10px;
+    margin-bottom: 10px;
   }
 
   &-price {
@@ -331,6 +334,7 @@
 .product__container-pictures-img {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
   object-fit: cover;
 }
 
@@ -364,21 +368,36 @@
   .product__container {
     flex-direction: column;
     height: auto;
-  }
 
+    &-infos {
+      padding: 0 15px;
+    }
+  }
   .product__container-infos {
     width: 100%;
     height: 30%;
   }
 
   .product__container-pictures {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 70%;
+    margin-left: 0;
+  }
+
+  .product__container-pictures-img {
+    width: 88%;
   }
 
   .product__container-button-valide {
     width: 105px;
     font-size: 0.7em;
+  }
+
+  .product__select {
+    margin-left: 10px;
+    margin-top: 10px;
   }
 }
 // FOOTER
@@ -386,6 +405,7 @@
 .footer__wrapper {
   display: flex;
   height: 10vh;
+  font-size: 0.6em;
   background-color: #f0ede2;
   align-items: center;
   justify-content: center;
@@ -913,6 +933,14 @@
   justify-content: center;
   flex-direction: column;
 
+  &-item {
+    text-decoration: none;
+
+    &:hover {
+      color: grey;
+    }
+  }
+
   &_elements {
     overflow: scroll;
     width: 35%;
@@ -1165,7 +1193,6 @@
 // PROFIL ORDER PAGE
 
 .tableau-style {
-  // border-collapse: collapse;
   min-width: 400px;
   width: auto;
   margin-top: 20px;
@@ -1204,6 +1231,10 @@ td {
   cursor: pointer;
 }
 
+.fa-solid {
+  margin-right: 5px;
+}
+
 .anchor__userList {
   text-decoration: none;
 
@@ -1228,7 +1259,8 @@ td {
 
 @media screen and (max-width: 600px) {
   .tableau-style {
-    font-size: 0.6em;
+    font-size: 0.5em;
+    min-width: 330px;
   }
 
   td {
@@ -1237,6 +1269,10 @@ td {
 
   .userList__container-title {
     font-size: 1.2em;
+  }
+
+  .userEdit__back {
+    font-size: 0.8em;
   }
 }
 

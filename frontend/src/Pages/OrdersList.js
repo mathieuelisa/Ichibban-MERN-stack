@@ -19,6 +19,10 @@ function OrdersList() {
   const userLogin = useSelector((state) => state.UserLogin);
   const { userInformation } = userLogin;
 
+  const handleBackButton = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     if (!userInformation.isAdmin) {
       navigate("/login");
@@ -28,79 +32,91 @@ function OrdersList() {
   }, [dispatch, navigate, userInformation]);
 
   return (
-    <div className="userList__container-customer">
-      <h2 className="userList__container-title">COMMANDES</h2>
-      <div></div>
-      <div className="product__container-listing">
-        {loadingOrders ? (
-          <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-        ) : errorOrders ? (
-          <ErrorMessage textClassName="redError">
-            Desolé, nous avons un petit problème avec vos commandes.
-          </ErrorMessage>
-        ) : (
-          <table className="tableau-style">
-            <thead className="product__container-thead">
-              <tr>
-                <th>ID</th>
-                <th>CLIENTS</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>DATE PAIEMENT</th>
-                <th>LIVRAISON</th>
-                <th>DETAILS</th>
-              </tr>
-            </thead>
-            <tbody className="product__container-tbody">
-              {orders.map((element) => {
-                return (
-                  <tr key={element._id}>
-                    <td>{element._id?.substring(0, 10)}...</td>
-
-                    <td>
-                      <a
-                        href={`/orders/${element._id}`}
-                        className="anchor__productList"
-                      >
-                        {element.user.name}
-                      </a>
-                    </td>
-
-                    <td>{element.createdAt?.substring(0, 10)}</td>
-                    <td>{element.totalPrice} €</td>
-                    <td>
-                      {element.paidAt ? (
-                        element.paidAt.substring(0, 10)
-                      ) : (
-                        <i
-                          className="fa-solid fa-xmark"
-                          style={{ color: "red" }}
-                        ></i>
-                      )}
-                    </td>
-                    <td>
-                      {" "}
-                      {element.isDelivered ? (
-                        element.deliveredAt.substring(0, 10)
-                      ) : (
-                        <i
-                          className="fa-solid fa-xmark"
-                          style={{ color: "red" }}
-                        ></i>
-                      )}
-                    </td>
-                    <td>
-                      {" "}
-                      <Link to={`/order/${element._id}`}>Details</Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+    <>
+      <div className="userEdit__back">
+        <h4 className="userEdit__back-title" onClick={handleBackButton}>
+          Retour
+        </h4>
       </div>
-    </div>
+      <div className="userList__container-customer">
+        <h2 className="userList__container-title">COMMANDES</h2>
+
+        <div className="product__container-listing">
+          {loadingOrders ? (
+            <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+          ) : errorOrders ? (
+            <ErrorMessage textClassName="redError">
+              Desolé, nous avons un petit problème avec vos commandes.
+            </ErrorMessage>
+          ) : (
+            <table className="tableau-style">
+              <thead className="product__container-thead">
+                <tr>
+                  <th>ID</th>
+                  <th>CLIENTS</th>
+                  <th>DATE</th>
+                  <th>TOTAL</th>
+                  <th>DATE PAIEMENT</th>
+                  <th>LIVRAISON</th>
+                  <th>DETAILS</th>
+                </tr>
+              </thead>
+              <tbody className="product__container-tbody">
+                {orders.map((element) => {
+                  return (
+                    <tr key={element._id}>
+                      <td>{element._id?.substring(0, 10)}...</td>
+
+                      <td>
+                        <a
+                          href={`/orders/${element._id}`}
+                          className="anchor__productList"
+                        >
+                          {element.user.name}
+                        </a>
+                      </td>
+
+                      <td>{element.createdAt?.substring(0, 10)}</td>
+                      <td>{element.totalPrice} €</td>
+                      <td>
+                        {element.paidAt ? (
+                          element.paidAt.substring(0, 10)
+                        ) : (
+                          <i
+                            className="fa-solid fa-xmark"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>
+                        {" "}
+                        {element.isDelivered ? (
+                          element.deliveredAt.substring(0, 10)
+                        ) : (
+                          <i
+                            className="fa-solid fa-xmark"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>
+                        {" "}
+                        <Link
+                          to={`/order/${element._id}`}
+                          className="order__container-item"
+                        >
+                          Infos
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 

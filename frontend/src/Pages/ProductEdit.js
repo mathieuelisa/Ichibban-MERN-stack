@@ -79,7 +79,7 @@ function ProductEdit() {
   };
 
   const handleBackButton = () => {
-    navigate("/admin/product");
+    navigate("/admin/products");
   };
 
   const uploadImageHandle = async (e) => {

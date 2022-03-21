@@ -134,6 +134,12 @@ function OrderDetails() {
             <div className="order__container-parts-shipping">
               <div className="order__container-parts-delivery">
                 <h4>Votre adresse de livraison :</h4>
+                {loadingDelivery && (
+                  <LoaderSpinner
+                    logoClassName="loaderSpinner"
+                    src={loadingLogo}
+                  />
+                )}
                 {order.isDelivered ? (
                   order.deliveredAt.substring(0, 10)
                 ) : (

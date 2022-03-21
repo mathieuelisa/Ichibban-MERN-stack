@@ -31,6 +31,10 @@ function UserList() {
     dispatch(deleteUser(id));
   };
 
+  const handleBackButton = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     if (userInformation && userInformation.isAdmin) {
       dispatch(listOfUsers());
@@ -40,76 +44,83 @@ function UserList() {
   }, [dispatch, successDelete, navigate, userInformation]);
 
   return (
-    <div className="userList__container-customer">
-      <h2 className="userList__container-title">UTILISATEURS</h2>
-      <div>
-        {loadingUserList ? (
-          <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
-        ) : errorUserList ? (
-          <ErrorMessage textClassName="redError">
-            Désolé, nous avons un petit problème avec votre liste
-            d'utilisateurs.
-          </ErrorMessage>
-        ) : (
-          <table className="tableau-style">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>NOMS</th>
-                <th>EMAILS</th>
-                <th>ADMIN</th>
-                <th>DETAILS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {usersMyList.map((element) => {
-                return (
-                  <tr key={element._id}>
-                    <td>{element._id}</td>
-                    <td>{element.name}</td>
-                    <td>
-                      <a
-                        href={`mailto:${element.email}`}
-                        className="anchor__userList"
-                      >
-                        {element.email}
-                      </a>
-                    </td>
-                    <td>
-                      {element.isAdmin ? (
-                        <i
-                          className="fa-solid fa-check"
-                          style={{ color: "green" }}
-                        ></i>
-                      ) : (
-                        <i
-                          className="fa-solid fa-xmark"
-                          style={{ color: "red" }}
-                        ></i>
-                      )}
-                    </td>
-                    <td>
-                      {" "}
-                      <Link to={`/admin/user/${element._id}/edit`}>
-                        <i
-                          className="fas fa-edit"
-                          style={{ color: "gray" }}
-                        ></i>
-                      </Link>
-                      <i
-                        className="fas fa-trash-alt"
-                        style={{ color: "gray" }}
-                        onClick={() => removeItem(element._id)}
-                      ></i>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+    <>
+      <div className="userEdit__back">
+        <h4 className="userEdit__back-title" onClick={handleBackButton}>
+          Retour
+        </h4>
       </div>
-    </div>
+      <div className="userList__container-customer">
+        <h2 className="userList__container-title">UTILISATEURS</h2>
+        <div>
+          {loadingUserList ? (
+            <LoaderSpinner logoClassName="loaderSpinner" src={loadingLogo} />
+          ) : errorUserList ? (
+            <ErrorMessage textClassName="redError">
+              Désolé, nous avons un petit problème avec votre liste
+              d'utilisateurs.
+            </ErrorMessage>
+          ) : (
+            <table className="tableau-style">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NOMS</th>
+                  <th>EMAILS</th>
+                  <th>ADMIN</th>
+                  <th>DETAILS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {usersMyList.map((element) => {
+                  return (
+                    <tr key={element._id}>
+                      <td>{element._id?.substring(0, 10)}...</td>
+                      <td>{element.name}</td>
+                      <td>
+                        <a
+                          href={`mailto:${element.email}`}
+                          className="anchor__userList"
+                        >
+                          {element.email}
+                        </a>
+                      </td>
+                      <td>
+                        {element.isAdmin ? (
+                          <i
+                            className="fa-solid fa-check"
+                            style={{ color: "green" }}
+                          ></i>
+                        ) : (
+                          <i
+                            className="fa-solid fa-xmark"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>
+                        {" "}
+                        <Link to={`/admin/user/${element._id}/edit`}>
+                          <i
+                            className="fas fa-edit"
+                            style={{ color: "gray" }}
+                          ></i>
+                        </Link>
+                        <i
+                          className="fas fa-trash-alt"
+                          style={{ color: "gray" }}
+                          onClick={() => removeItem(element._id)}
+                        ></i>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
