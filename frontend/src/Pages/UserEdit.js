@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-// import LoaderSpinner from "../Components/LoaderSpinner";
-// import loadingLogo from "../Assets/Images/spinner2.gif";
 
 import ErrorMessage from "../Components/ErrorMessage";
 

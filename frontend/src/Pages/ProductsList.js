@@ -32,12 +32,7 @@ function ProductsList() {
   const { userInformation } = userLogin;
 
   const productCreate = useSelector((state) => state.ProductCreate);
-  const {
-    // loading: loadingCreate,
-    // error: errorCreate,
-    product,
-    success: successCreate,
-  } = productCreate;
+  const { product, success: successCreate } = productCreate;
 
   const removeItem = (id) => {
     dispatch(deleteProduct(id));

@@ -59,7 +59,6 @@ function Profil() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      console.error("Erreur de password");
       setMessage(true);
     } else {
       dispatch(updateUserProfil({ id: user._id, name, email, password }));
