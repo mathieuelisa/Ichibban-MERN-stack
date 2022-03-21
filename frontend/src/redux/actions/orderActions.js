@@ -103,6 +103,39 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
   }
 };
 
+export const ORDER_DELIVERED_REQUEST = "order_delivered_request";
+export const ORDER_DELIVERED_SUCCESSFUL = "order_delivered_successful";
+export const ORDER_DELIVERED_FAIL = "order_delivered_fail";
+export const ORDER_DELIVERED_RESET = "order_delivered_reset";
+
+export const deliveredOrder = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_DELIVERED_REQUEST });
+
+    const {
+      UserLogin: { userInformation },
+    } = getState();
+
+    let config = {
+      headers: {
+        Authorization: `Bearer ${userInformation.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/orders/${id}/deliver`, config);
+
+    dispatch({ type: ORDER_DELIVERED_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ORDER_DELIVERED_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
+
 export const ORDER_LIST_MY_REQUEST = "order_list_my_request";
 export const ORDER_LIST_MY_SUCCESSFUL = "order_list_my_successful";
 export const ORDER_LIST_MY_FAIL = "order_list_my_fail";
