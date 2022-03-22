@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 // Config mongoose
 import connectDB from "./config/db.js";
 import path from "path";
+import morgan from "morgan";
 
 // Routes
 import productsRouter from "./Routes/productRoutes.js";
