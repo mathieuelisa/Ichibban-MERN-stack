@@ -13,4 +13,6 @@ router.get("/:id", productsController.getProductById);
 router.post("/", protect, isAdmin, productsController.createProduct);
 router.delete("/:id", protect, isAdmin, productsController.deleteProduct);
 router.put("/:id", protect, isAdmin, productsController.updateProduct);
+
+router.post("/:id/reviews", protect, productsController.createReviews);
 export default router;

@@ -4,6 +4,19 @@ Accept: application/json
 Content-Type: application/json
 ###
 
+// @ POST create a review
+POST http://localhost:5000/api/products/622c8b6d9f57cd4b817b787f/reviews
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkOWY1N2NkNGI4MTdiNzg3NiIsImlhdCI6MTY0NzExNTk4NCwiZXhwIjoxNjUwNTcxOTg0fQ.nK34z3mruGkEAz8kMgZLuwo5rWmmiRobeY2zlm5xngA
+
+
+{
+ "comment": "ceci est un test",
+ "rating": 4
+}
+###
+
 // @ GET single product
 GET http://localhost:5000/api/products/61ed55c0c938c2dc6b20c007
 Accept: application/json
