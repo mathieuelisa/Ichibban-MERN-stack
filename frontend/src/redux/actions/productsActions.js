@@ -145,3 +145,9 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     });
   }
 };
+
+export const PRODUCT_CREATE_REVIEW_REQ = "product_create_review_req";
+export const PRODUCT_CREATE_REVIEW_SUCCESSFUL =
+  "product_create_review_successful";
+export const PRODUCT_CREATE_REVIEW_FAIL = "product_create_review_fail";
+export const PRODUCT_CREATE_REVIEW_RESET = "product_create_review_reset";

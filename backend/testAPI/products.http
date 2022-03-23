@@ -8,11 +8,11 @@ Content-Type: application/json
 POST http://localhost:5000/api/products/622c8b6d9f57cd4b817b787f/reviews
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkOWY1N2NkNGI4MTdiNzg3NiIsImlhdCI6MTY0NzExNTk4NCwiZXhwIjoxNjUwNTcxOTg0fQ.nK34z3mruGkEAz8kMgZLuwo5rWmmiRobeY2zlm5xngA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmM4YjZkOWY1N2NkNGI4MTdiNzg3YSIsImlhdCI6MTY0Nzk4ODA5NCwiZXhwIjoxNjUxNDQ0MDk0fQ.uo3jn1gqQVWC23pTQQyGERDrY-szkVyCMuhhjOtAW5w
 
 
 {
- "comment": "ceci est un test",
+ "comment": "ceci est un second test",
  "rating": 4
 }
 ###
