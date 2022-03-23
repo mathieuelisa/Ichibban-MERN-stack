@@ -283,6 +283,15 @@
   height: 80vh;
   background-color: #f0ede2;
   display: flex;
+
+  &_reviews {
+    text-align: center;
+
+    &-title {
+      font-family: "WalkwayBlack";
+      margin-top: 20px;
+    }
+  }
 }
 
 .product__container-pictures {
@@ -315,7 +324,6 @@
 .product__container-infos {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 30%;
   height: 100%;
 

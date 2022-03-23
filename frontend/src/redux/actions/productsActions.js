@@ -151,3 +151,5 @@ export const PRODUCT_CREATE_REVIEW_SUCCESSFUL =
   "product_create_review_successful";
 export const PRODUCT_CREATE_REVIEW_FAIL = "product_create_review_fail";
 export const PRODUCT_CREATE_REVIEW_RESET = "product_create_review_reset";
+
+// Effectuer actions pour review

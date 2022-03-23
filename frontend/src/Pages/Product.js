@@ -16,6 +16,14 @@ function Product() {
   const ListDetailProduct = useSelector((state) => state.ListDetailProduct);
   const { product } = ListDetailProduct;
 
+  // a definir
+  const productCreateReview = useSelector((state) => state.ProductCreateReview);
+  const { success: successCreateReview, error: errorCreateReview } =
+    productCreateReview;
+
+  const userLogin = useSelector((state) => state.UserLogin);
+  const { userInformation } = userLogin;
+
   const handleChangeQuantity = (e) => {
     setQuantity(e.target.value);
   };
@@ -78,6 +86,23 @@ function Product() {
             <i className="fa-solid fa-basket-shopping"></i>
             AJOUTER AU PANIER
           </button>
+        </div>
+        <div className="product__container_reviews">
+          <h4 className="product__container_reviews-title">
+            AVIS ET COMMENTAIRES
+          </h4>
+
+          {userInformation ? (
+            <>
+              <h5>Connecté pour un avis</h5>
+              {/* Afficher name / rating and comments si y'en a */}
+            </>
+          ) : (
+            <>
+              <h5>Non connecté !! </h5>
+              {/* Afficher un message pour non connecter et login */}
+            </>
+          )}
         </div>
       </div>
     </div>
