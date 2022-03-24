@@ -152,4 +152,32 @@ export const PRODUCT_CREATE_REVIEW_SUCCESSFUL =
 export const PRODUCT_CREATE_REVIEW_FAIL = "product_create_review_fail";
 export const PRODUCT_CREATE_REVIEW_RESET = "product_create_review_reset";
 
-// Effectuer actions pour review
+export const createReviewProduct =
+  (product, review) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PRODUCT_CREATE_REVIEW_REQ });
+
+      const {
+        UserLogin: { userInformation },
+      } = getState();
+
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInformation.token}`,
+        },
+      };
+
+      await axios.post(`/api/products/${product._id}/reviews`, review, config);
+
+      dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESSFUL });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.response,
+      });
+    }
+  };

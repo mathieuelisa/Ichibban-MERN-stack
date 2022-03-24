@@ -71,6 +71,7 @@ function Shipping() {
                   onChange={(e) => setCountry(e.target.value)}
                   className="shipping__form-inputs"
                 >
+                  <option value=""></option>
                   <option value="France">FRANCE</option>
                   <option value="UK">ROYAUME UNIS</option>
                   <option value="Italy">ITALIE</option>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { productDetailList } from "../redux/actions/productsActions";
 
 function Product() {
   const [quantity, setQuantity] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comments, setComments] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,6 +33,11 @@ function Product() {
   const addHandler = (e) => {
     e.preventDefault();
     navigate(`/cart/${id}?qty=${quantity}`);
+  };
+
+  const handleCreateReviewSubmit = (e) => {
+    e.preventDefault();
+    console.log("Your review have been created");
   };
 
   useEffect(() => {
@@ -88,20 +95,62 @@ function Product() {
           </button>
         </div>
         <div className="product__container_reviews">
-          <h4 className="product__container_reviews-title">
-            AVIS ET COMMENTAIRES
-          </h4>
+          <h4 className="product__container_reviews-title">COMMENTAIRES</h4>
 
           {userInformation ? (
             <>
-              <h5>Connecté pour un avis</h5>
+              <h5>Listing des avis</h5>
               {/* Afficher name / rating and comments si y'en a */}
             </>
           ) : (
             <>
-              <h5>Non connecté !! </h5>
-              {/* Afficher un message pour non connecter et login */}
+              <h5>
+                Veuillez vous connecté en cliquant <Link to="/login">ici</Link>{" "}
+                pour laisser un avis.
+              </h5>
             </>
+          )}
+        </div>
+        <div className="product__container_form">
+          {userInformation ? (
+            <>
+              <form className="login__form" onSubmit={handleCreateReviewSubmit}>
+                <label>
+                  <p className="product__description">Note: </p>
+                  <select
+                    type="text"
+                    name="rating"
+                    // value={state.email}
+                    onChange={(e) => setRating(e.target.value)}
+                    className="product__select"
+                  >
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </label>
+
+                <label>
+                  <p className="product__description">Commentaire</p>
+                  <textarea
+                    type="text"
+                    name="comments"
+                    // value={state.email}
+                    onChange={(e) => setComments(e.target.value)}
+                    className="login__form-inputs"
+                  />
+                </label>
+
+                <button className="login__form-button-validate">
+                  SE CONNECTER
+                </button>
+              </form>
+            </>
+          ) : (
+            ""
           )}
         </div>
       </div>
