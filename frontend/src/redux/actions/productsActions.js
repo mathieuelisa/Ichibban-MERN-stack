@@ -153,7 +153,7 @@ export const PRODUCT_CREATE_REVIEW_FAIL = "product_create_review_fail";
 export const PRODUCT_CREATE_REVIEW_RESET = "product_create_review_reset";
 
 export const createReviewProduct =
-  (product, review) => async (dispatch, getState) => {
+  (id, review) => async (dispatch, getState) => {
     try {
       dispatch({ type: PRODUCT_CREATE_REVIEW_REQ });
 
@@ -168,7 +168,7 @@ export const createReviewProduct =
         },
       };
 
-      await axios.post(`/api/products/${product._id}/reviews`, review, config);
+      await axios.post(`/api/products/${id}/reviews`, review, config);
 
       dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESSFUL });
     } catch (error) {
