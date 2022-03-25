@@ -293,6 +293,10 @@
       text-align: center;
     }
 
+    &-noComments {
+      margin-top: 20px;
+    }
+
     &-name {
       margin-right: 10px;
     }
@@ -303,6 +307,10 @@
 
     &-comments {
       font-size: 0.9em;
+    }
+
+    &-login {
+      margin-top: 30px;
     }
 
     &-divReviewForm {
@@ -356,6 +364,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
   }
 
   &-name {
@@ -372,6 +381,8 @@
     font-size: 0.9em;
     margin-right: 20px;
     margin-top: 10px;
+    width: 75%;
+    font-size: 0.8em;
   }
 }
 
@@ -644,13 +655,15 @@
 
 .review {
   margin-left: 10px;
-  width: 70%;
+  width: 80%;
   margin-top: 10px;
+  font-size: 0.8em;
 }
 
 .selectReview {
   margin-top: 5px;
   margin-left: 10px;
+  font-size: 0.8em;
 }
 
 .buttonReview {
@@ -765,6 +778,7 @@
   padding-bottom: 5px;
   margin-bottom: 20px;
   outline: none;
+  margin-left: 5px;
 }
 
 .textArea {
@@ -775,6 +789,7 @@
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  font-family: "WalkwayBlack";
 }
 
 .register__alreadyUser {

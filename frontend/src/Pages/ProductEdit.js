@@ -134,70 +134,72 @@ function ProductEdit() {
           <div className="register__container-customer-form">
             <form className="register__form" onSubmit={handleSubmit}>
               <label className="register__form-label">
+                {" "}
+                Nom:
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="NOM"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                {" "}
+                Prix:
                 <input
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="PRIX"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                Image:
                 <input
                   type="file"
                   onChange={uploadImageHandle}
-                  placeholder="IMAGE"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                Marque:
                 <input
                   type="text"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
-                  placeholder="MARQUE"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                Categorie:
                 <input
                   type="text"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  placeholder="CATEGORIE"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                Nbre de produits en stock:
                 <input
                   type="number"
                   value={countInStock}
                   onChange={(e) => setCountInStock(e.target.value)}
-                  placeholder="QUANTITE EN STOCK"
                   className="register__form-inputs"
                 />
               </label>
 
               <label className="register__form-label">
+                Description:
                 <textarea
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="DESCRIPTION"
                   className="register__form-inputs textArea"
                 />
               </label>

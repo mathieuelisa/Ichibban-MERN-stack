@@ -45,11 +45,11 @@ const productsController = {
   createProduct: asyncHandler(async (req, res) => {
     const product = await Product.create({
       user: req.user._id,
-      name: "Nom du produit",
+      name: "Veuillez ajouter le nom du produit",
       image: "/images/sample.jpg",
-      description: "Description",
-      brand: "Marque",
-      category: "Categorie",
+      description: "Veuillez ajouter une description",
+      brand: "Veuillez ajouter la marque",
+      category: "Veuillez ajouter la categorie",
       price: 0,
       countInStock: 0,
       numReviews: 0,

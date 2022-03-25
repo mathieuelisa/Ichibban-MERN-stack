@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useParams, useNavigate, Link } from "react-router-dom";
+import ErrorMessage from "../Components/ErrorMessage";
 import Rating from "../Components/Rating";
 
 import {
@@ -112,6 +113,11 @@ function Product() {
         <h4 className="product__container_reviews-title">COMMENTAIRES</h4>
         <div className="product__container_reviews-divReviewForm">
           <div className="product__container_reviews">
+            {product.reviews?.length === 0 && (
+              <ErrorMessage className="product__container_reviews-noComments">
+                Pas de commentaires pour cet article
+              </ErrorMessage>
+            )}
             {userInformation ? (
               <>
                 {product.reviews &&
@@ -133,12 +139,12 @@ function Product() {
                   ))}
               </>
             ) : (
-              <>
-                <h5>
+              <div className="product__container_reviews-login">
+                <ErrorMessage>
                   Veuillez vous connecté en cliquant{" "}
                   <Link to="/login">ici</Link> pour laisser un avis.
-                </h5>
-              </>
+                </ErrorMessage>
+              </div>
             )}
           </div>
           <div className="product__container_form">
@@ -158,11 +164,11 @@ function Product() {
                       className="product__select selectReview"
                     >
                       <option value=""></option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
+                      <option value="1">1 - Très mauvais</option>
+                      <option value="2">2 - Passable</option>
+                      <option value="3">3 - Bon</option>
+                      <option value="4">4 - Très bon</option>
+                      <option value="5">5 - Excellent</option>
                     </select>
                   </label>
 
