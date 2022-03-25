@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import { productDetailList } from "../redux/actions/productsActions";
+import {
+  createReviewProduct,
+  productDetailList,
+  PRODUCT_CREATE_REVIEW_RESET,
+} from "../redux/actions/productsActions";
 
 function Product() {
   const [quantity, setQuantity] = useState(1);
@@ -37,12 +41,19 @@ function Product() {
 
   const handleCreateReviewSubmit = (e) => {
     e.preventDefault();
-    console.log("Your review have been created");
+    console.log("test ok");
+    dispatch(createReviewProduct(id, { rating, comments }));
   };
 
   useEffect(() => {
+    if (successCreateReview) {
+      alert("new review");
+      setRating(0);
+      setComments("");
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+    }
     dispatch(productDetailList(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, successCreateReview]);
 
   return (
     <div className="product__container">
@@ -87,7 +98,7 @@ function Product() {
         <div className="product__container-button">
           <button
             type="submit"
-            className="product__container-button-valide"
+            className="product__container-button-valide buttonReview"
             onClick={addHandler}
           >
             <i className="fa-solid fa-basket-shopping"></i>
@@ -99,8 +110,15 @@ function Product() {
 
           {userInformation ? (
             <>
-              <h5>Listing des avis</h5>
-              {/* Afficher name / rating and comments si y'en a */}
+              {product.reviews &&
+                product.reviews.map((element) => (
+                  <>
+                    <p>{element.name}</p>
+                    <p>{element.createdAt}</p>
+                    <p>{element.rating}</p>
+                    <p>{element.comment}</p>
+                  </>
+                ))}
             </>
           ) : (
             <>
@@ -120,9 +138,9 @@ function Product() {
                   <select
                     type="text"
                     name="rating"
-                    // value={state.email}
+                    value={rating}
                     onChange={(e) => setRating(e.target.value)}
-                    className="product__select"
+                    className="product__select selectReview"
                   >
                     <option value=""></option>
                     <option value="1">1</option>
@@ -138,15 +156,17 @@ function Product() {
                   <textarea
                     type="text"
                     name="comments"
-                    // value={state.email}
+                    value={comments}
                     onChange={(e) => setComments(e.target.value)}
-                    className="login__form-inputs"
+                    className="login__form-inputs review"
                   />
                 </label>
 
-                <button className="login__form-button-validate">
-                  SE CONNECTER
-                </button>
+                <div className="product__container-button">
+                  <button className="product__container-button-valide buttonReview">
+                    PUBLIER
+                  </button>
+                </div>
               </form>
             </>
           ) : (
