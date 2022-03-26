@@ -7,7 +7,18 @@ const productsController = {
   // Get all the products
   // GET request
   getProducts: asyncHandler(async (req, res) => {
-    const products = await Product.find({});
+    const search = req.query.search;
+
+    const mySearching = search
+      ? {
+          name: {
+            $regex: search,
+            $options: "i",
+          },
+        }
+      : {};
+
+    const products = await Product.find({ ...mySearching });
     res.json(products);
   }),
 

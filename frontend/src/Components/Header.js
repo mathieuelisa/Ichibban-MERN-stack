@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../App.scss";
 
 import { logout } from "../redux/actions/userActions";
+
 import SearchBar from "./SearchBar";
 
 function Header() {

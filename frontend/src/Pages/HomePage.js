@@ -10,16 +10,18 @@ import loadingLogo from "../Assets/Images/spinner2.gif";
 import { productList } from "../redux/actions/productsActions.js";
 
 import ErrorMessage from "../Components/ErrorMessage";
+import { useParams } from "react-router-dom";
 
 function HomePage() {
   const dispatch = useDispatch();
+  const { search } = useParams();
 
   const ListProducts = useSelector((state) => state.ListProducts);
   const { loading, products, error } = ListProducts;
 
   useEffect(() => {
-    dispatch(productList());
-  }, [dispatch]);
+    dispatch(productList(search));
+  }, [dispatch, search]);
 
   return (
     <div className="homepage__wrapper">

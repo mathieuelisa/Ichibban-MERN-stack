@@ -11,9 +11,6 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Profil from "./Pages/Profil";
 
-// Data
-import products from "./products";
-
 // React Router Dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shipping from "./Pages/Shipping";
@@ -32,11 +29,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage products={products} />} />
-          <Route
-            path="/search/:search"
-            element={<HomePage products={products} />}
-          />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search/:search" element={<HomePage />} />
+
           <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="/order" element={<Order />} />
           <Route path="/admin/orders" element={<OrdersList />} />
