@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import "../App.scss";
 
 import { logout } from "../redux/actions/userActions";
+import SearchBar from "./SearchBar";
 
 function Header() {
   const navigate = useNavigate();
@@ -25,6 +26,11 @@ function Header() {
             <h1>ICHIBBAN</h1>
           </NavLink>
         </div>
+
+        <div>
+          <SearchBar />
+        </div>
+
         <div className="header__wrapper-icons">
           {userInformation ? (
             <>

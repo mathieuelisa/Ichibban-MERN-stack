@@ -33,6 +33,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage products={products} />} />
+          <Route
+            path="/search/:search"
+            element={<HomePage products={products} />}
+          />
           <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="/order" element={<Order />} />
           <Route path="/admin/orders" element={<OrdersList />} />
