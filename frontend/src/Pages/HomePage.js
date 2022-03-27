@@ -11,13 +11,20 @@ import { productList } from "../redux/actions/productsActions.js";
 
 import ErrorMessage from "../Components/ErrorMessage";
 import { useParams } from "react-router-dom";
+import Pagination from "../Components/Pagination";
 
 function HomePage() {
   const dispatch = useDispatch();
   const { search, page } = useParams();
 
   const ListProducts = useSelector((state) => state.ListProducts);
-  const { loading, products, error } = ListProducts;
+  const {
+    loading,
+    products,
+    error,
+    page: pagePagination,
+    pages,
+  } = ListProducts;
 
   useEffect(() => {
     dispatch(productList(search, page));
@@ -40,11 +47,18 @@ function HomePage() {
           Désolé une erreur s'est produite, veuillez reeasayer
         </ErrorMessage>
       ) : (
-        <div className="homepage__container">
-          {products.map((product, index) => (
-            <Card key={index} product={product} />
-          ))}
-        </div>
+        <>
+          <div className="homepage__container">
+            {products.map((product, index) => (
+              <Card key={index} product={product} />
+            ))}
+          </div>
+          <Pagination
+            page={pagePagination}
+            pages={pages}
+            search={search ? search : ""}
+          />
+        </>
       )}
     </div>
   );

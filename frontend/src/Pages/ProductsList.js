@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 import LoaderSpinner from "../Components/LoaderSpinner";
@@ -14,15 +14,20 @@ import {
 } from "../redux/actions/productsActions";
 
 import ErrorMessage from "../Components/ErrorMessage";
+import Pagination from "../Components/Pagination";
 
 function ProductsList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { page } = useParams();
+
   const ListProducts = useSelector((state) => state.ListProducts);
   const {
     loading: loadingProducts,
     products,
     error: errorProducts,
+    page: pagePagination,
+    pages,
   } = ListProducts;
 
   const productDelete = useSelector((state) => state.ProductDelete);
@@ -56,7 +61,7 @@ function ProductsList() {
     if (successCreate) {
       navigate(`/admin/product/${product._id}/edit`);
     } else {
-      dispatch(productList());
+      dispatch(productList("", page));
     }
   }, [
     dispatch,
@@ -65,6 +70,7 @@ function ProductsList() {
     successDeleteProduct,
     successCreate,
     product,
+    page,
   ]);
 
   return (
@@ -92,54 +98,58 @@ function ProductsList() {
               Désolé, nous avons un petit problème avec votre liste de produits.
             </ErrorMessage>
           ) : (
-            <table className="tableau-style">
-              <thead className="product__container-thead">
-                <tr>
-                  <th>ID</th>
-                  <th>NOMS</th>
-                  <th>PRIX</th>
-                  <th>CATEGORIES</th>
-                  <th>MARQUES</th>
-                  <th>DETAILS</th>
-                </tr>
-              </thead>
-              <tbody className="product__container-tbody">
-                {products.map((element) => {
-                  return (
-                    <tr key={element._id}>
-                      <td>{element._id}</td>
+            <>
+              <table className="tableau-style">
+                <thead className="product__container-thead">
+                  <tr>
+                    <th>ID</th>
+                    <th>NOMS</th>
+                    <th>PRIX</th>
+                    <th>CATEGORIES</th>
+                    <th>MARQUES</th>
+                    <th>DETAILS</th>
+                  </tr>
+                </thead>
+                <tbody className="product__container-tbody">
+                  {products.map((element) => {
+                    return (
+                      <tr key={element._id}>
+                        <td>{element._id}</td>
 
-                      <td>
-                        <a
-                          href={`/product/${element._id}`}
-                          className="anchor__productList"
-                        >
-                          {element.name}
-                        </a>
-                      </td>
+                        <td>
+                          <a
+                            href={`/product/${element._id}`}
+                            className="anchor__productList"
+                          >
+                            {element.name}
+                          </a>
+                        </td>
 
-                      <td>{element.price} €</td>
-                      <td>{element.category}</td>
-                      <td>{element.brand}</td>
-                      <td>
-                        {" "}
-                        <Link to={`/admin/product/${element._id}/edit`}>
+                        <td>{element.price} €</td>
+                        <td>{element.category}</td>
+                        <td>{element.brand}</td>
+                        <td>
+                          {" "}
+                          <Link to={`/admin/product/${element._id}/edit`}>
+                            <i
+                              className="fas fa-edit"
+                              style={{ color: "gray" }}
+                            ></i>
+                          </Link>
                           <i
-                            className="fas fa-edit"
+                            className="fas fa-trash-alt"
                             style={{ color: "gray" }}
+                            onClick={() => removeItem(element._id)}
                           ></i>
-                        </Link>
-                        <i
-                          className="fas fa-trash-alt"
-                          style={{ color: "gray" }}
-                          onClick={() => removeItem(element._id)}
-                        ></i>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+
+              <Pagination page={pagePagination} pages={pages} isAdmin={true} />
+            </>
           )}
         </div>
       </div>

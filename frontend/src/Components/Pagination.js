@@ -1,20 +1,22 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Pagination({ page, pages, keyword = "" }) {
+function Pagination({ page, pages, search = "", isAdmin = false }) {
   return (
     pages > 1 && (
       <div>
         {[...Array(pages).keys()].map((element) => (
-          <Link
+          <NavLink
             key={element + 1}
             to={
-              keyword
-                ? `/search/${keyword}/page/${element + 1}`
-                : `/page/${element + 1}`
+              !isAdmin
+                ? search
+                  ? `/search/${search}/page/${element + 1}`
+                  : `/page/${element + 1}`
+                : `/admin/products/page/${element + 1}`
             }
           >
-            <p>{element + 1}</p>
-          </Link>
+            {element + 1}
+          </NavLink>
         ))}
       </div>
     )

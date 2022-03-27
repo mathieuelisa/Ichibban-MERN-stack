@@ -193,6 +193,12 @@
   }
 }
 
+// HOMEPAGE & PAGINATION
+
+.active {
+  color: red;
+}
+
 @media screen and (max-width: 600px) {
   .header__wrapper-searchBar {
     display: none;
