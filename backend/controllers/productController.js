@@ -8,6 +8,9 @@ const productsController = {
   // GET request
   getProducts: asyncHandler(async (req, res) => {
     const search = req.query.search;
+    const page = Number(req.query.page) || 1;
+
+    const numberArticleByPage = 4;
 
     const mySearching = search
       ? {
@@ -18,8 +21,12 @@ const productsController = {
         }
       : {};
 
-    const products = await Product.find({ ...mySearching });
-    res.json(products);
+    const count = await Product.count({ ...mySearching });
+    const products = await Product.find({ ...mySearching })
+      .limit(numberArticleByPage)
+      .skip(numberArticleByPage * (page - 1));
+
+    res.json({ products, page, pages: Math.ceil(count / numberArticleByPage) });
   }),
 
   // Get one product by ID

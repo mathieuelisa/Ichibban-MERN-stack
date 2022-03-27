@@ -6,11 +6,13 @@ export const PRODUCT_LIST_SUCCESSFUL = "product_list_successful";
 export const PRODUCT_LIST_FAIL = "product_list_fail";
 
 export const productList =
-  (search = "") =>
+  (search = "", page = "" || 1) =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQ });
-      const { data } = await axios.get(`/api/products?search=${search}`);
+      const { data } = await axios.get(
+        `/api/products?search=${search}&page=${page}`
+      );
       dispatch({ type: PRODUCT_LIST_SUCCESSFUL, payload: data });
     } catch (error) {
       dispatch({

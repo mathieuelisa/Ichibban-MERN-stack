@@ -14,14 +14,14 @@ import { useParams } from "react-router-dom";
 
 function HomePage() {
   const dispatch = useDispatch();
-  const { search } = useParams();
+  const { search, page } = useParams();
 
   const ListProducts = useSelector((state) => state.ListProducts);
   const { loading, products, error } = ListProducts;
 
   useEffect(() => {
-    dispatch(productList(search));
-  }, [dispatch, search]);
+    dispatch(productList(search, page));
+  }, [dispatch, search, page]);
 
   return (
     <div className="homepage__wrapper">
