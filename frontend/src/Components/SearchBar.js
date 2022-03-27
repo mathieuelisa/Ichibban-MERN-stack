@@ -8,13 +8,14 @@ function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Produit en cours de recherche");
 
     if (search.trim()) {
       navigate(`/search/${search}`);
     } else {
       navigate("/");
     }
+
+    setSearch("");
   };
 
   return (
@@ -22,6 +23,7 @@ function SearchBar() {
       <input
         type="text"
         name="q"
+        value={search}
         placeholder="Rechercher..."
         onChange={(e) => setSearch(e.target.value)}
         className="searchBar__custom"
