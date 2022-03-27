@@ -28,7 +28,7 @@ function Header() {
           </NavLink>
         </div>
 
-        <div>
+        <div className="header__wrapper-searchBar">
           <SearchBar />
         </div>
 

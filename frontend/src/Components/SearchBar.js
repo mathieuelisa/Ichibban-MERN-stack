@@ -18,15 +18,18 @@ function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="searchBar__form">
       <input
         type="text"
         name="q"
         placeholder="Rechercher..."
         onChange={(e) => setSearch(e.target.value)}
+        className="searchBar__custom"
       />
 
-      <button type="submit">Valide</button>
+      <button type="submit" className="searchBar__button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </form>
   );
 }
