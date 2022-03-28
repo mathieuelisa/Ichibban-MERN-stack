@@ -33,7 +33,12 @@ function HomePage() {
   return (
     <div className="homepage__wrapper">
       <div className="homepage__wrapper-title">
-        <Link to={`/bestproducts`}>TOP PRODUITS</Link>
+        <Link
+          to={`/bestproducts`}
+          className="homepage__wrapper-titleBestProducts"
+        >
+          TOP PRODUITS
+        </Link>
       </div>
 
       {loading ? (

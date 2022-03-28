@@ -196,7 +196,22 @@
 // HOMEPAGE & PAGINATION
 
 .active {
-  color: red;
+  color: black;
+  font-family: "WalkwayBlack";
+}
+
+.pagination__container {
+  text-align: center;
+
+  &-items {
+    margin-right: 10px;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: gray;
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -215,6 +230,15 @@
   &-title {
     display: flex;
     justify-content: center;
+  }
+
+  &-titleBestProducts {
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      color: gray;
+    }
   }
 }
 

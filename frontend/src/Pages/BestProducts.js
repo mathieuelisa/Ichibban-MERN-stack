@@ -10,10 +10,11 @@ import loadingLogo from "../Assets/Images/spinner2.gif";
 import { bestProductsList } from "../redux/actions/productsActions.js";
 
 import ErrorMessage from "../Components/ErrorMessage";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function BestProducts() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const BestProducts = useSelector((state) => state.BestProducts);
   const {
@@ -26,10 +27,19 @@ function BestProducts() {
     dispatch(bestProductsList());
   }, [dispatch]);
 
+  const handleBackButton = () => {
+    navigate("/");
+  };
+
   return (
     <div className="homepage__wrapper">
+      <div className="userEdit__back">
+        <h4 className="userEdit__back-title" onClick={handleBackButton}>
+          Retour
+        </h4>
+      </div>
       <div className="homepage__wrapper-title">
-        <Link to={"/"}>NOTRE TOP 3</Link>
+        <h4>TOP 3</h4>
       </div>
 
       {loadingTop ? (

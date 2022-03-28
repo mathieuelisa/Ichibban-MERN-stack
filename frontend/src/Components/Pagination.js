@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 function Pagination({ page, pages, search = "", isAdmin = false }) {
   return (
     pages > 1 && (
-      <div>
+      <div className="pagination__container">
         {[...Array(pages).keys()].map((element) => (
           <NavLink
             key={element + 1}
+            className="pagination__container-items"
             to={
               !isAdmin
                 ? search

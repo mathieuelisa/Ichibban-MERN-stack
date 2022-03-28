@@ -70,9 +70,7 @@ function Header() {
           {userInformation && userInformation.isAdmin ? (
             <div className="dropdown__admin">
               <div className="profil">
-                <button className="header__profil">
-                  {userInformation.name}
-                </button>
+                <button className="header__profil">Admin</button>
                 <ul>
                   <Link to="/admin/users" className="header__profil-choice">
                     Utilisateurs

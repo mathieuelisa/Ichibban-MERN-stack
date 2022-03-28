@@ -42,7 +42,7 @@ function ProductEdit() {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
-      navigate("/admin/product");
+      navigate("/");
     } else {
       if (!product.name || product._id !== id) {
         dispatch(productDetailList(id));
