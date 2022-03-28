@@ -7,61 +7,52 @@ import Card from "../Components/Card";
 import Loader from "../Components/Loader";
 import loadingLogo from "../Assets/Images/spinner2.gif";
 
-import { productList } from "../redux/actions/productsActions.js";
+import { bestProductsList } from "../redux/actions/productsActions.js";
 
 import ErrorMessage from "../Components/ErrorMessage";
-import { Link, useParams } from "react-router-dom";
-import Pagination from "../Components/Pagination";
+import { Link } from "react-router-dom";
 
-function HomePage() {
+function BestProducts() {
   const dispatch = useDispatch();
-  const { search, page } = useParams();
 
-  const ListProducts = useSelector((state) => state.ListProducts);
+  const BestProducts = useSelector((state) => state.BestProducts);
   const {
-    loading,
-    products,
-    error,
-    page: pagePagination,
-    pages,
-  } = ListProducts;
+    loading: loadingTop,
+    products: productsTop,
+    error: errorTop,
+  } = BestProducts;
 
   useEffect(() => {
-    dispatch(productList(search, page));
-  }, [dispatch, search, page]);
+    dispatch(bestProductsList());
+  }, [dispatch]);
 
   return (
     <div className="homepage__wrapper">
       <div className="homepage__wrapper-title">
-        <Link to={`/bestproducts`}>TOP PRODUITS</Link>
+        <Link to={"/"}>NOTRE TOP 3</Link>
       </div>
 
-      {loading ? (
+      {loadingTop ? (
         <Loader
           className="homepage__loading"
           src={loadingLogo}
           logoClassName="homepage__logo"
         />
-      ) : error ? (
+      ) : errorTop ? (
         <ErrorMessage className="homepage__errorMessage">
           Désolé une erreur s'est produite, veuillez reeasayer
         </ErrorMessage>
       ) : (
         <>
           <div className="homepage__container">
-            {products.map((product, index) => (
-              <Card key={index} product={product} />
+            {productsTop.map((productsTop, index) => (
+              <Card key={index} product={productsTop} />
             ))}
           </div>
-          <Pagination
-            page={pagePagination}
-            pages={pages}
-            search={search ? search : ""}
-          />
         </>
       )}
     </div>
   );
 }
 
-export default HomePage;
+export default BestProducts;

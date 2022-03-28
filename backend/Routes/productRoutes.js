@@ -8,6 +8,7 @@ const router = express.Router();
 
 // All my routes
 router.get("/", productsController.getProducts);
+router.get("/bestproducts", productsController.getBestProducts);
 router.get("/:id", productsController.getProductById);
 
 router.post("/", protect, isAdmin, productsController.createProduct);
@@ -16,5 +17,4 @@ router.put("/:id", protect, isAdmin, productsController.updateProduct);
 
 router.post("/:id/reviews", protect, productsController.createReviews);
 
-router.get("/bestproducts", productsController.getBestProducts);
 export default router;

@@ -22,6 +22,7 @@ import UserEdit from "./Pages/UserEdit";
 import ProductsList from "./Pages/ProductsList";
 import ProductEdit from "./Pages/ProductEdit";
 import OrdersList from "./Pages/OrdersList";
+import BestProducts from "./Pages/BestProducts";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/bestproducts" element={<BestProducts />} />
 
           <Route path="/search/:search" element={<HomePage />} />
           <Route path="/page/:page" element={<HomePage />} />

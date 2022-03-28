@@ -185,3 +185,24 @@ export const createReviewProduct =
       });
     }
   };
+
+// Actions type one product
+export const PRODUCT_TOP_REQ = "product_top_req";
+export const PRODUCT_TOP_SUCCESSFUL = "product_top_successful";
+export const PRODUCT_TOP_FAIL = "product_top_fail";
+
+export const bestProductsList = () => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_TOP_REQ });
+    const { data } = await axios.get(`/api/products/bestproducts`);
+    dispatch({ type: PRODUCT_TOP_SUCCESSFUL, payload: data });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
