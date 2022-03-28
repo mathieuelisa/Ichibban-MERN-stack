@@ -30,25 +30,26 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+
           <Route path="/search/:search" element={<HomePage />} />
           <Route path="/page/:page" element={<HomePage />} />
           <Route path="/search/:search/page/:page" element={<HomePage />} />
 
-          <Route path="/order/:id" element={<OrderDetails />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/admin/orders" element={<OrdersList />} />
-          <Route path="/payment" element={<Payment />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/login/shipping" element={<Shipping />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login/shipping" element={<Shipping />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/product/:id" element={<Product />} />
+
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/:id" element={<Cart />} />
+
+          <Route path="/admin/orders" element={<OrdersList />} />
           <Route path="/admin/products" element={<ProductsList />} />
-
           <Route path="/admin/products/page/:page" element={<ProductsList />} />
-
           <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
           <Route path="/admin/user/:id/edit" element={<UserEdit />} />
           <Route path="/admin/users" element={<UserList />} />

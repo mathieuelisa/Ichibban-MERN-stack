@@ -30,7 +30,7 @@ const productsController = {
   }),
 
   // Get one product by ID
-  //GET request
+  // GET request
   // ADMIN
   getProductById: asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
@@ -156,6 +156,18 @@ const productsController = {
     } else {
       res.status(400);
       throw new Error("Error product not found");
+    }
+  }),
+
+  // Get the 3 best products
+  // GET request
+  getBestProducts: asyncHandler(async (req, res) => {
+    const products = await Product.find({}).limit(3).sort({ rating: -1 });
+
+    if (products) {
+      res.json(products);
+    } else {
+      res.status(404).json({ message: "Your top products aren't found sorry" });
     }
   }),
 };

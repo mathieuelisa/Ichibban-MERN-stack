@@ -15,4 +15,6 @@ router.delete("/:id", protect, isAdmin, productsController.deleteProduct);
 router.put("/:id", protect, isAdmin, productsController.updateProduct);
 
 router.post("/:id/reviews", protect, productsController.createReviews);
+
+router.get("/bestproducts", productsController.getBestProducts);
 export default router;

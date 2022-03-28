@@ -10,7 +10,7 @@ import loadingLogo from "../Assets/Images/spinner2.gif";
 import { productList } from "../redux/actions/productsActions.js";
 
 import ErrorMessage from "../Components/ErrorMessage";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Pagination from "../Components/Pagination";
 
 function HomePage() {
@@ -33,7 +33,7 @@ function HomePage() {
   return (
     <div className="homepage__wrapper">
       <div className="homepage__wrapper-title">
-        <h5>Nos nouveautés</h5>
+        <Link to={"/"}>TOP PRODUITS</Link>
       </div>
 
       {loading ? (
