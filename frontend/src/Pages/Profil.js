@@ -169,7 +169,7 @@ function Profil() {
         </div>
 
         <div className="order__container-customer">
-          <h2>MES COMMANDES</h2>
+          <h2 className="userList__container-title">MES COMMANDES</h2>
           <div>
             <table className="tableau-style">
               <thead>

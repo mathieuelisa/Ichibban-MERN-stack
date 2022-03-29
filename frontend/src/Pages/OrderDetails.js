@@ -206,7 +206,7 @@ function OrderDetails() {
           </div>
           <div className="order__container_summary">
             <h3 className="order__container_summary-mainTitle">
-              Résumé de votre commande
+              RESUME DE VOTRE COMMANDE
             </h3>
             <div className="order__container_summary-title">
               <div className="order__container_summary-title-container">
@@ -243,6 +243,9 @@ function OrderDetails() {
                     <LoaderSpinner />
                   ) : (
                     <PayPalButton
+                      style={{
+                        shape: "pill",
+                      }}
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
                     />

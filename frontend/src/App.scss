@@ -798,6 +798,7 @@
 
   .login__container-newCustomer-bloc {
     height: 200px;
+    font-size: 0.8em;
   }
 
   .login__form {
@@ -805,6 +806,10 @@
 
     &-inputs {
       width: 100%;
+
+      &::placeholder {
+        font-size: 0.8em;
+      }
     }
   }
 }
@@ -904,6 +909,12 @@
 
   .register__form-button-validate {
     width: 175px;
+  }
+
+  .register__form-inputs {
+    &::placeholder {
+      font-size: 0.7em;
+    }
   }
 }
 
@@ -1159,13 +1170,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 79%;
+    padding: 45px;
     margin-top: 35px;
 
     &-container {
       display: flex;
       justify-content: space-between;
       width: 80%;
+      margin-bottom: 15px;
     }
   }
 
@@ -1256,15 +1268,11 @@
 }
 
 .order__container_summary-mainTitle {
-  text-decoration: underline;
+  text-align: center;
 }
 
 .order__container_elements-nameAndEmail {
   margin-bottom: 20px;
-}
-
-.order__container_summary-mainTitle {
-  text-decoration: underline;
 }
 
 .anchor__orderDetails {
@@ -1275,7 +1283,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1100px) {
   .order__container {
     height: auto;
 
@@ -1292,6 +1300,7 @@
   }
 
   .order__container_summary {
+    height: auto;
     width: 100%;
     margin-left: 0;
     padding-left: 0;
@@ -1412,7 +1421,7 @@ td {
   }
 
   .userList__container-title {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .userEdit__back {
@@ -1421,12 +1430,6 @@ td {
 }
 
 // PRODUCTSLIST PAGE
-
-.product__container {
-  &-listing {
-    overflow: scroll;
-  }
-}
 
 .anchor__productList {
   text-decoration: none;

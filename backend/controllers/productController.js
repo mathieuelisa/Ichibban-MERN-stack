@@ -10,7 +10,7 @@ const productsController = {
     const search = req.query.search;
     const page = Number(req.query.page) || 1;
 
-    const numberArticleByPage = 4;
+    const numberArticleByPage = 6;
 
     const mySearching = search
       ? {
