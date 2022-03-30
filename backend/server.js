@@ -39,6 +39,19 @@ app.get("/api/config/paypal", (req, res) =>
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
+// Passage en mode production et redirection du fichier static vers le build folder
+if (process.env.DEV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Your API is running...");
+  });
+}
+
 // Page not found middleware
 app.use(pageNotFound);
 app.use(errorHandler);

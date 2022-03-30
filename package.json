@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node backend/server",
     "data:imported": "node backend/seeder",
-    "data:deleted": "node backend/seeder -d"
+    "data:deleted": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
