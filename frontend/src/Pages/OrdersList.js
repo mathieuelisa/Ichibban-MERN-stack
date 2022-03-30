@@ -72,7 +72,7 @@ function OrdersList() {
                           href={`/orders/${element._id}`}
                           className="anchor__productList"
                         >
-                          {element.user.name}
+                          {element.user?.name}
                         </a>
                       </td>
 

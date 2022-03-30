@@ -114,7 +114,7 @@ function ProductsList() {
                   {products.map((element) => {
                     return (
                       <tr key={element._id}>
-                        <td>{element._id}</td>
+                        <td>{element._id?.substring(0, 10)}...</td>
 
                         <td>
                           <a

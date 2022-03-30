@@ -1438,3 +1438,27 @@ td {
     color: gray;
   }
 }
+
+// NOTFOUND PAGE
+
+.notfound__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  line-height: 30px;
+
+  &-mainTitle {
+    margin-bottom: 20px;
+  }
+
+  &-link {
+    color: rgb(70, 70, 175);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

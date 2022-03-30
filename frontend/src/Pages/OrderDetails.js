@@ -78,7 +78,15 @@ function OrderDetails() {
         setSdkPaypalReady(true);
       }
     }
-  }, [order, id, dispatch, successPay, successDelivery, navigate]);
+  }, [
+    order,
+    id,
+    dispatch,
+    successPay,
+    successDelivery,
+    navigate,
+    userInformation.isAdmin,
+  ]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(id, paymentResult));

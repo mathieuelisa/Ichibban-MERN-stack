@@ -23,6 +23,7 @@ import ProductsList from "./Pages/ProductsList";
 import ProductEdit from "./Pages/ProductEdit";
 import OrdersList from "./Pages/OrdersList";
 import BestProducts from "./Pages/BestProducts";
+import NotFound from "./Pages/Notfound";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="/admin/product/:id/edit" element={<ProductEdit />} />
           <Route path="/admin/user/:id/edit" element={<UserEdit />} />
           <Route path="/admin/users" element={<UserList />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
