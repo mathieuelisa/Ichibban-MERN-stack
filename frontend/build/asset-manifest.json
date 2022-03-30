@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c8392730.css",
+    "main.js": "/static/js/main.852f7a2b.js",
+    "static/media/spinner2.gif": "/static/media/spinner2.bda22e8d3541f615dcde.gif",
+    "static/media/paypal.png": "/static/media/paypal.a5550993f4494e66c2b7.png",
+    "static/media/WalkwayBlack.ttf": "/static/media/WalkwayBlack.49d09b6f1f1575161028.ttf",
+    "static/media/Walkway.ttf": "/static/media/Walkway.388f7a6464f66b94b700.ttf",
+    "static/media/emptyCard.png": "/static/media/emptyCard.7e0a3af77ad868998e23.png",
+    "static/media/stripe.svg": "/static/media/stripe.c46c2b41e905214445deddcb58c3abdb.svg",
+    "index.html": "/index.html",
+    "main.c8392730.css.map": "/static/css/main.c8392730.css.map",
+    "main.852f7a2b.js.map": "/static/js/main.852f7a2b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8392730.css",
+    "static/js/main.852f7a2b.js"
+  ]
+}
