@@ -1462,3 +1462,17 @@ td {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .notfound__container {
+    padding: 20px;
+
+    &-mainTitle {
+      text-align: center;
+    }
+
+    &-text {
+      text-align: center;
+    }
+  }
+}

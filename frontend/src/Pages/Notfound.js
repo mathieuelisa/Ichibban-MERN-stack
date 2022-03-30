@@ -6,11 +6,11 @@ function NotFound() {
       <h2 className="notfound__container-mainTitle">
         Désolé, la page que vous cherchez n'éxiste pas
       </h2>
-      <h4>
+      <h4 className="notfound__container-text">
         Choix numéro 1 : Vous mettez vos <i class="fa-solid fa-glasses"></i>{" "}
         pour verifier l'URL.
       </h4>
-      <h4>
+      <h4 className="notfound__container-text">
         Choix numéro 2 : Vous cliquez{" "}
         <Link to="/" className="notfound__container-link">
           ici
