@@ -218,6 +218,27 @@
   .header__wrapper-searchBar {
     display: none;
   }
+
+  .header__wrapper-logo-title {
+    font-size: 0.6em;
+  }
+
+  .header__wrapper-icons {
+    font-size: 0.8em;
+  }
+
+  .homepage__wrapper-title {
+    font-size: 0.8em;
+  }
+
+  .product__container-infos {
+    &-name {
+      font-size: 1.2em;
+    }
+    &-price {
+      font-size: 1em;
+    }
+  }
 }
 
 // HOMEPAGE & CARDS
@@ -358,7 +379,6 @@
     text-align: left;
 
     &-title {
-      font-family: "WalkwayBlack";
       margin-top: 20px;
       text-align: center;
     }
@@ -443,7 +463,6 @@
 
   &-price {
     margin-left: 10px;
-    font-family: "WalkwayBlack";
   }
 
   &-text {
@@ -781,6 +800,7 @@
 @media screen and (max-width: 600px) {
   .login__container {
     flex-direction: column;
+    height: auto;
   }
 
   .login__container-customer-form {
