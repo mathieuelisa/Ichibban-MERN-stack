@@ -115,7 +115,7 @@ function Product() {
           <div className="product__container_reviews">
             {product.reviews?.length === 0 && (
               <ErrorMessage className="product__container_reviews-noComments">
-                Pas de commentaires pour cet article
+                Pas d'avis pour cet article.
               </ErrorMessage>
             )}
             {userInformation ? (

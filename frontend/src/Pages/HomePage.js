@@ -33,7 +33,9 @@ function HomePage() {
   return (
     <div className="homepage__wrapper">
       <div className="homepage__wrapper-title">
-        <h4>Pour connaitre nos TOP PRODUITS cliquez</h4>
+        <h4 className="homepage__wrapper-bestProducts-title">
+          Pour connaitre notre TOP PRODUITS cliquez
+        </h4>
         <Link
           to={`/bestproducts`}
           className="homepage__wrapper-titleBestProducts"
