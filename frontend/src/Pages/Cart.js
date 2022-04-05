@@ -37,7 +37,23 @@ function Cart() {
   return (
     <div className="cart__container">
       <div className="cart__container-wrapperProduct">
-        <h2 className="cart__container-title">Votre panier</h2>
+        <div className="cart__container-wrapperProduct-mainTitle">
+          <div>
+            <h2 className="cart__container-title">Votre panier</h2>
+          </div>
+          <div className="cart__container-totalContainer">
+            <h3 className="cart__container-wrapperTotal-title">
+              Sous-total{" "}
+              {cartItems
+                .reduce(
+                  (acc, element) => acc + element.quantity * element.price,
+                  0
+                )
+                .toFixed(2)}{" "}
+              €
+            </h3>
+          </div>
+        </div>
         {cartItems.length === 0 ? (
           <>
             <ErrorMessage className="cart__container-error">
@@ -105,32 +121,20 @@ function Cart() {
                 );
               })}
             </div>
-            <div className="cart__container-wrapperTotal">
-              <h3 className="cart__container-wrapperTotal-title">
-                TOTAL ({cartItems.reduce((acc, curr) => acc + curr.quantity, 0)}
-                ) PRODUITS
-              </h3>
-              <h2 className="cart__container-wrapperTotal-secondTitle">
-                {cartItems
-                  .reduce(
-                    (acc, element) => acc + element.quantity * element.price,
-                    0
-                  )
-                  .toFixed(2)}{" "}
-                €
-              </h2>
-              <div className="cart__container-checkoutButton">
-                <button
-                  type="submit"
-                  className="product__container-button-valide"
-                  onClick={checkoutHandler}
-                >
-                  FINALISER LA COMMANDE
-                </button>
-              </div>
-            </div>
           </div>
         )}
+        <div className="cart__container-wrapperTotal">
+          <div className="cart__container-checkoutButton">
+            <button
+              type="submit"
+              className="product__container-button-valide"
+              onClick={checkoutHandler}
+            >
+              FINALISER LA COMMANDE DE{" "}
+              {cartItems.reduce((acc, curr) => acc + curr.quantity, 0)} PRODUITS
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
