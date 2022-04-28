@@ -30,7 +30,6 @@ function Cart() {
   };
 
   const checkoutHandler = () => {
-    console.log("checkout articles");
     navigate("/login?redirect=shipping");
   };
 

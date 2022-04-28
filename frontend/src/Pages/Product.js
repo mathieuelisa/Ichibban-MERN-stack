@@ -43,13 +43,12 @@ function Product() {
 
   const handleCreateReviewSubmit = (e) => {
     e.preventDefault();
-    console.log("test ok");
     dispatch(createReviewProduct(id, { rating, comment }));
   };
 
   useEffect(() => {
     if (successCreateReview) {
-      alert("new review");
+      alert("Avis enregistré, merci");
       setRating(0);
       setComment("");
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });

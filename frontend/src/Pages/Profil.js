@@ -81,6 +81,7 @@ function Profil() {
           <h2 className="userList__container-title">
             INFORMATIONS PERSONNELLES
           </h2>
+          <p>Mettez à jour votre profil si besoin</p>
           <div className="register__container-customer-form">
             <form className="register__form" onSubmit={handleSubmit}>
               {loading && (
