@@ -26,7 +26,7 @@ function Shipping() {
       <Steps step1 step2 />
       <div className="shipping__container">
         <div className="shipping__container-customer">
-          <h2>SHIPPING ADDRESS</h2>
+          <h2>ADRESSE DE LIVRAISON</h2>
           <div className="shipping__container-customer-form">
             <form className="shipping__form" onSubmit={handleSubmit}>
               <label className="shipping__form-label">

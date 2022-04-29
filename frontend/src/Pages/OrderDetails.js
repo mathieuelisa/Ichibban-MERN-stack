@@ -93,7 +93,6 @@ function OrderDetails() {
   };
 
   const handleDeliveredOrder = () => {
-    console.log("Votre produits a bien ete livré");
     dispatch(deliveredOrder(order));
   };
 

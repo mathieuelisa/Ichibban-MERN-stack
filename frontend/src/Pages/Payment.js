@@ -28,7 +28,7 @@ function Payment() {
       <Steps step1 step2 step3 />
       <div className="payment__container">
         <div className="payment__container-customer">
-          <h2 className="payment__mainTitle">PAYMENT METHOD</h2>
+          <h2 className="payment__mainTitle">METHODE DE PAIEMENT</h2>
           <ErrorMessage textClassName="payment__choicePayment-error">
             {error}
           </ErrorMessage>
@@ -43,7 +43,7 @@ function Payment() {
                     className="shipping__form-inputs"
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />{" "}
-                  Paypal or Credit Card
+                  Paypal ou Carte de credit
                 </label>
                 <img
                   src={logoPaypal}
